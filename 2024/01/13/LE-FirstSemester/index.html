@@ -1,0 +1,784 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon02.jpg">
+  <link rel="icon" href="/img/icon02.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="c语言程序设计（2学分）  高三暑假：b站搜索浙大翁恺提前预习  【浙江大学翁恺教你C语言程序设计！C语言基础入门！】 https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1dr4y1n7vA&#x2F;?share_source&#x3D;copy_web&amp;vd_source&#x3D;fc9422f088d6dd276399cc472e4f7182 提前预习是为了在第一节课能够听懂老师讲什">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【学习经验】大一上丨程设丨数分丨高代丨大英丨习概丨道法">
+<meta property="og:url" content="http://example.com/2024/01/13/LE-FirstSemester/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="c语言程序设计（2学分）  高三暑假：b站搜索浙大翁恺提前预习  【浙江大学翁恺教你C语言程序设计！C语言基础入门！】 https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1dr4y1n7vA&#x2F;?share_source&#x3D;copy_web&amp;vd_source&#x3D;fc9422f088d6dd276399cc472e4f7182 提前预习是为了在第一节课能够听懂老师讲什">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-01-13T03:00:23.000Z">
+<meta property="article:modified_time" content="2024-06-28T04:40:20.436Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="学习经验">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>【学习经验】大一上丨程设丨数分丨高代丨大英丨习概丨道法 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Rainel</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>Links</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/p2.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="【学习经验】大一上丨程设丨数分丨高代丨大英丨习概丨道法"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-01-13 11:00" pubdate>
+          January 13, 2024 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.9k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          17 mins
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> views
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">【学习经验】大一上丨程设丨数分丨高代丨大英丨习概丨道法</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="c语言程序设计2学分">c语言程序设计（2学分）</h1>
+<ol type="1">
+<li>高三暑假：b站搜索浙大翁恺提前预习
+<ol type="1">
+<li>【浙江大学翁恺教你C语言程序设计！C语言基础入门！】
+https://www.bilibili.com/video/BV1dr4y1n7vA/?share_source=copy_web&amp;vd_source=fc9422f088d6dd276399cc472e4f7182</li>
+<li>提前预习是为了在第一节课能够听懂老师讲什么，并且在一定程度上领先于其他同学，获得自信。并不代表开学后可以摸鱼，因为事实上我暑假看了并记住的内容老师用一节课就讲完了......</li>
+</ol></li>
+<li>开学后
+<ol type="1">
+<li>预习：找学长学姐要ppt/提前1-2天老师会发ppt。强烈建议在课前把ppt上的内容都过一遍，代码都跑一遍。</li>
+<li>课上：别摸鱼。</li>
+<li>课后：
+<ol type="1">
+<li>练习赛（当天）：下课后45分钟就考试，晚饭的安排？大多数人只能做出3-4道题，所以没做出来题不用太慌张。</li>
+<li>练习赛（周末）：做一两道就给满平时分（至少我们这届是这样的），但是建议能多做就多做。我最开始做9道（一共10道），大概用半天的时间，后来做7道，但是大概需要一天时间。</li>
+</ol></li>
+</ol></li>
+<li>关于考试
+<ol type="1">
+<li>串讲：狠狠的听！</li>
+<li>考试的时候本地的内容都可以看（比如之前写的代码、存的板子、存的ppt、pdf、word文档），所以考试前一定要<strong>存板子存ppt存学长学姐们的串讲资料</strong></li>
+<li>别紧张！你已经考了很多次试了</li>
+<li><strong>提前把杀毒软件卸载了</strong>（别考着考着杀毒软件蹦出来不让你跑程序）</li>
+</ol></li>
+</ol>
+<h1 id="工科数学分析一6学分">工科数学分析（一）（6学分）</h1>
+<ol type="1">
+<li>高三暑假：本人买了书，只看了封皮底面和侧边，内容一眼没看，建议预习个程设就够了，剩下的时间好好享受这个盛大的夏日吧。</li>
+<li>开学后
+<ol type="1">
+<li>预习：看一遍书<del>为了减轻课上摸鱼的罪恶感</del></li>
+<li>课上：大多数人三节连堂（45+5+45+5+45），一直保持清醒是很难的，可以适当地小摸一下，小摸怡情，大摸伤身</li>
+<li>课后：作业有两种
+<ol type="1">
+<li>智慧树：判定完成的标准是每个小节都80%完成率以上，阶段测试完成（忘记有没有分数要求了。<strong>难度稍低</strong>，<strong>建议课后及时完成</strong>，不要堆到考试前突击（小技巧：完成阶段测试也可以提升前面每个小节的完成度，如果实在没时间，可以先做阶段测试，然后再单独做前面没刷上完成度的小节）</li>
+<li>书上习题：周末把一周的作业统一上交到平台上。<strong>难度较高</strong>，有的证明题不会做不用担心，看一看答案，把答案看懂就行了。</li>
+<li>辅助理解：【【官方双语】微积分的本质 - 01 -】
+https://www.bilibili.com/video/BV1cx411m78R/?share_source=copy_web&amp;vd_source=fc9422f088d6dd276399cc472e4f7182</li>
+</ol></li>
+</ol></li>
+<li>关于考试
+<ol type="1">
+<li>串讲：能听现场就听现场（无法保证录播的质量），课上做完笔记，课后及时总结</li>
+<li><strong>多做往年题</strong>，能做多少做多少，找到题目的套路之后就能应对考试了（但是也不完全，可能会在今年突然有创新题......<del>听天由命吧朋友</del>）</li>
+</ol></li>
+</ol>
+<h1 id="工科高等代数6学分">工科高等代数（6学分）</h1>
+<ol type="1">
+<li>高三暑假：把红皮高代（北京航空航天出版社）买了，据说比那个绿皮高代好用</li>
+<li>解析几何（期中前）
+<ol type="1">
+<li>预习：没必要</li>
+<li>课上：高中知识+稍稍延伸，简单，视你高中数学学习情况而定，可以小摸甚至大摸</li>
+<li>期中考试：背背公式，看看笔记就够了，不用做往年题</li>
+</ol></li>
+<li>线性代数（期中后）
+<ol type="1">
+<li>预习：可以看看书，但我没预习过（xd）</li>
+<li>课上：如果老师讲的课你觉得听不懂，建议自学，自己一个人啃书也好，去b站上网课也好，学习是你的目的，听课不是。我上课基本上是掏出书，开始硬啃，可能半个小时就能把一节课的书看一遍，但是看一遍没法搞懂，看完书后去做课后题（需要注意的是，绿皮书没有课后题的答案），做完课后题再看一遍书。你也可以直接b站听网课。推荐有：
+<ol type="1">
+<li>【麻省理工学院 - MIT - 线性代数（我愿称之为线性代数教程天花板）】
+https://www.bilibili.com/video/BV16Z4y1U7oU/?share_source=copy_web&amp;vd_source=fc9422f088d6dd276399cc472e4f7182</li>
+<li>【北大丘维声教授清华高等代数课程1080P高清修复版(全151集)】
+https://www.bilibili.com/video/BV1jR4y1M78W/?share_source=copy_web&amp;vd_source=fc9422f088d6dd276399cc472e4f7182</li>
+<li>辅助理解用：【【官方双语/合集】线性代数的本质 - 系列合集】
+https://www.bilibili.com/video/BV1ys411472E/?share_source=copy_web&amp;vd_source=fc9422f088d6dd276399cc472e4f7182</li>
+</ol></li>
+<li>课后：作业是绿皮书书后题，没答案，我的建议是要写，但不需要特别认真的写，毕竟你要是写错了也不知道，建议找点别的课后习题来做。</li>
+<li>期末考试：做往年题！听串讲！</li>
+</ol></li>
+</ol>
+<h1 id="大学英语2学分">大学英语（2学分）</h1>
+<ol type="1">
+<li>开学前有分班考试，学长建议去b班，a、b班期末考试题目一样，但是平时成绩b班给的比a班松一点，而且b班事少；但是个人感觉还是要看老师，a、b班都有事多事少的老师，还得看运气。</li>
+<li><del>早八英语课不是人上的，我除了做听力和做pre的时候基本上都在睡觉</del></li>
+<li>关于成绩![/img/002HowToScore]
+<ol type="1">
+<li>abcefg感觉基本上都能拿满，最后扣分项目只有听力小测和期末成绩</li>
+<li>听力小测：不同人听力能力会有很大的区别（毕竟有的省市英语高考听口占了50分，有的省市完全不考听力），建议如果高考没有考听力的话，多做做四级题目练练耳朵。个人觉得小测难度与四级听力差不多，但是难度高于北京高考听口。不过个人经验表明如果北京高考听口你能拿50分，你航的听力测试差不多也能应付过去（大概每次考试满分10分能拿个9分10分的）。</li>
+<li>你航英语期末考试只有选择题，分为听力、阅读、词汇。听力和小测难度差不多；阅读比北京高考简单，虽然篇目很长，但是题目简单；词汇很难，<del>约等于涂彩票</del>。但是感觉老师会捞捞，下图是一个b班的成绩。![/img/002ScoreForB/jpg]</li>
+</ol></li>
+</ol>
+<h1 id="习概3学分">习概（3学分）</h1>
+<ol type="1">
+<li>开卷考试。期末考试前看一下书的目录就行，考试的时候能够找到对应的地方然后迅速开抄就可以。</li>
+</ol>
+<h1 id="道法3学分">道法（3学分）</h1>
+<ol type="1">
+<li>闭卷考试。填空题（20分）给了范围，选择题（20分）大题（60分）没给范围</li>
+<li>填空题给了大概6面A4纸的范围（一个单元一面纸），我的总复习时间是13h29min，大概复习办法是烤漆复习数分/高代累了的时候，在中间穿插背诵，转换头脑。在所有科目都考完之后集中背诵。</li>
+<li>没给范围的内容就别准备了，毕竟道法书还挺厚的，你看一遍也记不住什么东西。考试靠运气就好。</li>
+<li>大题尽量多写就行，考完试祈祷老师捞捞就好。</li>
+</ol>
+<h1 id="总结">总结</h1>
+<ol type="1">
+<li>重点：程设数分高代。由于程设只上半学期，数分和高代上一学期......
+<ol type="1">
+<li>程设期末考试前（大概11月末）：程设+数分</li>
+<li>程设期末考试后：数分+高代</li>
+</ol></li>
+<li>程设学习时长与学分并不匹配</li>
+<li>数分高代考试策略：听串讲+做往年题</li>
+<li>思政课考试策略：<del>临时抱佛脚</del></li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" class="category-chain-item">学习经验</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/%E5%AD%A6%E6%9C%9F%E6%80%BB%E7%BB%93/" class="category-chain-item">学期总结</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" class="print-no-link">#学习经验</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>【学习经验】大一上丨程设丨数分丨高代丨大英丨习概丨道法</div>
+      <div>http://example.com/2024/01/13/LE-FirstSemester/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>January 13, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/01/13/MT-Diary/" title="【军训】军训日记">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【军训】军训日记</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP备2024049620号
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

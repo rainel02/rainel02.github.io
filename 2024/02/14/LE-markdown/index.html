@@ -1,0 +1,1181 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon02.jpg">
+  <link rel="icon" href="/img/icon02.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="标题 123456# 大标题## 二号标题### 三号标题#### 四号标题##### 五号标题###### 六号标题 字体 1*斜体*  **加粗**  ***斜体加粗***  ~~划掉~~  &#x3D;&#x3D;高亮&#x3D;&#x3D;  ^上标^  ~下标~ 列表  无序列表 123+ dfji + dfj   + dfj 有序列表 1231. sdf2. sdf3. sdf  表格 1234| m">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【学习经验】markdown入门">
+<meta property="og:url" content="http://example.com/2024/02/14/LE-markdown/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="标题 123456# 大标题## 二号标题### 三号标题#### 四号标题##### 五号标题###### 六号标题 字体 1*斜体*  **加粗**  ***斜体加粗***  ~~划掉~~  &#x3D;&#x3D;高亮&#x3D;&#x3D;  ^上标^  ~下标~ 列表  无序列表 123+ dfji + dfj   + dfj 有序列表 1231. sdf2. sdf3. sdf  表格 1234| m">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-14T13:09:27.000Z">
+<meta property="article:modified_time" content="2024-05-07T11:30:50.457Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="学习经验">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>【学习经验】markdown入门 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Rainel</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>Links</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/p2.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="【学习经验】markdown入门"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-02-14 21:09" pubdate>
+          February 14, 2024 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.1k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          10 mins
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> views
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">【学习经验】markdown入门</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="标题">标题</h2>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-section"># 大标题</span><br><span class="hljs-section">## 二号标题</span><br><span class="hljs-section">### 三号标题</span><br><span class="hljs-section">#### 四号标题</span><br><span class="hljs-section">##### 五号标题</span><br><span class="hljs-section">###### 六号标题</span><br></code></pre></td></tr></table></figure>
+<h2 id="字体">字体</h2>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-emphasis">*斜体*</span>  <span class="hljs-strong">**加粗**</span>  <span class="hljs-strong">**<span class="hljs-emphasis">*斜体加粗*</span>**</span>  ~~划掉~~  ==高亮==  ^上标^  ~下标~<br></code></pre></td></tr></table></figure>
+<h2 id="列表">列表</h2>
+<ol type="1">
+<li><p>无序列表</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">+</span> dfji<br><span class="hljs-bullet"> +</span> dfj<br><span class="hljs-bullet">   +</span> dfj<br></code></pre></td></tr></table></figure></li>
+<li><p>有序列表</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">1.</span> sdf<br><span class="hljs-bullet">2.</span> sdf<br><span class="hljs-bullet">3.</span> sdf<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="表格">表格</h2>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs markdown">| mon | tue | wed |<br>|-----|-----|:----|<br>|dd|dd|dd|<br>|ss|ss|ss|<br></code></pre></td></tr></table></figure>
+<h2 id="引用">引用</h2>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-quote">&gt; 第一层引用</span><br><span class="hljs-quote">&gt; &gt; 第二层引用</span><br><span class="hljs-quote">&gt; &gt; &gt;第三层引用</span><br><span class="hljs-quote">&gt; &gt; &gt; &gt;第四层引用</span><br></code></pre></td></tr></table></figure>
+<h2 id="分割线">分割线</h2>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown">---<br></code></pre></td></tr></table></figure>
+<h2 id="折叠内容">折叠内容</h2>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">details</span>&gt;</span></span><br><span class="hljs-code">    &lt;summary&gt;展示的内容&lt;/summary&gt;</span><br><span class="hljs-code">    折叠的内容</span><br><span class="hljs-code">&lt;/details&gt;</span><br></code></pre></td></tr></table></figure>
+<h2 id="数学公式">数学公式</h2>
+<p>输入<code>$$</code>回车后即可插入数学公式（公式为独立一行且居中）</p>
+<h3 id="基本运算符">基本运算符</h3>
+<ul>
+<li><p>下标：<code>_</code>
+放在字符下时加上<code>\limits</code></p></li>
+<li><p>上标：<code>^</code></p></li>
+<li><p>根号：<code>\sqrt</code></p></li>
+<li><p>分数：<code>\frac&#123;up&#125;&#123;down&#125;</code></p>
+<p>例如</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown">x<span class="hljs-emphasis">_&#123;ij&#125; 、y^&#123;ij&#125; 、\max \limits_</span>&#123;a<span class="language-xml">&lt;x&lt;b&#125; \&#123;f(x)\&#125;、\frac&#123;up&#125;&#123;down&#125;、\sqrt&#123;b&#125;、 \sqrt[a]&#123;b&#125;</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<p><span class="math display">\[
+x_{ij} 、y^{ij} 、\max
+\limits_{a&lt;x&lt;b}\{f(x)\}、\frac{up}{down}、\sqrt{b}、 \sqrt[a]{b}
+\]</span></p>
+<h3 id="括号">括号</h3>
+<ul>
+<li><table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">markdown语法</th>
+<th style="text-align: center;">表示字符</th>
+<th style="text-align: center;">markdown语法</th>
+<th style="text-align: center;">表示字符</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">()</td>
+<td style="text-align: center;">()</td>
+<td style="text-align: center;">|</td>
+<td style="text-align: center;">|</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">[]</td>
+<td style="text-align: center;">[]</td>
+<td style="text-align: center;">\{\}</td>
+<td style="text-align: center;">{}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">⟨</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">⟩</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">⌈</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">⌉</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">⌊</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">⌋</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">{</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">}</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>需要显示大号的括号或分隔符时，用</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown">\left[<br>\frac&#123;(x<span class="hljs-emphasis">_&#123;ij&#125;)_</span>&#123;max&#125;^2&#125;&#123;MSE&#125;<br>\right]<br></code></pre></td></tr></table></figure>
+<p><span class="math display">\[
+\left[
+\frac{(x_{ij})_{max}^2}{MSE}
+\right]
+\]</span></p></li>
+</ul>
+<h3 id="运算符">运算符</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">±</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">∓</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">×</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">⋅</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">÷</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">≈</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">≠</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">≡</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">≤</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">≥</td>
+</tr>
+</tbody>
+</table>
+<h3 id="求和求积">求和求积</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">∑</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">∏</td>
+</tr>
+</tbody>
+</table>
+<h3 id="集合运算符">集合运算符</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">∈</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">∉</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">⊂</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">⊃</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">⊆</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">⊇</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">⋂</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">⋃</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">∅</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">￠</td>
+</tr>
+</tbody>
+</table>
+<h3 id="对数运算符">对数运算符</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">log</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">lg</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">ln</td>
+</tr>
+</tbody>
+</table>
+<h3 id="三角运算符">三角运算符</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">30^</td>
+<td style="text-align: center;">30°</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">⊥</td>
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">∠<em>A</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">sin</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">cos</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">tan</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">csc</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">sec</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">cot</td>
+</tr>
+</tbody>
+</table>
+<h3 id="微积分运算符">微积分运算符</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">∫</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">lim</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">∞</td>
+</tr>
+</tbody>
+</table>
+<h3 id="逻辑运算符">逻辑运算符</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">∵</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">∴</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">∀</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">∃</td>
+</tr>
+</tbody>
+</table>
+<h3 id="上下花括号">上下花括号</h3>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown">\overbrace&#123;a+b+\dots+n&#125;^&#123;m个&#125;、\underbrace&#123;a+b+\dots+n&#125;<span class="hljs-emphasis">_&#123;m个&#125;</span><br></code></pre></td></tr></table></figure>
+<p><span class="math display">\[
+\overbrace{a+b+\dots+n}^{m个}、\underbrace{a+b+\dots+n}_{m个}
+\]</span></p>
+<h3 id="箭头">箭头</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">←</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">→</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">⟵</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">↔︎</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">↑</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">⇓</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>首字母大写为双箭头</li>
+<li>前面加long为长箭头</li>
+</ul>
+<h3 id="希腊字母">希腊字母</h3>
+<ul>
+<li><p>输入 <code>\小写希腊字母英文全称</code> 和
+<code>\首字母大写希腊字母英文全称</code>
+来分别输入小写和大写希腊字母。<strong>对于大写希腊字母与现有字母相同的，直接输入大写字母即可。</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><em>α</em></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><em>β</em></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><em>γ</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><em>δ</em></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><em>ϵ</em></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><em>η</em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><em>θ</em></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><em>λ</em></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><em>μ</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><em>σ</em></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><em>π</em></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><em>ω</em></td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+<h3 id="字体-1">字体</h3>
+<ul>
+<li><p>若要对公式的某一部分字符进行字体转换，可以用
+<code>&#123;\字体 &#123;需转换的部分字符&#125;&#125;</code> 命令，其中 <code>\字体</code>
+部分可以参照下方选择合适的字体。一般情况下，公式默认为意大利体 。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown">意大利体\it&#123;sample&#125;、罗马体\rm&#123;sample&#125;、粗体\bf&#123;sample&#125;、等线体\sf&#123;sample&#125;、打字机体\tt&#123;sample&#125;、旧德式字体\frak&#123;sample&#125;、花体\cal&#123;sample&#125;、黑板粗体\Bbb&#123;sample&#125;、数字斜体\mit&#123;sample&#125;、手写体\scr&#123;sample&#125;<br></code></pre></td></tr></table></figure>
+<p><span class="math display">\[
+意大利体\it{sample}、罗马体\rm{sample}、粗体\bf{sample}、等线体\sf{sample}、打字机体\tt{sample}、旧德式字体\frak{sample}、花体\cal{sample}、黑板粗体\Bbb{sample}、数字斜体\mit{sample}、手写体\scr{sample}
+\]</span></p></li>
+</ul>
+<h3 id="矩阵">矩阵</h3>
+<p><code>\begin&#123;matrix&#125;...\end&#123;matrix&#125;</code>括起来，使用&amp;分割同行元素，</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs markdown">\begin&#123;matrix&#125;<br>1 &amp; x &amp; x^2\\<br>1 &amp; y &amp; y^2\\<br>1 &amp; z &amp; z^2\\<br>\end&#123;matrix&#125;<br></code></pre></td></tr></table></figure>
+<p><span class="math display">\[
+\begin{matrix}
+  1 &amp; x &amp; x^2\\
+  1 &amp; y &amp; y^2\\
+  1 &amp; z &amp; z^2\\
+  \end{matrix}
+\]</span></p>
+<h3 id="行列式">行列式</h3>
+<p>在矩阵基础上添加<code>\left| ... \right|</code></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs markdown">X=\left|<br>  \begin&#123;matrix&#125;<br><span class="hljs-code">    x_&#123;11&#125; &amp; x_&#123;12&#125; &amp; \cdots &amp; x_&#123;1d&#125;\\</span><br><span class="hljs-code">    x_&#123;21&#125; &amp; x_&#123;22&#125; &amp; \cdots &amp; x_&#123;2d&#125;\\</span><br><span class="hljs-code">    \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\</span><br><span class="hljs-code">    x_&#123;11&#125; &amp; x_&#123;12&#125; &amp; \cdots &amp; x_&#123;1d&#125;\\</span><br><span class="hljs-code">  \end&#123;matrix&#125;</span><br><span class="hljs-code">\right|</span><br></code></pre></td></tr></table></figure>
+<p><span class="math display">\[
+X=\left|
+  \begin{matrix}
+    x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1d}\\
+    x_{21} &amp; x_{22} &amp; \cdots &amp; x_{2d}\\
+    \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+    x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1d}\\
+  \end{matrix}
+\right|
+\]</span></p>
+<h3 id="分段函数">分段函数</h3>
+<p><code>\begin&#123;cases&#125; ... \end&#123;cases&#125;</code>包括</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs markdown">f(n)=<br>  \begin&#123;cases&#125;<br><span class="hljs-code">    n/2, &amp; \text&#123;if $n$ is even&#125;\\</span><br><span class="hljs-code">    3n+1,&amp; \text&#123;if $n$ is odd&#125;</span><br><span class="hljs-code">  \end&#123;cases&#125;</span><br></code></pre></td></tr></table></figure>
+<p><span class="math display">\[
+f(n)=
+  \begin{cases}
+    n/2, &amp; \text{if $n$ is even}\\
+    3n+1,&amp; \text{if $n$ is odd}
+  \end{cases}
+\]</span></p>
+<h3 id="方程组">方程组</h3>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs markdown">\left\&#123;<br>  \begin&#123;array&#125;&#123;c&#125;<br><span class="hljs-code">    a_1x+b_1y+c_1z=d_1\\</span><br><span class="hljs-code">    a_2x+b_2y+c_2z=d_2\\</span><br><span class="hljs-code">    a_3x+b_3y+c_3z=d_3</span><br><span class="hljs-code">  \end&#123;array&#125;</span><br><span class="hljs-code">\right.</span><br></code></pre></td></tr></table></figure>
+<p><span class="math display">\[
+\left\{
+  \begin{array}{c}
+    a_1x+b_1y+c_1z=d_1\\
+    a_2x+b_2y+c_2z=d_2\\
+    a_3x+b_3y+c_3z=d_3
+  \end{array}
+\right.
+\]</span></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" class="category-chain-item">学习经验</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" class="print-no-link">#学习经验</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>【学习经验】markdown入门</div>
+      <div>http://example.com/2024/02/14/LE-markdown/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>February 14, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/03/08/LE-python/" title="【学习经验】从0开始的python生活">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【学习经验】从0开始的python生活</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/02/08/LE-c001/" title="【学习经验】或许可以用于辅助理解的c语言随想录">
+                        <span class="hidden-mobile">【学习经验】或许可以用于辅助理解的c语言随想录</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP备2024049620号
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

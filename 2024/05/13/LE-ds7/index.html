@@ -1,0 +1,982 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon02.jpg">
+  <link rel="icon" href="/img/icon02.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="本篇笔记总结DSPv2b_8(排序) for student内的相关内容。没有配图不是因为不抽象，而是因为太抽象，照片没用，建议直接看PPT的动画。最后，本人学艺不精，只是一边看着ppt一边敲敲改改，如有疏漏，欢迎提出喵~o( &#x3D;∩ω∩&#x3D; )m 1 排序的基本概念  排序的定义 对于含有n个记录的序列{ R1, R2, ..., Rn}, 对应的关键字序列为{k1, k2, ...,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【数据结构】ds笔记7-排序">
+<meta property="og:url" content="http://example.com/2024/05/13/LE-ds7/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="本篇笔记总结DSPv2b_8(排序) for student内的相关内容。没有配图不是因为不抽象，而是因为太抽象，照片没用，建议直接看PPT的动画。最后，本人学艺不精，只是一边看着ppt一边敲敲改改，如有疏漏，欢迎提出喵~o( &#x3D;∩ω∩&#x3D; )m 1 排序的基本概念  排序的定义 对于含有n个记录的序列{ R1, R2, ..., Rn}, 对应的关键字序列为{k1, k2, ...,">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/LE-ds7/1.png">
+<meta property="article:published_time" content="2024-05-13T13:29:24.000Z">
+<meta property="article:modified_time" content="2024-05-21T09:09:48.624Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="学习经验">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/LE-ds7/1.png">
+  
+  
+  
+  <title>【数据结构】ds笔记7-排序 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Rainel</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>Links</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/p2.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="【数据结构】ds笔记7-排序"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-05-13 21:29" pubdate>
+          May 13, 2024 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.9k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          33 mins
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> views
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">【数据结构】ds笔记7-排序</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>本篇笔记总结<strong>DSPv2b_8(排序) for
+student</strong>内的相关内容。没有配图不是因为不抽象，而是因为太抽象，照片没用，建议直接看PPT的动画。最后，本人学艺不精，只是一边看着ppt一边敲敲改改，如有疏漏，欢迎提出喵~o(
+=∩ω∩= )m</p>
+<h2 id="排序的基本概念">1 排序的基本概念</h2>
+<ol type="1">
+<li><p>排序的定义</p>
+<p>对于含有n个记录的序列{ R<sub>1</sub>, R<sub>2</sub>, ...,
+R<sub>n</sub>}, 对应的关键字序列为{k<sub>1</sub>, k<sub>2</sub>, ...,
+k<sub>n</sub>}, 确定一种置换关系 s(1), s(2), ...,
+s(n)，使得关键字序列满足： k<sub>s(1)</sub> ≤ k<sub>s(2)</sub> ≤ ... ≤
+k<sub>s(n)</sub> 或者 k<sub>s(1)</sub> ≥ k<sub>s(2)</sub> ≥ ... ≥
+k<sub>s(n)</sub>，相应文件成为按关键字值有序的文件{ R<sub>s(1)</sub>,
+R<sub>s(2)</sub>, ... ,
+R<sub>s(n)</sub>}，这一过程称为<strong>排序</strong>。简单来讲，就是<strong>将一个按值任意的数据元素序列转换为一个按值有序的数据元素序列</strong>。</p></li>
+<li><p>排序的功能</p>
+<ol type="1">
+<li>能够将记录按关键字值任意排列的数据文件转换为一个记录按关键字值有序排列的数据文件。或者能够将一个按值任意排列的数据元素序列转换为一个按值有序排列的数据元素序列。</li>
+<li>能够<strong>提高查找的时间效率</strong>。</li>
+</ol></li>
+<li><p>排序的分类（按存储器的结构分）</p>
+<ol type="1">
+<li><p>内排序</p>
+<p>参加排序的数据量不大，以致于能够一次将参加排序的数据全部装入内存实现排序。</p></li>
+<li><p>外排序</p>
+<p>当参加排序的数据量很大，以致于不能够一次将参加排序的数据全部装入内存，排序过程中需要不断地通过内存与外存之间的数据交换达到排序目的。</p></li>
+</ol></li>
+<li><p>排序的性能</p>
+<ol type="1">
+<li><p>时间性能</p>
+<p>排序过程中元素之间的比较次数与元素的移动次数。</p></li>
+<li><p>空间性能</p>
+<p>除了存放参加排序的元素之外，排序过程中所需要的其他辅助空间。</p></li>
+<li><p>稳定性</p>
+<p>对于值相同的两个元素，排序前后的先后次序不变，则称该方法为<strong>稳定性排序方法</strong>，否则，称为<strong>非稳定性排序方法</strong>。</p></li>
+</ol></li>
+<li><p>名词解释——趟</p>
+<p>将具有n个数据元素(关键字)的序列转换为一个按照值的大小有序排列（如从小到大）的序列，通常要经过若干趟(Pass)。</p></li>
+</ol>
+<h2 id="插入insert排序法">2 插入(insert)排序法</h2>
+<ol type="1">
+<li><p>核心思想</p>
+<p>第i趟排序将序列的第i+1个元素<strong>插入</strong>到一个大小为i、且已经按值有序的子序列(k<sub>i-1,1</sub>,
+k<sub>i-1,2</sub>, …,
+k<sub>i-1,i</sub>)的合适位置，得到一个大小为i+1、且仍然按值有序的子序列(k<sub>i,1</sub>,
+k<sub>i,2</sub>, …,
+k<sub>i,i+1</sub>)。其中k<sub>i,j</sub>表示第i趟排序结束时序列的第j个元素，1≤i≤n-1，1≤j≤n</p></li>
+<li><p>算法</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">insertSort</span><span class="hljs-params">(keytype k[ ],<span class="hljs-type">int</span> n)</span>&#123;<br>    <span class="hljs-type">int</span> i, j;<br>    keytype temp;<br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">1</span>;i&lt;n;i++)&#123;<br>        temp=k[i];<br>        <span class="hljs-keyword">for</span>(j=i<span class="hljs-number">-1</span>; j&gt;=<span class="hljs-number">0</span> &amp;&amp; temp&lt;k[j]; j--) <br>        	k[j+<span class="hljs-number">1</span>]=k[j];<br>        k[j+<span class="hljs-number">1</span>]=temp;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>思考题</p>
+<ol type="1">
+<li><p>排序的时间效率与什么直接有关？</p>
+<p>主要与排序过程中元素之间的比较次数直接有关。</p></li>
+<li><p>若原始序列为一个按值递增的序列，则排序过程中一共要经过多少次元素之间的比较？</p>
+<p>由于每一趟排序只需要经过一次元素之间的比较就可以找到被插入元素的合适位置，因此，整个n-1趟排序一共要经过n-1次元素之间的比较。</p></li>
+<li><p>若原始序列为一个按值递减的序列，则排序过程中一共要经过多少次元素之间的比较？</p>
+<p>由于第i趟排序需要经过i次元素之间的比较才能找到被插入元素的合适位置,因此,整个n-1趟排序一共要经过
+<span class="math display">\[
+\sum_{i=1}^{n-1}i = n(n-1)/2
+\]</span> 次元素之间的比较。</p></li>
+</ol></li>
+<li><p><strong>时间复杂度：最差O(n<sup>2</sup>) 最佳O(n)
+平均O(n<sup>2</sup>)</strong></p>
+<p><strong>空间复杂度：O(1)</strong></p>
+<p><strong>稳定</strong></p></li>
+</ol>
+<h2 id="选择select排序法">3 选择(select)排序法</h2>
+<ol type="1">
+<li><p>核心思想</p>
+<p>第i趟排序从序列的后<strong>n-i+1</strong>个元素中<strong>选取</strong>一个值最小的元素，将其置于该n-i+1个元素</p>
+<p>的最前面。</p></li>
+<li><p>算法</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">selectSort</span><span class="hljs-params">(keytype k[ ],<span class="hljs-type">int</span> n)</span>&#123;<br>    <span class="hljs-type">int</span> i, j, d;<br>    keytype  temp;<br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;n<span class="hljs-number">-1</span>;i++)&#123;<br>    	d=i;		<span class="hljs-comment">// 寻找值最小的元素并记录其位置</span><br>    	<span class="hljs-keyword">for</span>(j=i+<span class="hljs-number">1</span>;j&lt;n;j++)<br>    		<span class="hljs-keyword">if</span>(k[j]&lt;k[d])<br>    			d=j;<br>        <span class="hljs-keyword">if</span>(d!=i)&#123;    <br>            <span class="hljs-comment">/* 最小值元素非未排序元素的第一个元素时 */</span><br>            temp=k[d] ;<br>            k[d]=k[i];<br>            k[i]=temp;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>思考题</p>
+<p>若原始序列为一个按值递增的序列，则排序过程中一共要经过多少次元素之间的比较？若原始序列为一个按值递减的序列，则排序过程中要经过多少次元素之间的比较？</p>
+<p>无论原始序列为什么状态，第i趟排序都需要经过n-i次元素之间的比较，因此，整个排序过程中元素之间的比较次数为
+<span class="math display">\[
+\sum_{i=1}^{n-1}(n-i) = n(n-1)/2
+\]</span>
+即选择排序法的元素之间的比较次数与原始序列中元素的分布状态<strong>无关</strong>。</p></li>
+<li><p><strong>时间复杂度：O(n<sup>2</sup>)</strong></p>
+<p><strong>空间复杂度：O(1)</strong></p>
+<p><strong>不稳定</strong></p></li>
+</ol>
+<h2 id="冒泡bubble排序法">4 冒泡(bubble)排序法</h2>
+<ol type="1">
+<li><p>核心思想</p>
+<p>第i趟排序对序列的前<strong>n-i+1</strong>个元素从第一个元素开始依次作如下操作:相邻的两个元素比较大小，若前者大于后者,则两个元素交换位置，否则不交换位置。</p>
+<p>即值大的元素往后“<strong>沉</strong>”，值小的元素向前“<strong>浮</strong>”。</p>
+<p>效果：该n-i+1个元素中最大值元素移到该n-i+1个元素的最后。</p></li>
+<li><p>算法</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">bubbleSort</span><span class="hljs-params">(keytype k[ ],<span class="hljs-type">int</span> n)</span>&#123;<br>    <span class="hljs-type">int</span> i, j, flag=<span class="hljs-number">1</span>;<br>    keytype temp;<br>    <span class="hljs-keyword">for</span>(i=n<span class="hljs-number">-1</span>; i&gt;<span class="hljs-number">0</span> &amp;&amp; flag==<span class="hljs-number">1</span>; i--)&#123;<br>        flag=<span class="hljs-number">0</span>;                        <span class="hljs-comment">/* 每趟排序前标志flag置0 */</span> <br>        <span class="hljs-keyword">for</span>(j=<span class="hljs-number">0</span>; j&lt;i; j++) <br>            <span class="hljs-keyword">if</span>(k[j]&gt;k[j+<span class="hljs-number">1</span>])&#123;<br>                temp=k[j];<br>                k[j]=k[j+<span class="hljs-number">1</span>];<br>                k[j+<span class="hljs-number">1</span>]=temp;  <span class="hljs-comment">/* 交换两个元素的位置 */</span>     <br>                flag=<span class="hljs-number">1</span>;              <span class="hljs-comment">/* 标志flag置1 */</span> <br>            &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>泡排序方法比较适合于参加排序的序列的原始状态基本有序的情况。</p></li>
+<li><p><strong>时间复杂度：一般O(n<sup>2</sup>) 最少O(n)</strong></p>
+<p><strong>空间复杂度：O(1)</strong></p>
+<p><strong>稳定</strong></p></li>
+</ol>
+<h2 id="谢尔shell排序法">5 谢尔(Shell)排序法</h2>
+<ol type="1">
+<li><p>核心思想</p>
+<p>首先确定一个元素的间隔数gap。将参加排序的元素按照gap分隔成若干个子序列（即分别把那些位置相隔为gap的元素看作一个子序列），然后对各个子序列采用<em>某一种排序方法</em>进行排序；此后减小gap值，重复上述过程，直到gap&lt;1。</p>
+<p>一种减小gap的方法： gap<sub>1</sub> = ⌊n/2⌋; gap<sub>i</sub> =
+⌊gap<sub>i-1</sub>/2⌋ i=2,3,...</p></li>
+<li><p>算法</p></li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 1 利用冒泡排序</span><br><span class="hljs-comment">// 1.1 法1</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">shellSort</span><span class="hljs-params">(keytype k[ ],<span class="hljs-type">int</span> n)</span>&#123;<br>    <span class="hljs-type">int</span> i, j, flag, gap=n;<br>    keytype temp; <br>    <span class="hljs-keyword">while</span>(gap &gt; <span class="hljs-number">1</span>)&#123;<br>        gap = gap/<span class="hljs-number">2</span>;<br>        <span class="hljs-keyword">do</span>&#123;<br>            flag = <span class="hljs-number">0</span>;                  <span class="hljs-comment">/* 每趟排序前,标志flag置0 */</span> <br>            <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt;n–gap; i++)&#123;<br>                j = i+gap;<br>                <span class="hljs-keyword">if</span>(k[i] &gt; k[j])&#123;<br>                    temp = k[i];<br>                    k[i] = k[j];<br>                    k[j] = temp;<br>                    flag = <span class="hljs-number">1</span>;  <br>                &#125;<br>            &#125;<br>        &#125;<span class="hljs-keyword">while</span>(flag!=<span class="hljs-number">0</span>);<br>    &#125;<br>&#125;<br><span class="hljs-comment">// 1.2 法2</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">shellSort</span><span class="hljs-params">(<span class="hljs-type">int</span> v[ ], <span class="hljs-type">int</span> n)</span>&#123;		<span class="hljs-comment">//from K &amp; R</span><br>	<span class="hljs-type">int</span> gap, i, j, temp;<br>	<span class="hljs-keyword">for</span>(gap=n/<span class="hljs-number">2</span>; gap&gt;<span class="hljs-number">0</span>; gap/=<span class="hljs-number">2</span>)<br>		<span class="hljs-keyword">for</span>(i=gap; i&lt;n; i++)<br>			<span class="hljs-keyword">for</span>(j=i-gap; j&gt;=<span class="hljs-number">0</span> &amp;&amp; v[j]&gt;v[j+gap]; j -= gap)&#123;<br>                temp = v[j];<br>                v[j] = v[j+gap];<br>                v[j+gap] = temp;<br>            &#125;<br>&#125;<br><br><span class="hljs-comment">// 2 利用插入排序</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">shellSort</span><span class="hljs-params">(keytype k[ ],<span class="hljs-type">int</span> n)</span>&#123;<br>    <span class="hljs-type">int</span> i, j, gap = n;<br>    keytype temp; <br>    <span class="hljs-keyword">while</span>(gap&gt;<span class="hljs-number">1</span>)&#123;<br>        gap = gap/<span class="hljs-number">2</span>;<br>        <br>        <span class="hljs-comment">// 使用插入排序实现子序列排序</span><br>        <span class="hljs-keyword">for</span>(i=gap; i&lt;n; i++)&#123;<br>            temp = k[i];<br>            <span class="hljs-keyword">for</span> (j=i; j&gt;=gap &amp;&amp; k[j-gap]&gt;temp; j-=gap)<br>            	k[j] = k[j-gap];<br>            k[j] = temp;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="4" type="1">
+<li><p><strong>时间复杂度：O(nlog<sub>2</sub>n)与O(n<sup>2</sup>)之间，通常＜O(n<sup>2</sup>)</strong></p>
+<p><strong>空间复杂度：O(1)</strong></p>
+<p><strong>不稳定</strong></p></li>
+</ol>
+<h2 id="堆heap排序法">6 堆(Heap)排序法</h2>
+<ol type="1">
+<li><p>堆的定义</p>
+<p>n个元素的序列(k1, k2, … , kn)，当且仅当满足 <span
+class="math display">\[
+(1)\begin{cases}
+\begin{aligned}
+k_i \ge k_{2i}\\
+k_i \ge k_{2i+1}
+\end{aligned}
+\end{cases}
+\quad 或者\quad
+(2)\begin{cases}
+\begin{aligned}
+k_i \le k_{2i}\\
+k_i \le k_{2i+1}
+\end{aligned}
+\end{cases}\\
+i=1, 2, 3, …, \lfloor n/2 \rfloor
+\]</span>
+称该序列为一个<strong>堆积</strong>(heap)，简称<strong>堆</strong>。称满足条件(1)的堆为<strong>大顶推</strong>，称满足条件(2)的堆为<strong>小顶堆</strong>。</p>
+<p>例：一个大顶堆：50 23 41 20 19 36 4 12 18</p>
+<ul>
+<li>堆是一棵完全二叉树，二叉树中任何一个分支结点的值都大于或者等于它的孩子结点的值，并且每一棵子树也满足堆的特性。</li>
+</ul></li>
+<li><p>排序的核心思想</p>
+<p>第i趟排序将序列的前n-i+1个元素组成的子序列<strong>转换</strong>为一个<strong>堆积</strong>，然后将堆的第一</p>
+<p>个元素与堆的最后那个元素交换位置。</p></li>
+<li><p>排序步骤</p>
+<ol type="1">
+<li>将原始序列转换为第一个堆。</li>
+<li>将堆的第一个元素与堆积的最后那个元素交换位置。(即“去掉”最大值元素）</li>
+<li>将“去掉”最大值元素后剩下的元素组成的子序列重新<strong>转换</strong>一个新的堆。</li>
+<li>重复上述过程的第2至第3步n-1次。</li>
+</ol></li>
+<li><p>调整子算法</p></li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">/*</span><br><span class="hljs-comment">功能：向下调整结点i的位置，使得其祖先结点值都比其大。如果一棵树仅根结点i不满足堆条件，通过该函数可将其调整为一个堆。</span><br><span class="hljs-comment">K :序列</span><br><span class="hljs-comment">i :被调整的二叉树的根的序号</span><br><span class="hljs-comment">n :被调整的二叉树的结点数目</span><br><span class="hljs-comment">*/</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">adjust</span><span class="hljs-params">(keytype k[ ], <span class="hljs-type">int</span> i, <span class="hljs-type">int</span> n)</span>&#123;<br>    <span class="hljs-type">int</span> j;<br>    keytype temp;<br>    temp = k[i];<br>    j = <span class="hljs-number">2</span>*i+<span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span>(j &lt; n)&#123;<br>        <span class="hljs-keyword">if</span>(j+<span class="hljs-number">1</span>&lt;n &amp;&amp; k[j]&lt;k[j+<span class="hljs-number">1</span>])<br>        	j++;<br>        <span class="hljs-keyword">if</span>(temp &lt; k[j]) &#123;<br>            k[(j<span class="hljs-number">-1</span>)/<span class="hljs-number">2</span>] = k[j];<br>            j = <span class="hljs-number">2</span>*j+<span class="hljs-number">1</span>;<br>        &#125;<span class="hljs-keyword">else</span><br>           	<span class="hljs-keyword">break</span>;<br>    &#125;<br>    k[(j<span class="hljs-number">-1</span>)/<span class="hljs-number">2</span>] = temp;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="5" type="1">
+<li><p>建初始堆</p>
+<p>从二叉树的最后那个分支结点(编号为i=⌊n/2-1⌋)开始，依次将编号为i的结点为根的二叉树转换为一个堆，每转换一棵子树，做一次i减1，重复上述过程，直到将i=0的结点为根的二叉树转换为堆。</p></li>
+<li><p>堆排序算法</p></li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">heapSort</span><span class="hljs-params">(keytype k[ ],<span class="hljs-type">int</span> n)</span>&#123;<br>    <span class="hljs-type">int</span> i,<br>    keytype temp;<br>    <span class="hljs-keyword">for</span>(i=n/<span class="hljs-number">2</span><span class="hljs-number">-1</span>; i&gt;=<span class="hljs-number">0</span>; i--)		<span class="hljs-comment">// 建初始堆积</span><br>    	adjust(k, i, n);<br>    <span class="hljs-keyword">for</span>(i=n<span class="hljs-number">-1</span>; i&gt;=<span class="hljs-number">1</span>; i--)&#123;		<span class="hljs-comment">// 具体排序</span><br>        temp = k[i];<br>        k[i] = k[<span class="hljs-number">0</span>];<br>        k[<span class="hljs-number">0</span>] = temp;<br>        adjust(k, <span class="hljs-number">0</span>, i);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="7" type="1">
+<li><p><strong>时间复杂度：O(nlog<sub>2</sub>n)</strong></p>
+<p><strong>空间复杂度：O(1)</strong></p>
+<p><strong>不稳定</strong></p></li>
+</ol>
+<h2 id="二路归并merge排序法">7 二路归并(Merge)排序法</h2>
+<ol type="1">
+<li><p><strong>二路归并</strong>：将两个位置相邻、并且各自按值有序的子序列合并为一个按值有序的子序列的过程称为二路归并。
+<span class="math display">\[
+\underbrace{(K_s, K_{s+1}, K_{s+2}, ..., K_u)(K_{u+1}, K_{u+2},
+K_{u+3},..., K_v)}_{\text{Xs, Xs+1, Xs+2, Xs+3,...,Xv}}\\
+其中K_s \le K_{s+1} \le K_{s+2} \le ... \le K_u \\
+K_{u+1} \le K_{u+2} \le K_{u+3} \le ... \le K_v \\
+X_s \le X_{s+1} \le X_{s+2} \le X_{s+3} \le ... \le X_v
+\]</span></p></li>
+<li><p>合并算法</p></li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">merge</span><span class="hljs-params">(keytype x[ ], keytype tmp[ ], <span class="hljs-type">int</span> left, <span class="hljs-type">int</span> leftend, <span class="hljs-type">int</span> rightend)</span>&#123;     <br>    <span class="hljs-type">int</span> i = left, j = leftend+<span class="hljs-number">1</span>, q = left;<br>    <span class="hljs-keyword">while</span>(i&lt;=leftend &amp;&amp; j&lt;=rightend)<br>    	<span class="hljs-keyword">if</span>(x[i] &lt;= x[j]) <br>    		tmp[q++] = x[i++];<br>    	<span class="hljs-keyword">else</span><br>    		tmp[q++] = x[j++];<br>    <span class="hljs-keyword">while</span>(i &lt;= leftend)		<span class="hljs-comment">// 复制第一个子序列的剩余部分</span><br>    	tmp[q++] = x[i++];<br>    <span class="hljs-keyword">while</span>(j &lt;= rightend)	<span class="hljs-comment">// 复制第二个子序列的剩余部分</span><br>    	tmp[q++] = x[j++];<br>    <span class="hljs-keyword">for</span>(i=left; i&lt;=rightend; i++)		<span class="hljs-comment">// 将合并后内容复制回原数组</span><br>    	x[i] = tmp[i];<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="3" type="1">
+<li><p>核心思想</p>
+<p>第i趟排序将序列的⌊n/2<sup>i-1</sup>⌋个长度为2<sup>i-1</sup>的按值有序的子序列依次两两合并为⌊n/2<sup>i</sup>⌋个长度为2<sup>i</sup>的按值有序的子序列。</p></li>
+<li><p>算法（本质上是分治算法）</p></li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">mergeSort</span><span class="hljs-params">(keytype k[ ],<span class="hljs-type">int</span> n)</span>&#123;<br>	keytype *tmp;<br>    tmp = (keytype *)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(keytype) * n);<br>    <span class="hljs-keyword">if</span>(tmp != <span class="hljs-literal">NULL</span>) &#123;<br>        mSort(k, tmp, <span class="hljs-number">0</span>, n<span class="hljs-number">-1</span>);<br>        <span class="hljs-built_in">free</span>(tmp);<br>    &#125; <br>    <span class="hljs-keyword">else</span><br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;No space for tmp array!!!\n&quot;</span>);<br>&#125;<br><span class="hljs-type">void</span> <span class="hljs-title function_">mSort</span><span class="hljs-params">(keytype k[], keytype tmp[], <span class="hljs-type">int</span> left, <span class="hljs-type">int</span> right)</span>&#123;<br>    <span class="hljs-type">int</span> center;<br>    <span class="hljs-keyword">if</span>(left &lt; right)&#123;<br>        center = (left+right)/<span class="hljs-number">2</span>;<br>        mSort(k, tmp, left, center);<br>        mSort(k, tmp, center+<span class="hljs-number">1</span>, right);<br>        merge(k, tmp, left,center, right);<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<ol start="5" type="1">
+<li><p><strong>时间复杂度：O(nlog<sub>2</sub>n)</strong>（不依赖于原式数据输入情况）</p>
+<p><strong>空间复杂度：O(n)</strong></p>
+<p><strong>稳定</strong></p></li>
+</ol>
+<h2 id="快速quick排序法即qsort">8 快速(Quick)排序法（即qsort）</h2>
+<ol type="1">
+<li><p>核心思想</p>
+<p>从当前参加排序的元素中任选一个元素(通常称之为<strong>分界元素pivot</strong>)与当前参加排序的那些元素进行比较，凡是小于分界元素的元素都移到分界元素的前面，凡是大于分界元的元素都移到分界元素的后面，分界元素将当前参加排序的元素分成前后两部分，而分界元素处在排序的最终位置。然后，分别对这两部分中大小大于1的部分重复上述过程，直到排序结束。</p></li>
+<li><p>算法步骤</p>
+<ol type="1">
+<li><p>算法中用到的变量：</p>
+<p><code>left</code>：当前参加排序的那些元素的第一个元素在序列中的位置，初始值为0。</p>
+<p><code>right</code>：当前参加排序的那些元素的最后那个元素在序列中的位置,
+初始值为n-1。</p>
+<p><code>i</code>,<code>j</code>：两个位置变量，初始值分别为left与right+1。</p></li>
+<li><p>步骤：</p>
+<ol type="1">
+<li><p>反复执行动作<code>i=i+1</code>，直到<code>K[left]≤K[i]</code>或者<code>i=right</code>。</p>
+<p>反复执行动作<code>j=j-1</code>，直到<code>K[left]≥K[j]</code>或者<code>j=left</code>。</p></li>
+<li><p>若i&lt;j，则K[i]与K[j]交换位置，转到第1步。</p></li>
+<li><p>若i≥j，则K[left]与K[j]交换位置,到此,分界元素K[left]的最终位置已经确定(j)，然后对被K[left]分成的两部分中个数大于1
+的部分重复上述过程，直到排序结束。</p></li>
+</ol></li>
+</ol></li>
+<li><p>算法</p></li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// way1</span><br><span class="hljs-comment">// 主算法</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">quickSort</span><span class="hljs-params">(keytype k[],<span class="hljs-type">int</span> n)</span>&#123;<br>	quick(K, <span class="hljs-number">0</span>, n<span class="hljs-number">-1</span>);<br>&#125;<br><span class="hljs-type">void</span> <span class="hljs-title function_">quick</span><span class="hljs-params">(keytype k[ ],<span class="hljs-type">int</span> left,<span class="hljs-type">int</span> right)</span>&#123;<br>    <span class="hljs-type">int</span> i, j;<br>    keytype pivot;<br>    <span class="hljs-keyword">if</span>(left &lt; right)&#123;<br>        i = left;<br>        j = right+<span class="hljs-number">1</span>;<br>        pivot = k[left];<br>        <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>)&#123; <br>            <span class="hljs-keyword">while</span>(k[++i]&lt;pivot &amp;&amp; i!=right) &#123; &#125;<br>            <span class="hljs-keyword">while</span>(k[--j]&gt;pivot &amp;&amp; j!=left) &#123; &#125;<br>            <span class="hljs-keyword">if</span>(i &lt; j)<br>            	swap(&amp;k[i], &amp;k[j]);  <span class="hljs-comment">/*交换K[i]与K[j]的内容*/</span><br>            <span class="hljs-keyword">else</span><br>            	<span class="hljs-keyword">break</span>;<br>        &#125;<br>        swap(&amp;k[left], &amp;k[j]);      <span class="hljs-comment">/*交换K[s]与K[j]的内容*/</span><br>        quick(k, left, j<span class="hljs-number">-1</span>);       <span class="hljs-comment">/* 对前一部分排序 */</span><br>        quick(k, j+<span class="hljs-number">1</span>, right);       <span class="hljs-comment">/* 对后一部分排序 */</span><br>    &#125;<br>&#125;<br><span class="hljs-type">void</span> <span class="hljs-title function_">swap</span><span class="hljs-params">(keytype *x, keytype *y)</span>&#123;<br>    keytype temp;<br>    temp = *x;<span class="hljs-comment">//取内容交换</span><br>    *x = *y;<br>    *y = temp;<br>&#125;<br><br><span class="hljs-comment">// way2 BY K&amp;R</span><br><span class="hljs-comment">// 主算法</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">quickSort</span><span class="hljs-params">(keytype k[],<span class="hljs-type">int</span> n)</span>&#123;<br>       qsort(k, <span class="hljs-number">0</span>, n<span class="hljs-number">-1</span>);<br>&#125;<br><span class="hljs-type">void</span> <span class="hljs-title function_">qsort</span><span class="hljs-params">(keytype v[ ],<span class="hljs-type">int</span> left, <span class="hljs-type">int</span> right)</span>&#123;<br>    <span class="hljs-type">int</span> i, last;<br>    <span class="hljs-keyword">if</span>(left &gt;= right)<br>        <span class="hljs-keyword">return</span>;<br>    swap(v, left, (left+right)/<span class="hljs-number">2</span>);		<span class="hljs-comment">//move partition elem to v[0]</span><br>    last = left;<br>    <span class="hljs-keyword">for</span>(i=left+<span class="hljs-number">1</span>; i&lt;=right; i++)		<span class="hljs-comment">//partition</span><br>        <span class="hljs-keyword">if</span>(v[i] &lt; v[left])<br>            swap(v, ++last, i);<br>    swap(v, left, last);		<span class="hljs-comment">//restore partition elem</span><br>    qsort(v, left, last);  <br>    qsort(v, last+<span class="hljs-number">1</span>, right);<br>&#125;<br><span class="hljs-type">void</span> <span class="hljs-title function_">swap</span><span class="hljs-params">(keytype v[ ],<span class="hljs-type">int</span> i, <span class="hljs-type">int</span> j)</span>&#123;<br>    keytype tmp;<br>    tmp = v[i];<br>    v[i] = v[j];<br>    v[j] = tmp;<br> &#125;<br><br></code></pre></td></tr></table></figure>
+<ol start="4" type="1">
+<li><p><strong>不稳定</strong></p>
+<p><strong>最差情况：时间复杂度：O(n<sup>2</sup>)
+空间复杂度：O(n)</strong></p>
+<p><strong>最佳情况：时间复杂度：O(nlog<sub>2</sub>n)
+空间复杂度：O(log<sub>2</sub>n)</strong></p>
+<p><strong>平均情况：时间复杂度：O(nlog<sub>2</sub>n)
+空间复杂度：O(log<sub>2</sub>n)</strong></p></li>
+</ol>
+<h2 id="总结">9 总结</h2>
+<p><img src="/img/LE-ds7/1.png" srcset="/img/loading.gif" lazyload /></p>
+<ol type="1">
+<li><p>从<strong>算法性质</strong>来看：</p>
+<ol type="1">
+<li>简单算法：冒泡、选择、插入</li>
+<li>改进算法：谢尔、堆、归并、快速</li>
+</ol></li>
+<li><p>从<strong>时间复杂度</strong>来看：</p>
+<ol type="1">
+<li>平均情况：后3种改进算法 <strong>&gt;</strong> 谢尔 (远)&gt;
+简单算法</li>
+<li>最好情况：冒泡和插入排序要更好一些</li>
+<li>最坏情况：堆和归并排序要好于快速排序及简单排序</li>
+</ol></li>
+<li><p>从<strong>空间复杂度</strong>来看：</p>
+<p>归并排序有额外空间要求，快速排序也有相应空间要求，堆排序则基本没有。</p></li>
+<li><p>从<strong>稳定性</strong>来看：</p>
+<p>除了简单排序，归并排序不仅速度快，而且还<strong>稳定</strong></p></li>
+</ol>
+<h2 id="桶bucket排序法计数排序">10 *桶(Bucket)排序法（计数排序）</h2>
+<ol type="1">
+<li><p>核心思想</p>
+<p>假设a<sub>1</sub>,a<sub>2</sub>,…,a<sub>n</sub>由小于M的正整数组成，桶排序的基本原理是使用一个大小为M的数组C(初始化为0，称为桶bucket)，当处理a<sub>i</sub>时，使C[a<sub>i</sub>]增1。最后遍历数组C输出排序后的表。（<em>感觉和Hash是一个感觉</em>）</p></li>
+<li><p>算法</p></li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">bucketSort</span><span class="hljs-params">(<span class="hljs-type">int</span> K[ ], <span class="hljs-type">int</span> n)</span>&#123;<br>	<span class="hljs-type">int</span> C[M]=&#123;<span class="hljs-number">0</span>&#125;, i, j;<br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt;n; i++)<br>    	C[K[i]]++;<br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>,j=<span class="hljs-number">0</span>; i&lt;M; i++)<br>        <span class="hljs-keyword">if</span>(C[i])<br>            K[j++] = i;<br>&#125;  <br></code></pre></td></tr></table></figure>
+<ol start="3" type="1">
+<li><p><strong>时间复杂度：O(M+N)</strong></p>
+<p><strong>不稳定</strong></p></li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" class="category-chain-item">学习经验</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">数据结构</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" class="print-no-link">#学习经验</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>【数据结构】ds笔记7-排序</div>
+      <div>http://example.com/2024/05/13/LE-ds7/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>May 13, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/05/20/LE-ds8/" title="【数据结构】ds笔记8-图">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【数据结构】ds笔记8-图</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/05/07/LE-ds6/" title="【数据结构】ds笔记6-查找">
+                        <span class="hidden-mobile">【数据结构】ds笔记6-查找</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP备2024049620号
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

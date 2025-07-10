@@ -1,0 +1,1262 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon02.jpg">
+  <link rel="icon" href="/img/icon02.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="本篇笔记总结DSPv2b_6(图) for student内的相关内容。配图太多不是因为不抽象，而是因为太抽象。最后，本人学艺不精，只是一边看着ppt一边敲敲改改，如有疏漏，欢迎提出喵~o( &#x3D;∩ω∩&#x3D; )m   where is my tutu  1 图的基本概念 1.1 图的定义  图是由顶点的非空有穷集合与顶点之间关系(边或弧)的集合构成的结构, 通常表示为G&#x3D;(V,E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【数据结构】ds笔记8-图">
+<meta property="og:url" content="http://example.com/2024/05/20/LE-ds8/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="本篇笔记总结DSPv2b_6(图) for student内的相关内容。配图太多不是因为不抽象，而是因为太抽象。最后，本人学艺不精，只是一边看着ppt一边敲敲改改，如有疏漏，欢迎提出喵~o( &#x3D;∩ω∩&#x3D; )m   where is my tutu  1 图的基本概念 1.1 图的定义  图是由顶点的非空有穷集合与顶点之间关系(边或弧)的集合构成的结构, 通常表示为G&#x3D;(V,E">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/LE-ds8/1.png">
+<meta property="og:image" content="http://example.com/img/LE-ds8/2.png">
+<meta property="og:image" content="http://example.com/img/LE-ds8/3.png">
+<meta property="og:image" content="http://example.com/img/LE-ds8/4.png">
+<meta property="og:image" content="http://example.com/img/LE-ds8/5.png">
+<meta property="og:image" content="http://example.com/img/LE-ds8/6.png">
+<meta property="og:image" content="http://example.com/img/LE-ds8/7.png">
+<meta property="og:image" content="http://example.com/img/LE-ds8/8.png">
+<meta property="og:image" content="http://example.com/img/LE-ds8/9.png">
+<meta property="og:image" content="http://example.com/img/LE-ds8/12.png">
+<meta property="og:image" content="http://example.com/img/LE-ds8/13.png">
+<meta property="og:image" content="http://example.com/img/LE-ds8/14.png">
+<meta property="og:image" content="http://example.com/img/LE-ds8/15.png">
+<meta property="og:image" content="http://example.com/img/LE-ds8/16.png">
+<meta property="og:image" content="http://example.com/img/LE-ds8/17.png">
+<meta property="og:image" content="http://example.com/img/LE-ds8/18.png">
+<meta property="og:image" content="http://example.com/img/LE-ds8/19.png">
+<meta property="og:image" content="http://example.com/img/LE-ds8/20.png">
+<meta property="og:image" content="http://example.com/img/LE-ds8/21.png">
+<meta property="article:published_time" content="2024-05-20T08:34:37.000Z">
+<meta property="article:modified_time" content="2024-05-21T08:51:22.926Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="学习经验">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/LE-ds8/1.png">
+  
+  
+  
+  <title>【数据结构】ds笔记8-图 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Rainel</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>Links</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/p2.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="【数据结构】ds笔记8-图"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-05-20 16:34" pubdate>
+          May 20, 2024 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8.7k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          73 mins
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> views
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">【数据结构】ds笔记8-图</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>本篇笔记总结<strong>DSPv2b_6(图) for
+student</strong>内的相关内容。配图太多不是因为不抽象，而是因为太抽象。最后，本人学艺不精，只是一边看着ppt一边敲敲改改，如有疏漏，欢迎提出喵~o(
+=∩ω∩= )m</p>
+<figure>
+<img src="/img/LE-ds8/1.png" srcset="/img/loading.gif" lazyload alt="where is my tutu" />
+<figcaption aria-hidden="true">where is my tutu</figcaption>
+</figure>
+<h2 id="图的基本概念">1 图的基本概念</h2>
+<h3 id="图的定义">1.1 图的定义</h3>
+<ol type="1">
+<li><p>图是由顶点的非空有穷集合与顶点之间关系(边或弧)的集合构成的结构,
+通常表示为<code>G=(V,E)</code>。其中,<code>V</code>为顶点集合,<code>E</code>为关系(边或弧)的集合。</p></li>
+<li><p>一条边或弧的表示</p>
+<ol type="1">
+<li><p>图形</p>
+<p><img src="/img/LE-ds8/2.png" srcset="/img/loading.gif" lazyload /></p></li>
+<li><p>符号</p>
+<p>(v<sub>i</sub>, v<sub>j</sub>)或&lt;v<sub>i</sub>,
+v<sub>j</sub>&gt;</p></li>
+<li><p>语言</p>
+<p>顶点v<sub>i</sub>与v<sub>j</sub>是这条边的两个邻接点。</p>
+<p>这条边依附于顶点v<sub>i</sub>和顶点v<sub>j</sub>。</p></li>
+</ol></li>
+<li><p>例：</p>
+<p><img src="/img/LE-ds8/3.png" srcset="/img/loading.gif" lazyload /></p></li>
+</ol>
+<h3 id="图的分类">1.2 图的分类</h3>
+<ol type="1">
+<li>无向图：对于(v<sub>i</sub>, v<sub>j</sub>)∈E，必有(v<sub>i</sub>,
+v<sub>j</sub>)∈E，并且偶对中顶点的前后顺序无关。</li>
+<li>有向图：&lt;v<sub>i</sub>,
+v<sub>j</sub>&gt;∈E是顶点的有序偶对。</li>
+<li>网（络）：与边有关的数据称为<strong>权</strong>，边上带权的图称为<strong>网络</strong>。</li>
+</ol>
+<p><img src="/img/LE-ds8/4.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="名词术语">1.3 名词术语</h3>
+<ol type="1">
+<li><p>顶点的度：依附于顶点v<sub>i</sub>的边的数目，记为<strong>TD(v<sub>i</sub>)</strong></p>
+<p>对于有向图来说，有：</p>
+<ul>
+<li>顶点的<strong>出度</strong>：以顶点v<sub>i</sub>为出发点的边的数目，记为OD(v<sub>i</sub>)。</li>
+<li>顶点的<strong>入度</strong>：以顶点v<sub>i</sub>为终止点的边的数目，记为ID(v<sub>i</sub>)。</li>
+<li>TD(v<sub>i</sub>) = OD(v<sub>i</sub>) + ID(v<sub>i</sub>)</li>
+</ul>
+<p>结论：</p>
+<ul>
+<li><p>对于具有n个顶点，e条边的图，有：</p>
+<p><span class="math display">\[
+\frac{1}{2}e = \sum_{i=1}^{n}TD(v_{i})
+\]</span></p></li>
+<li><p>具有n个顶点的无向图最多有n(n-1)/2条边。</p></li>
+<li><p>具有n个顶点的有向图最多有n(n-1)条边。</p></li>
+</ul>
+<p>边的数目达到最大的图称为<strong>完全图</strong>。边的数目达到或接近最大的图称为<strong>稠密图</strong>，否则，称为<strong>稀疏图</strong>。</p></li>
+<li><p>路径和路径长度</p>
+<p>顶点v<sub>x</sub>到v<sub>y</sub>之间有<strong>路径P(v<sub>x</sub>,
+v<sub>y</sub>)</strong>的充分必要条件为：存在顶点序列v<sub>x</sub>,
+v<sub>i1</sub>, v<sub>i2</sub>, …, v<sub>im</sub>,
+v<sub>y</sub>，并且序列中相邻两个顶点构成的顶点偶对分别为图中的一条边。</p>
+<p>出发点与终止点相同的路径称为<strong>回路</strong>或<strong>环</strong>；顶点序列中顶点不重复出现的路径称为<strong>简单路径</strong>。不带权的图的<strong>路径长度</strong>是指路径上所经过的边的数目，带权图的<strong>路径长度</strong>是指路径上经过的边上的权值之和。</p></li>
+<li><p>子图</p>
+<p>对于图G=(V,E)与G'=(V',E'),若有V'⊆V,
+E'⊆E,则称G'为G的一个<strong>子图</strong>。</p>
+<p><img src="/img/LE-ds8/5.png" srcset="/img/loading.gif" lazyload /></p>
+<p>如图，G<sub>1</sub>'和G<sub>2</sub>'是G的子树</p></li>
+<li><p>图的联通(Connected)</p>
+<ol type="1">
+<li><p>无向图(Digraph)的联通</p>
+<p>无向图中顶点v<sub>i</sub>到v<sub>j</sub>有路径,则称顶点v<sub>i</sub>与v<sub>j</sub>是连通的。若无向图中任意两个顶点都连通,
+则称该无向图是连通的（称为<strong>连通图</strong>）。</p>
+<p><strong>连通分量</strong>：无向图中的极大连通子图。</p>
+<p><img src="/img/LE-ds8/6.png" srcset="/img/loading.gif" lazyload /></p></li>
+<li><p>有向图(Directed Graph)的连通</p>
+<p>若有向图中顶点v<sub>i</sub>到v<sub>j</sub>有路径,并且顶点v<sub>j</sub>到v<sub>i</sub>也有路径，则称顶点v<sub>i</sub>与v<sub>j</sub>是连通的。若有向图中任意两个顶点都连通，则称该有向图是<strong>强连通</strong>的。</p>
+<p><strong>强连通分量</strong>：有向图的极大强连通子图。</p>
+<p><img src="/img/LE-ds8/7.png" srcset="/img/loading.gif" lazyload /></p></li>
+</ol></li>
+<li><p>生成树</p>
+<p>包含具有n个顶点的连通图G的全部n个顶点,仅包含其n-1条边的极小连通子图称为G的一个生成树。</p>
+<p><img src="/img/LE-ds8/8.png" srcset="/img/loading.gif" lazyload /></p>
+<p>性质：</p>
+<ol type="1">
+<li><p>包含n个顶点的图：<strong>连通</strong>且仅有n-1条边</p>
+<p>&lt;=&gt;<strong>无回路</strong>且仅有n-1条边</p>
+<p>&lt;=&gt;无回路且连通</p>
+<p>&lt;=&gt;是一棵树</p></li>
+<li><p>n个顶点的图中只要少于n-1条边，就不连通</p></li>
+<li><p>如果n个顶点的图中有多于n-1条边，图将有环（回路）</p></li>
+<li><p>一般情况下，生成树不唯一</p></li>
+</ol></li>
+</ol>
+<h2 id="图的存储方法">2 图的存储方法</h2>
+<h3 id="图需要存储的信息">2.0 图需要存储的信息</h3>
+<ol type="1">
+<li>所有顶点的数据信息</li>
+<li>顶点之间关系（边或弧）的信息</li>
+<li>权的信息（对于网络）</li>
+</ol>
+<h3 id="邻接矩阵存储方法">2.1 邻接矩阵存储方法</h3>
+<h4 id="核心思想">2.1.1 核心思想</h4>
+<p>采用两个数组存储一个图</p>
+<ol type="1">
+<li><p>定义一个一维数组<code>VERTEX[0...n-1]</code>存放图中所有顶点的数据信息(若顶点信息为0,1,2,3,...,此数组可略)。（称为<strong>顶点数组</strong>）</p></li>
+<li><p>定义一个二维数组<code>A[0...n-1, 0...n-1]</code>存放图中所有顶点之间关系的信息（该数组成为<strong>邻接矩阵</strong>），有
+<span class="math display">\[
+A[i][j]=
+  \begin{cases}
+    1, &amp; \text当顶点v_{i}到顶点v_{j}有边时\\
+    0,&amp; \text当顶点v_{i}到顶点v_j无边时
+  \end{cases}
+\]</span> 对于<strong>带权的图</strong>，有 <span
+class="math display">\[
+A[i][j]=
+  \begin{cases}
+    W_{ij}, &amp; \text当顶点v_{i}到顶点v_{j}有边时，且边的权为W_{ij}\\
+    ∞,&amp; \text当顶点v_{i}到顶点v_j无边时
+  \end{cases}
+\]</span> <img src="/img/LE-ds8/9.png" srcset="/img/loading.gif" lazyload /></p></li>
+</ol>
+<h4 id="特点">2.1.2 特点</h4>
+<ul>
+<li>无向图的邻接矩阵一定是一个对称矩阵。</li>
+<li>不带权的有向图的邻接矩阵一般是稀疏矩阵。</li>
+<li>无向图的邻接矩阵的第i行(或第i列)非0或非∞元素的个数为第i个顶点的<strong>度数</strong>。</li>
+<li>有向图的邻接矩阵的<strong>第i行</strong>非0或非∞元素的个数为第i个顶点的<strong>出度</strong>；<strong>第i列</strong>非0或非∞元素的个数为第i个顶点的<strong>入度</strong>。</li>
+<li><strong>空间复杂度：O(n<sup>2</sup>)</strong></li>
+</ul>
+<h4 id="代码实现">2.1.3 代码实现</h4>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> MaxV <span class="hljs-string">&lt;最大顶点个数&gt;</span></span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">edge</span>&#123;</span>		<span class="hljs-comment">// 定义边类型</span><br>	<span class="hljs-type">int</span> weight;<br>&#125;Edge;<br>Vertype Vertex[MaxV];		<span class="hljs-comment">// 顶点信息数组</span><br>Edge G[MaxV][MaxV];			<span class="hljs-comment">// 邻接矩阵</span><br></code></pre></td></tr></table></figure>
+<h3 id="邻接表存储方法">2.2 邻接表存储方法</h3>
+<h4 id="核心思想-1">2.2.1 核心思想</h4>
+<p>建立n个线性链表存储该图</p>
+<ol type="1">
+<li><p>每一个链表前面设置一个头结点,用来存放一个顶点的数据信息,称之为<strong>顶点结点</strong>。其构造为<img
+src="/img/LE-ds8/10.png" srcset="/img/loading.gif" lazyload /></p>
+<p>其中，<code>vertex</code>域存放某个顶点的数据信息；<code>link</code>域存放某个链表中第一个节点的地址。<strong>n个头结点构成一个数组</strong>。</p></li>
+<li><p>第i个链表中的每一个链结点（称之为<strong>边结点</strong>）表示以第i个顶点为<strong>出发点</strong>的一条边；边结点的构造为<img
+src="/img/LE-ds8/11.png" srcset="/img/loading.gif" lazyload /></p>
+<p>其中，<code>next</code>域为指针域；<code>weight</code>域为权值域（若图不带权，则无此域）；<code>adjvex</code>域存放以第i个顶点为出发点的一条边的另一端在头结点数组中的位置。</p>
+<p><img src="/img/LE-ds8/12.png" srcset="/img/loading.gif" lazyload /></p></li>
+</ol>
+<h4 id="特点-1">2.2.2 特点</h4>
+<ul>
+<li>无向图的第i个链表中边结点个数是第i个顶点<strong>度数</strong>。</li>
+<li>有向图的第i个链表中边结点个数是第i个顶点的<strong>出度</strong>。</li>
+<li>无向图的边结点个数一定为偶数；边结点个数为奇数的图一定是有向图。</li>
+</ul>
+<h4 id="代码实现-1">2.2.3 代码实现</h4>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> MaxV <span class="hljs-string">&lt;最大顶点个数&gt;</span></span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">edge</span>&#123;</span>		<span class="hljs-comment">// 定义边结点类型</span><br>    <span class="hljs-type">int</span> adjvex;<br>    <span class="hljs-type">int</span> weight;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">edge</span> *<span class="hljs-title">next</span>;</span><br>&#125;ELink;<br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">ver</span>&#123;</span>			<span class="hljs-comment">// 定义顶点结点类型</span><br>    vertype vertex;<br>    ELink *link;<br>&#125;VLink;<br>VLink G[MaxV];<br></code></pre></td></tr></table></figure>
+<h4 id="逆邻接表">2.2.4 逆邻接表</h4>
+<p>第i个链表中的每一个链结点（称之为边结点）表示以第i个顶点为<strong>终止点</strong>的一条边。</p>
+<p><img src="/img/LE-ds8/13.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="稀疏矩阵三元组存储方法">2.3 *（稀疏矩阵）三元组存储方法</h3>
+<ol type="1">
+<li>三元组(i, j, value)</li>
+<li>三元组表示适合存储稀疏矩阵（稀疏图），针对图来说，是一种按边存储的方式，又称为<strong>边集数组</strong>，特别适合于图的按边访问应用。当然，若按顶点来访问图将不是很方便。</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> MaxV <span class="hljs-string">&lt;最大顶点个数&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> MaxE <span class="hljs-string">&lt;最大边数&gt;</span></span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">edge</span>&#123;</span>		<span class="hljs-comment">// 定义边类型</span><br>    <span class="hljs-type">int</span> v1, v2;<br>    <span class="hljs-type">int</span> weight;<br>&#125;Edge;<br>Vertype Vertex[MaxV];		<span class="hljs-comment">// 顶点信息数组</span><br>Edge G[MaxE];			<span class="hljs-comment">// 边集数组（三元组）</span><br></code></pre></td></tr></table></figure>
+<h3 id="图的基本操作">2.4 图的基本操作</h3>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c">createGraph();		<span class="hljs-comment">// 创建一个图</span><br>destoryGraph();		<span class="hljs-comment">// 删除一个图</span><br>insertVex(v);		<span class="hljs-comment">// 在图中插入一个顶点v</span><br>deleteVex(v);		<span class="hljs-comment">// 在图中删除一个顶点v</span><br>insertEdge(v,w);	<span class="hljs-comment">// 在图中插入一条边&lt;v,w&gt;</span><br>deleteEdge(v,w);	<span class="hljs-comment">// 在图中删除一条边&lt;v,w&gt;</span><br>traverseGraph();	<span class="hljs-comment">// 遍历一个图</span><br></code></pre></td></tr></table></figure>
+<p>例：</p>
+<p>若有如下输入： 8 0 2 4 … -1 1 3 6 8 … -1 …</p>
+<p>第一行为图的顶点个数，从第二行开始第一个数为顶点序号，第二个数字开始为该顶点的邻接顶点，每行以-1结束，则创建一个邻接表存储的图算法如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> MaxV 256</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">edge</span>&#123;</span> <br>    <span class="hljs-type">int</span> adj;<br>    <span class="hljs-type">int</span> wei;<br>	<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">edge</span> *<span class="hljs-title">next</span>;</span><br>&#125;Elink;<br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">ver</span>&#123;</span><br>	ELink *link;<br>&#125;Vlink;<br>VLink G[MaxV];<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">createGraph</span><span class="hljs-params">(VLink graph[])</span>&#123;<br>	<span class="hljs-type">int</span> i, n, v1, v2;<br>	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;n);<br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt;n; i++)&#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d %d&quot;</span>, &amp;v1, &amp;v2);<br>        <span class="hljs-keyword">while</span>(v2 != <span class="hljs-number">-1</span>)&#123;<br>            graph[v1].link = insertEdge(graph[v1].link, v2);<br>            graph[v2].link = insertEdge(graph[v2].link, v1);<br>            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;v2);<br>        &#125;<br>    &#125;<br>&#125; <br><span class="hljs-comment">//在链表尾插入一个节点</span><br>Elink *<span class="hljs-title function_">insertEdge</span><span class="hljs-params">(ELink *head, <span class="hljs-type">int</span> avex)</span>&#123;<br>    ELink *e,*p;<br>    e = (ELink *) <span class="hljs-built_in">malloc</span> (<span class="hljs-keyword">sizeof</span>(ELink));<br>    e-&gt;adj = avex;<br>    e-&gt;wei = <span class="hljs-number">1</span>;<br>    e-&gt;next = <span class="hljs-literal">NULL</span>;<br>    <span class="hljs-keyword">if</span>(head == <span class="hljs-literal">NULL</span>)&#123;<br>        head = e;<br>        <span class="hljs-keyword">return</span> head;<br>    &#125;<br>    <span class="hljs-keyword">for</span>(p=head; p-&gt;next != <span class="hljs-literal">NULL</span>; p=p-&gt;next)<br>        ;<br>    p-&gt;next = e;  <br>    <span class="hljs-keyword">return</span> head;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="有向图的十字链表存储方法">2.4 *有向图的十字链表存储方法</h3>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/m0_68805093/article/details/131903854?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=有向图的十字链表存储方法&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-131903854.142%5Ev100%5Epc_search_result_base5&amp;spm=1018.2226.3001.4187">有向图的十字链表存储方法1-CSDN博客</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39956356/article/details/80371735?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=有向图的十字链表存储方法&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-1-80371735.142%5Ev100%5Epc_search_result_base5&amp;spm=1018.2226.3001.4187">有向图的十字链表存储方法2；深度优先、广度优先遍历-CSDN博客</a></p>
+<h3 id="无向图的多重邻接表存储方法">2.5 *无向图的多重邻接表存储方法</h3>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/ZER00000001/article/details/125350055?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=无向图的多重邻接表存储方法&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-3-125350055.142%5Ev100%5Epc_search_result_base5&amp;spm=1018.2226.3001.4187">无向图的多重邻接表存储方法1-CSDN博客</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/zw547779770/article/details/112913962?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=无向图的多重邻接表存储方法&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-112913962.142%5Ev100%5Epc_search_result_base5&amp;spm=1018.2226.3001.4187">无向图的多重邻接表存储方法2-CSDN博客</a></p>
+<h2 id="图的遍历">3 图的遍历</h2>
+<p>从图中某个指定的顶点出发, 按照某一原则对图中所有顶点都访问一次,
+得到一个由图中所有顶点组成的序列,
+这一过程称为<strong>图的遍历</strong>。</p>
+<h3 id="深度优先遍历depth-first-search-dfs">3.1 深度优先遍历(Depth First
+Search, DFS)</h3>
+<ol type="1">
+<li>原则：从图中某个指定的顶点v出发，先访问顶点v，然后从顶点v未被访问过的一个邻接点出发，继续进行深度优先遍历，直到图中与v相通的所有顶点都被访问；若此时图中还有未被访问过的顶点，则从另一个未被访问过的顶点出发重复上述过程，直到遍历全图。</li>
+<li>算法：</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> Visited[N] = &#123;&#125;; <span class="hljs-comment">//标识顶点是否被访问过，N为顶点数</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">travelDFS</span><span class="hljs-params">(VLink G[ ], <span class="hljs-type">int</span> n)</span>&#123;<br>	<span class="hljs-type">int</span> i;<br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt;n; i++)<br>        Visited[i] = <span class="hljs-number">0</span> ;<br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt;n; i++)<br>        <span class="hljs-keyword">if</span>( !Visited[i] )<br>            DFS(G, i);<br>&#125;<br><span class="hljs-type">void</span> <span class="hljs-title function_">DFS</span><span class="hljs-params">(VLink G[ ], <span class="hljs-type">int</span> v)</span>&#123;<br>    ELink *p;<br>    Visited[v] = <span class="hljs-number">1</span>; <span class="hljs-comment">//标识某顶点被访问过</span><br>    VISIT(G, v); <span class="hljs-comment">//访问某顶点</span><br>    <span class="hljs-keyword">for</span>(p=G[v].link; p !=<span class="hljs-literal">NULL</span>;  p=p-&gt;next)<br>         <span class="hljs-keyword">if</span>( !Visited[p-&gt;adjvex] )<br>             DFS(G, p-&gt;adjvex);<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="3" type="1">
+<li>算法分析：如果图中具有n个顶点、e条边，则
+<ul>
+<li>若采用<strong>邻接表</strong>存储该图,由于邻接表中有2e个或e个边结点，因而扫描边结点的时间为O(e)；而所有顶点都递归访问一次，所以，算法的时间复杂度为<strong>O(n+e)</strong>。</li>
+<li>若采用<strong>邻接矩阵</strong>存储该图，则查找每一个顶点所依附的所有边的时间复杂度为O(n)，因而算法的时间复杂度为<strong>O(n<sup>２</sup>)</strong>。</li>
+</ul></li>
+</ol>
+<h3 id="广度优先遍历breadth-first-search-bfs">3.2 广度优先遍历(Breadth
+First Search, BFS)</h3>
+<ol type="1">
+<li>原则：从图中某个指定的顶点v出发，先访问顶点v，然后依次访问顶点v的各个未被访问过的邻接点，然后又从这些邻接点出发，按照同样的规则访问它们的那些未被访问过的邻接点，如此下去，直到图中与v相通的所有顶点都被访问（完成一个连通分量的遍历）;
+若此时图中还有未被访问过的顶点,
+则从另一个未被访问过的顶点出发重复上述过程，直到遍历全图（完成所有连通分量的遍历）。</li>
+<li>算法</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> Visited[N] = &#123;&#125;; <span class="hljs-comment">//标识顶点是否被访问守，N为顶点数</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">travelBFS</span><span class="hljs-params">(VLink G[ ], <span class="hljs-type">int</span> n)</span>&#123;<br>	<span class="hljs-type">int</span> i;<br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt;n; i++)<br>        Visited[i] = <span class="hljs-number">0</span> ;<br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt;n; i++)<br>        <span class="hljs-keyword">if</span>( !Visited[i] )<br>            BFS(G, i);<br>&#125;<br><span class="hljs-type">void</span> <span class="hljs-title function_">BFS</span><span class="hljs-params">(VLink G[ ], <span class="hljs-type">int</span> v)</span>&#123;<br>    ELink *p;<br>    Visited[v] = <span class="hljs-number">1</span>; <span class="hljs-comment">//标识某顶点已入队</span><br>    enQueue(Q, v);<br>    <span class="hljs-keyword">while</span>( !emptyQ(Q) )&#123;<br>         v = deQueue(Q);  <span class="hljs-comment">//取出队头元素</span><br>         VISIT(G, v); <span class="hljs-comment">//访问当前顶点</span><br>         <span class="hljs-keyword">for</span>(p=G[v].link; p!=<span class="hljs-literal">NULL</span>; p=p-&gt;next ) <span class="hljs-comment">//访问该顶点的每个邻接顶点</span><br>				<span class="hljs-keyword">if</span>( !Visited[p-&gt;adjvex] )&#123;<br>                    Visited[p-&gt;adjvex] = <span class="hljs-number">1</span>; <span class="hljs-comment">//标识某顶点入队</span><br>                    enQueue(G, p-&gt;adjvex);<br>				&#125;<br>     &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="3" type="1">
+<li>算法分析：
+<ul>
+<li>邻接表：<strong>O(n+e)</strong></li>
+<li>邻接矩阵：<strong>O(n<sup>2</sup>)</strong></li>
+</ul></li>
+</ol>
+<h3 id="dfs与bfs">3.3 DFS与BFS</h3>
+<p>对比这两个图的遍历算法，其实它们在时间复杂度上是一样的，不同之处仅仅在于对顶点的访问的顺序不同。具体用哪个取决于具体问题。通常DFS更适合目标比较明确，以<strong>找目标为主要目的</strong>的情况，而BFS更适合在不断扩大遍历范围时找到相对最优解的情况。</p>
+<h3 id="例独立路径计算">3.4 例：独立路径计算</h3>
+<ol type="1">
+<li><p>题目</p>
+<p><img src="/img/LE-ds8/14.png" srcset="/img/loading.gif" lazyload /></p></li>
+<li><p>分析</p>
+<p>本问题的实质：给定起点，对图进行遍历，并在遍历图的过程中找到到达终点的所有情况。前面介绍的DFS和BFS算法都是从源点出发对邻接顶点的遍历。而问题是本文中两个点间可能有多个边（如图所示）。</p>
+<p>算法策略是对DFS算法（或BFS）进行改进，在原来按邻接顶点进行遍历，改为按邻接顶点的边进行遍历（即从一个顶点出发遍历其邻接顶点时，按邻接顶点的边进行深度遍历，即<strong>只有当某顶点的所有邻接顶点的所有边都遍历完才结束该结点的遍历</strong>）。</p></li>
+<li><p>代码实现</p></li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> MAXSIZE 512</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">edge</span>&#123;</span>	<span class="hljs-comment">//边结点结构</span><br>	<span class="hljs-type">int</span> eno;	<span class="hljs-comment">//边序号</span><br>	<span class="hljs-type">int</span> adjvex;	<span class="hljs-comment">//邻接顶点</span><br>	<span class="hljs-type">int</span> weight;	<span class="hljs-comment">//边的权重（可为距离或时间），本文中为1</span><br>	<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">edge</span> *<span class="hljs-title">next</span>;</span><br> &#125;;<br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">ver</span>&#123;</span>		<span class="hljs-comment">//顶点结构，邻接表下标即为顶点序号</span><br>	<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">edge</span> *<span class="hljs-title">link</span>;</span><br>&#125;; <br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">ver</span> <span class="hljs-title">G</span>[<span class="hljs-title">MAXSIZE</span>];</span>		<span class="hljs-comment">//由邻接表构成的图</span><br><span class="hljs-type">char</span> Visted[MAXSIZE] = &#123;&#125;;		<span class="hljs-comment">//标识相应顶点是否被访问 </span><br><span class="hljs-type">int</span> paths[MAXSIZE]; 		<span class="hljs-comment">//独立路径</span><br></code></pre></td></tr></table></figure>
+<h2 id="最小生成树">4 最小生成树</h2>
+<h3 id="什么是最小生成树">4.1 什么是最小生成树</h3>
+<ol type="1">
+<li>最小生成树：包含着连通图的全部n个顶点，仅包含其n-1条边的极小连通子图。</li>
+<li>生成树性质：
+<ol type="1">
+<li>包含n个顶点的图：<strong>连通</strong>且有n-1条边
+&lt;=&gt;<strong>无回路</strong>且有n-1条边 &lt;=&gt;无回路且连通
+&lt;=&gt;是一棵树</li>
+<li>如果n个顶点的图中只有少于n-1条边，图将不连通</li>
+<li>如果n个顶点的图中有多于n-1条边，图将有环（回路）</li>
+<li>一般情况下，生成树不唯一</li>
+</ol></li>
+<li>带权连通图中，总的权值之和最小的带权生成树为最小生成树。<strong>最小生成树</strong>也称<strong>最小代价生成树</strong>,或<strong>最小花费生成树</strong>。</li>
+<li>构造最小生成树的基本原则
+<ol type="1">
+<li>只能利用图中的边来构造最小生成树；</li>
+<li>只能使用、且仅能使用图中的n-1条边来连接图中的n个顶点；</li>
+<li>不能使用图中产生回路的边。</li>
+</ol></li>
+</ol>
+<h3 id="求最小生成树">4.2 求最小生成树</h3>
+<h4 id="普利姆prim算法">4.2.1 普利姆(Prim)算法</h4>
+<ol type="1">
+<li><p>基本思想：设G=(V, GE)为具有n个顶点的带权连通图；T=(U,
+TE)为生成的最小生成树，初始时，TE=空，U={v}，v∈V。</p>
+<p>依次在G中选择一条一个顶点<strong>仅在V中</strong>，另一个顶点在U中，并且权值最小的边加入集合TE，同时将该边仅在V中的那个顶点加入集合U。重复上述过程n–1次，使得U=V，此时T为G的最小生成树。</p></li>
+<li><p>Prim算法数据结构说明</p></li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> weights[MAXVER][MAXVER];<br><span class="hljs-comment">// 当图G中存在边(i,j)，则weights[i][j]为其权值，否则为一个INFINITY</span><br><span class="hljs-type">int</span> edges[MAXVER];<br><span class="hljs-comment">// 存入生成的最小生成树的边，如 ：(i, edges[i]) 为最小生成树的一条边，应有n-1条边</span><br><span class="hljs-type">int</span> minweight[MAXVER];<br><span class="hljs-comment">// 存放未确定为生成树的顶点至已确定的生成树上顶点的边权重，</span><br><span class="hljs-comment">// minweight[i]表示顶点i至生成树上顶点的边权重， minweight[i] = 0 表示顶点i已确定为最小生成树顶点</span><br></code></pre></td></tr></table></figure>
+<ol start="3" type="1">
+<li>代码实现</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> MAXVER 512</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> INFINITY 32767</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">Prim</span><span class="hljs-params">(<span class="hljs-type">int</span> weights[][MAXVER], <span class="hljs-type">int</span> n, <span class="hljs-type">int</span> src, <span class="hljs-type">int</span> edges[ ])</span>&#123;<br>    <span class="hljs-comment">//weights为权重数组、n为顶点个数、src为最小树的第一个顶点、edge为最小生成树边</span><br>    <span class="hljs-type">int</span> minweight[MAXVER], min;<br>    <span class="hljs-type">int</span> i, j, k;<br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt;n; i++)&#123;		<span class="hljs-comment">//初始化相关数组</span><br>    	minweight[i] = weights[src][i];		<span class="hljs-comment">//将src顶点与之有边的权值存入数组</span><br>        edges[i] = src;		<span class="hljs-comment">//初始时所有顶点的前序顶点设为src，(src,i）</span><br>    &#125;<br>    minweight[src] = <span class="hljs-number">0</span>;		<span class="hljs-comment">//将第一个顶点src顶点加入生成树</span><br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">1</span>; i&lt; n; i++)&#123;<br>    	min = INFINITY;<br>        <span class="hljs-keyword">for</span>(j=<span class="hljs-number">0</span>, k=<span class="hljs-number">0</span>; j&lt;n; j++)<br>        	<span class="hljs-keyword">if</span>(minweight[j] !=<span class="hljs-number">0</span> &amp;&amp; minweight[j]&lt;min)&#123;	<span class="hljs-comment">//在数组中找最小值，其下标为k</span><br>            	min = minweigth[j];<br>				k = j;<br>            &#125;<br>        minweight[k] = <span class="hljs-number">0</span>;  <span class="hljs-comment">//找到最小树的一个顶点</span><br>        <span class="hljs-keyword">for</span>(j=<span class="hljs-number">0</span>; j&lt;n; j++) <br>        	<span class="hljs-keyword">if</span>(minweight[j]!=<span class="hljs-number">0</span> &amp;&amp; weights[k][j]&lt;minweight[j])&#123;<br>				minweight[j] = weights[k][j];	<span class="hljs-comment">//将小于当前权值的边(k,j)权值加入数组中</span><br>				edges[j] = k;	<span class="hljs-comment">//将边(j,k)信息存入边数组中</span><br>			&#125;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="克鲁斯卡尔kruskal方法">4.2.2 克鲁斯卡尔(Kruskal)方法</h4>
+<ol type="1">
+<li><p>基本思想：设G=(V, GE)为具有n个顶点的带权连通图；T=(U,
+TE)为生成的最小生成树。初始时，TE=空，U={v}，v∈V。</p>
+<p>从G中选择一条当前未选择过的、且边上的权值最小的边加入TE，若加入TE后使得T未产生回路,则本次选择有效，如使得T产生回路，则本次选择无效，放弃本次选择的边。重复上述选择过程直到TE中包含了G的n-1条边，此时的T为G的最小生成树。</p></li>
+<li><p>*算法：</p></li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 参考：https://onlyar.site/2022/01/24/Cpp-template/#kruskal-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> V_MAX 300005</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> E_MAX 500005</span><br><br><span class="hljs-keyword">typedef</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> ll;<br><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span> &#123;</span><br>    <span class="hljs-type">int</span> x, y, w;<br>&#125; e[E_MAX];<br><br><span class="hljs-type">int</span> v[V_MAX];		<span class="hljs-comment">// 并查集(查源数组)    v[x]表示x的无数个前驱中的某一个</span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">cmp</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">void</span> *p1, <span class="hljs-type">const</span> <span class="hljs-type">void</span> *p2)</span>;<br><span class="hljs-type">int</span> <span class="hljs-title function_">Find</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span>;<br><span class="hljs-type">int</span> <span class="hljs-title function_">isUnion</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span>;<br><span class="hljs-type">void</span> <span class="hljs-title function_">Union</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span>;	<span class="hljs-comment">//合并</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">makeSet</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span>;		<span class="hljs-comment">//初始化并查集(查源数组)</span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> n, m;		<span class="hljs-comment">// n个结点，m条边</span><br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;n, &amp;m);<br>    makeSet(n);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;m; i++)<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d%d&quot;</span>, &amp;e[i].x, &amp;e[i].y, &amp;e[i].w);<br>    qsort(e, n, <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> Edge), cmp);	<span class="hljs-comment">// 按照w从小到大排序</span><br>    <span class="hljs-type">int</span> cnt = <span class="hljs-number">0</span>;<br>    ll sum = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; cnt&lt;n<span class="hljs-number">-1</span>; i++)&#123;<br>        <span class="hljs-keyword">if</span>(isUnion(e[i].x, e[i].y))		<span class="hljs-comment">// 形成回路了，看下一条边</span><br>            <span class="hljs-keyword">continue</span>;<br>        cnt++;<br>        sum += e[i].w;<br>        Union(e[i].x, e[i].y);		<span class="hljs-comment">// y的源头=x的源头</span><br>    &#125;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%lld&quot;</span>, sum);      <span class="hljs-comment">// 输出最小生成树的权值</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">cmp</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">void</span> *p1, <span class="hljs-type">const</span> <span class="hljs-type">void</span> *p2)</span>&#123;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span> *<span class="hljs-title">d1</span> =</span> (<span class="hljs-keyword">struct</span> Edge *)p1;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span> *<span class="hljs-title">d2</span> =</span> (<span class="hljs-keyword">struct</span> Edge *)p2;<br>    <span class="hljs-keyword">if</span>(d1-&gt;w &lt; d2-&gt;w)&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    &#125;<br>&#125;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">makeSet</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>; i&lt;=n; i++)<br>        v[i] = i;<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">Find</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> &#123;<br>    <span class="hljs-keyword">if</span> (v[x]==x)		<span class="hljs-comment">// 如果v[x] == x，则x本身就是“源头”</span><br>        <span class="hljs-keyword">return</span> x;<br>    <span class="hljs-keyword">return</span> v[x] = Find(v[x]);	<span class="hljs-comment">// 否则x的源头就是x的前驱(v[x])的源头</span><br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">isUnion</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span> &#123;<br>    <span class="hljs-keyword">if</span>(Find(x) == Find(y))&#123;		<span class="hljs-comment">// 二者源头相同，相当于x和y在同一条线上，如果连上xy则会形成回路</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>&#125;<br><span class="hljs-type">void</span> <span class="hljs-title function_">Union</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span> &#123; v[Find(y)] = Find(x); &#125;<br></code></pre></td></tr></table></figure>
+<h3 id="例">4.3 例</h3>
+<h4 id="判断题们">4.3.1 判断题们</h4>
+<ol type="1">
+<li>任意连通图中，假设没有相同权值的边存在，则权值最小的边一定是其最小生成树中的边。
+(√)</li>
+<li>任意连通图中，假设没有相同权值的边存在，则权值最大的边一定不是其最小生成树中的边。
+(╳)</li>
+<li>任意连通图中，假设没有相同权值的边存在，则与同一顶点相连的权值最小的边一定是其最小生成树中的边。
+(√)</li>
+<li>采用克鲁斯卡尔算法求最小生成树的过程中，判断一条待加入的边是否形成回路，只需要判断该边的两个顶点是否都已经加入到集合U中。
+(╳)</li>
+</ol>
+<h4 id="问题北航网络中心铺设光缆">4.3.2 问题：北航网络中心铺设光缆</h4>
+<p>设计考虑：</p>
+<ol type="1">
+<li>可用邻接矩阵存储网络图数据结构：</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">edge</span>&#123;</span><br>	<span class="hljs-type">int</span> id;<br>	<span class="hljs-type">int</span> wei;<br>&#125;;<br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">edge</span> <span class="hljs-title">graph</span>[<span class="hljs-title">MAXVER</span>][<span class="hljs-title">MAXVER</span>];</span>	<span class="hljs-comment">//邻接矩阵</span><br><span class="hljs-type">int</span> edges[MAXVER]=&#123;<span class="hljs-number">0</span>&#125;;		<span class="hljs-comment">//生成树数组</span><br><span class="hljs-comment">// 根据输入值对&lt;id,v1,v2,wei&gt;构造图：</span><br>graph[v1][v2].id = id;<br>graph[v1][v2].weight = wei;<br>graph[v2][v1].id = id;<br>graph[v2][v1].weight = wei;<br></code></pre></td></tr></table></figure>
+<ol start="2" type="1">
+<li>调用Prim算法得到最小生成树，存放在edges数组中</li>
+<li>根据生成树数组edges可得到生成树边序号为<code>graph\[i][edges[i]].id</code>的边，其权重为：<code>graph\[i][edges[i]].wei</code></li>
+<li>最小生成树按边序号进行排序输出.</li>
+</ol>
+<h2 id="最短路径问题dijkstra算法单原点问题">5
+最短路径问题(Dijkstra算法)——单原点问题</h2>
+<h3 id="路径长度的定义">5.1 路径长度的定义</h3>
+<ol type="1">
+<li>不带权的图：路径上所经过的边的数目</li>
+<li>带权的图：路径上经过的边上的权值之和</li>
+</ol>
+<h3 id="问题的提出">5.2 问题的提出</h3>
+<p>设出发顶点为v(通常称为源点)。</p>
+<p>求：单源点最短路径；每对顶点之间的最短路径；求图中第1短、第2短、...的最短路径</p>
+<h3 id="解决问题所需要确定的数据结构">5.3
+解决问题所需要确定的数据结构</h3>
+<ol type="1">
+<li><p>图的存储</p>
+<p>以0~n-1分别代表n个顶点,采用邻接矩阵存储该图,有 <span
+class="math display">\[
+A[i][j] =
+\begin{cases}
+    W_{ij}, &amp; \text当顶点v_{i}到顶点v_{j}有边时，且边的权为W_{ij}\\
+    ∞,&amp; \text当顶点v_{i}到顶点v_j无边时\\
+    0, &amp; \text当v_i=v_j时
+\end{cases}
+\]</span></p></li>
+</ol>
+<h3 id="dijkstra算法">5.4 Dijkstra算法</h3>
+<p>（本质上也是一种<strong>贪婪算法(greedy algorithm)</strong>）</p>
+<p>设<code>v0</code>为源顶点，<code>Weights</code>为顶点间权重数组（邻接矩阵），<code>Sweight</code>为v0到相应顶点最小权重数组，<code>Spath</code>为最短路径数组，<code>wfound</code>表示某顶点是否已确定最短路径(0未确定，1已确定)，有如下定义：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> Weigths[VNUM][VNUM], Spath[VNUM]=&#123;<span class="hljs-number">0</span>&#125;;<br><span class="hljs-type">int</span> Sweight[VNUM], wfound[VNUM]; <br></code></pre></td></tr></table></figure>
+<ol type="1">
+<li><p>初始化数组<code>Sweight</code>,使得<code>Sweight[i] = Weigths[v0][i]</code>。</p></li>
+<li><p>初始化<code>Sweight[v0]=0, Spath[i]=v0, wfound[v0] = 1</code>。</p></li>
+<li><p>查找与<code>v0</code>间权重最小且没有确定最短路径的顶点<code>v</code>，即在<code>Sweight</code>数组中查找权重最小且没有确定最短路径的顶点。</p></li>
+<li><p>标记v为已找到最短路径的顶点。</p></li>
+<li><p>对于图G中每个从顶点<code>v0</code>到其最短路径还未找到，且存在边<code>(v,w)</code>，如果从<code>v0</code>通过<code>v</code>到<code>w</code>的路径权值小于它当前的权值，则更新w的权值为：v的权值+边(v,w)的权值，即：<code>Sweight[w] = Sweight[v]+Weights[v][w]</code>。</p></li>
+<li><p>重复上述过程的第3至第5步n–1次。</p></li>
+</ol>
+<p>注：最短路径数组<code>Spath</code>含义为<code>Spath[v]</code>表示顶点v在最短路径上的直接前驱顶点。假设某最短路径由顶点v0,v1,v2,v3组成，则有：<code>v2=Spath[v3], v1=Spath[v2], v0=Spath[v1]</code>。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs c">Dijkstra(<span class="hljs-type">int</span> v0)&#123;<br>	<span class="hljs-type">int</span> i, j, v, minweight;<br>    <span class="hljs-type">char</span> wfound[VNUM] = &#123;&#125;;		<span class="hljs-comment">// 用于标记从v0到相应顶点是否找到最短路径，0未找到，1找到</span><br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt;VNUM; i++)&#123;<br>        Sweight[i] = Weights[v0][i];<br>        Spath[i] = v0;<br>    &#125;		<span class="hljs-comment">// 初始化数组Sweight和Spath</span><br>    Sweight[v0] = <span class="hljs-number">0</span>;<br>    wfound[v0] = <span class="hljs-number">1</span>;<br>	<span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt; VNUM<span class="hljs-number">-1</span>; i++)&#123;		<span class="hljs-comment">// 迭代VNUM-1次</span><br>		minweight = INFINITY;<br>		<span class="hljs-keyword">for</span>(j=<span class="hljs-number">0</span>; j&lt;VNUM; j++)		<span class="hljs-comment">// 找到未标记的最小权重值顶点 </span><br>			<span class="hljs-keyword">if</span>( !wfound[j] &amp;&amp; ( Sweight[j]&lt;minweight) )&#123;<br>				v = j; <br>				minweight = Sweight[v];<br>			&#125;<br>		wfound[v] = <span class="hljs-number">1</span>;		<span class="hljs-comment">// 标记该顶点为已找到最短路径</span><br>		<span class="hljs-keyword">for</span>(j =<span class="hljs-number">0</span>; j &lt; VNUM; j++)		<span class="hljs-comment">// 找到未标记顶点且其权值大于v的权值+(v,j)的权值，更新其权值</span><br>			<span class="hljs-keyword">if</span>( !wfound[j]  &amp;&amp;  (minweight + Weights[v][j] &lt; Sweight[j] )) &#123;<br>				Sweight[j] = minweight + Weights[v][j];<br>				Spath[j] = v;		<span class="hljs-comment">// 记录前驱顶点</span><br>			&#125;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>问：对于给定的带权连通无向图，从某源点到图中各顶点的最短路径构成的生成树是否是该图的最小生成树？</p>
+<p>答：<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43715601/article/details/105858771">Dijkstra最短路径算法构造的生成树不一定为最小生成树</a></p>
+<p>*Dijkstra算法的局限性：无法正确处理含负权边的图。（ppt没看懂，待更新）</p>
+<h3 id="北京地铁乘坐线路查询">5.5 北京地铁乘坐线路查询</h3>
+<h4 id="题目">5.5.1 题目</h4>
+<p>文件bgstations.txt为数据文件，包含了北京地铁的所有线路及所有车站信息。其格式如下：
+12 1 23 苹果园 0 古城 0 … 公主坟 1 … 四惠东 1 2 19 西直门 1 积水潭 0 …
+西直门
+说明：表明目前北京地铁共开通12条线，其中1号线有23个车站，分别为苹果园，非换乘站；…；公主坟，换乘站…。2线共有19个站，分别为西直门，换乘站，…。</p>
+<p>输入： 起始站：西土城 目的站：北京西站</p>
+<p>输出：
+西土城-10(1)-知春路-13(2)-西直门-4(2)-国家图书馆-9(4)-北京西站</p>
+<h4 id="方案一">5.5.2 方案一</h4>
+<ol type="1">
+<li>算法
+<ol type="1">
+<li>初始化地铁线路图(initMap()函数)
+<ol type="1">
+<li>将站信息加入到站信息数组中（注意：站名是唯一的，每个站在该数组中的下标即为图的顶点编号）（即图的顶点数组）</li>
+<li>将每条线路的当前站和其前序站构成的边(v1,v2)加入到图顶点权重数组中（注：在权重数组中权重信息包括两站间的站数（缺省为1）以及所属线路）</li>
+</ol></li>
+<li>分别读入起始站和目的站</li>
+<li>按照Dijkstra算法在图中查找最短路径(Dijkstra()函数)</li>
+<li>依据最短路径按按照格式要求输出换乘路径(printPath()函数)</li>
+</ol></li>
+<li>代码实现</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> MAXNUM 512		<span class="hljs-comment">//地铁最大站数</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> MAXLEN 16		<span class="hljs-comment">//地铁站名的最大长度</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> INFINITY 32767</span><br><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">station</span>&#123;</span> <span class="hljs-comment">//车站信息</span><br>	<span class="hljs-type">char</span> sname[MAXLEN];		<span class="hljs-comment">//车站名</span><br>    <span class="hljs-type">int</span> ischange;		<span class="hljs-comment">//是否为换乘站，0-否，1-换乘</span><br>&#125;;<br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">weight</span>&#123;</span><br>    <span class="hljs-type">int</span> wei;	<span class="hljs-comment">//两个站间的权重，即相差站数，缺省为1</span><br>    <span class="hljs-type">int</span> lno;	<span class="hljs-comment">//两个顶点所在的线号</span><br>&#125;;<br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">station</span> <span class="hljs-title">BGvertex</span>[<span class="hljs-title">MAXNUM</span>];</span>		<span class="hljs-comment">//地铁网络图顶点数组</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">weight</span> <span class="hljs-title">BGweights</span>[<span class="hljs-title">MAXNUM</span>][<span class="hljs-title">MAXNUM</span>];</span>	<span class="hljs-comment">//网络图权重数组，邻接矩阵</span><br><span class="hljs-type">int</span> Vnum = <span class="hljs-number">0</span>;	<span class="hljs-comment">//实际地铁总站数</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">initMap</span><span class="hljs-params">()</span>&#123;<br>    FILE *fp;<br>    <span class="hljs-type">int</span> i, j, snum, lno, lnum, v1, v2;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">station</span> <span class="hljs-title">st</span>;</span><br>    …<br>    <span class="hljs-built_in">fscanf</span>(fp, <span class="hljs-string">&quot;%d&quot;</span>, &amp;snum);<br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt;snum; i++)&#123;<br>        <span class="hljs-built_in">fscanf</span>(fp, <span class="hljs-string">&quot;%d %d&quot;</span>, &amp;lno, &amp;lnum);<br>        v1 = v2 = <span class="hljs-number">-1</span>;<br>        <span class="hljs-keyword">for</span>(j=<span class="hljs-number">0</span>; j&lt;lnum; j++)&#123;<br>        <span class="hljs-built_in">fscanf</span>(fp, <span class="hljs-string">&quot;%s %d&quot;</span>, st.sname, &amp;st.ischange);<br>        v2 = addVertex(st); <span class="hljs-comment">//将该站加到站信息数组中，返回其下标</span><br>        <span class="hljs-keyword">if</span>(v1 != <span class="hljs-number">-1</span>)&#123;<br>            BGweights[v1][v2].wei = BGweights[v2][v1].wei = <span class="hljs-number">1</span>;<br>            BGweights[v1][v2].lno = BGweights[v2][v1].lno = lno;<br>        &#125;<br>        v1 = v2;<br>        &#125;<br>    &#125;<br>    fclose(fp);<br>    <span class="hljs-keyword">return</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="方案二">5.5.3 方案二</h4>
+<p>算法</p>
+<ol type="1">
+<li>构造一个北京地铁换乘网络图（只由换乘节点组成）</li>
+<li>根据用户输入的源和目的车站，将两个顶点加到网络图中</li>
+<li>按最短路径算法在图中查找由源到目的车站的最短路径。</li>
+</ol>
+<h3 id="dijkstra算法单源点问题与floyd算法多源点问题">5.6
+*Dijkstra算法（单源点问题）与Floyd算法（多源点问题）</h3>
+<p>Dijkstra算法和Floyd算法时间复杂度都为O(n<sup>3</sup>)，但Floyd更简洁</p>
+<p>链接阅读：</p>
+<ol type="1">
+<li><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_56154577/article/details/135726811">Floyd算法-c实现-CSDN博客</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/Wang_Dou_Dou_/article/details/119485893">Floyd算法-C
+C++ matlab 实现-CSDN博客</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43004044/article/details/134427313">Floyd算法-反正不是c实现-CSDN博客</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/106909361">Floyed算法及证明-c++实现-知乎
+(zhihu.com)</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/339542626">Floyd算法-java实现-知乎
+(zhihu.com)</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1hP4y1t7PE/?share_source=copy_web&amp;vd_source=5016af564e05d9a924daab02b04629e2">数据结构1800题型-Floyd算法求最短路径_哔哩哔哩_bilibili</a></li>
+</ol>
+<h2 id="aov网与拓扑排序">6 *AOV网与拓扑排序</h2>
+<h3 id="aov网">6.1 AOV网</h3>
+<p>以顶点表示活动，以有向边表示活动之间的优先关系的有向图称为<strong>顶点表示活动的网(Activity
+On Vertex Network)</strong>,简称<strong>AOV网</strong>。</p>
+<p>在AOV网中，若顶点i到顶点j之间有路径,则称顶点i为顶点j的<strong>前驱</strong>，顶点j为顶点i的<strong>后继</strong>；若顶点i到顶点j之间为一条有向边，则称顶点i为顶点j的<strong>直接前驱</strong>，顶点j为顶点i的<strong>直接后继</strong>。</p>
+<blockquote>
+<p>AOV网通常用于描述工程的进行顺序（如下图）。我们可以通过对AOV网进行操作来判断工程能否正常进行。</p>
+<p><img src="/img/LE-ds8/15.png" srcset="/img/loading.gif" lazyload /></p>
+<p>检测工程能否正常进行，首先要判断对应的AOV网中是否存在回路，达到该目的最有效的方法之一是对AOV网构造其顶点的拓扑序列，即对AOV网进行<strong>拓扑排序</strong>（由某个集合上的一个偏序得到该集合上的一个全序的操作称为<strong>拓扑排序</strong>）。</p>
+<p>设G=(V,E)是一个具有n个顶点的有向图，V中的顶点序列v1,v2,…,vn，满足若从顶点vi到vj有一条路径，则在顶点序列中顶点vi必在顶点vj之前，则称这样的顶点序列为一个<strong>拓扑序列</strong>。构造拓扑序列的过程就是<strong>拓扑排序</strong>。</p>
+</blockquote>
+<h3 id="拓扑排序">6.2 拓扑排序</h3>
+<p>构造AOV网的一个顶点序列，使得该顶点序列满足下列条件：</p>
+<ol type="1">
+<li>若在AOV网中,顶点i优先于顶点j，则在该序列中顶点i仍然优先于顶点j；</li>
+<li>若在AOV网中，顶点i与顶点j之间不存在优先关系,则在该序列中建立它们的优先关系,即顶点i优先于顶点j，或者顶点j优先于顶点i；</li>
+<li>若能构造出这样的拓扑序列，则拓扑序列包含AOV网的全部顶点，说明<strong>AOV网中没有回路</strong>；反之，若构造不出这样的序列，说明AOV网中存在回路。</li>
+</ol>
+<h3 id="拓扑排序方法">6.3 拓扑排序方法</h3>
+<ol type="1">
+<li>从AOV网中任意选择一个没有前驱的顶点；</li>
+<li>从AOV网中去掉该顶点以及以该顶点为出发点的所有边；</li>
+<li>重复上述过程，直到AOV网中的所有顶点都被去掉（说明AOV网中无回路），或者AOV网中还有顶点，但不存在入度为0的顶点（说明AOV网中有回路）。</li>
+</ol>
+<h3 id="自然语言描述的拓扑排序算法">6.4 自然语言描述的拓扑排序算法</h3>
+<ol type="1">
+<li>首先建立一个入度为0的顶点栈，将网中所有入度为0的顶点分别进栈。</li>
+<li>当堆栈不空时，反复执行以下动作：
+<ol type="1">
+<li>从顶点栈中退出一个顶点，并输出它；</li>
+<li>从AOV网中删去该顶点以及以它发出的所有边，并分别将这些边的终点的入度减1；</li>
+<li>若此时边的终点的入度为0，则将该终点进栈；</li>
+</ol></li>
+<li>若输出的顶点个数少于AOV网中的顶点个数，则报告网中存在回路，否则，说明该网中不存
+在回路。</li>
+</ol>
+<h3 id="拓扑排序算法的c实现">6.5 拓扑排序算法的c实现</h3>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_51496226/article/details/131443268?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=拓扑排序实现c&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-1-131443268.142%5Ev100%5Epc_search_result_base5&amp;spm=1018.2226.3001.4187">C语言实现拓扑排序与关键路径_c语言
+拓扑排序-CSDN博客</a></p>
+<h2 id="aoe网与关键路径">7 *AOE网与关键路径</h2>
+<h3 id="aoe网">7.1 AOE网</h3>
+<blockquote>
+<p>与AOV网相比，AOE网更关心每个活动持续多少时间/完成整个工程至少需要多少时间/哪些活动是关键活动。</p>
+<p><img src="/img/LE-ds8/16.png" srcset="/img/loading.gif" lazyload /></p>
+</blockquote>
+<p>AOE(Activity On
+Edge)网为一个带权的有向无环图，其中，以顶点表示<strong>事件</strong>，有向边表示<strong>活动</strong>，边上的权值表示活动持续的<strong>时间</strong>。正常情况下，AOE网中只有一个入度为0的顶点，称之为<strong>源点</strong>；有一个出度为0的顶点，称之为<strong>终点</strong>。</p>
+<p>AOE网的特点：</p>
+<ol type="1">
+<li>只有在某个顶点所代表的事件发生以后,该顶点引发的活动才能开始。</li>
+<li>进入某事件的所有边代表的活动都已完成,该顶点代表的事件才能发生。</li>
+</ol>
+<h3 id="aoe网的存储方法">7.2 AOE网的存储方法</h3>
+<p>采用<strong>邻接矩阵</strong>存储方法</p>
+<h3 id="关键路径">7.3 关键路径</h3>
+<ol type="1">
+<li>定义：从源点到终点的路径中具有最大长度的路径为关键路径；关键路径上的活动称为关键活动。</li>
+<li>特点：
+<ol type="1">
+<li>关键路径的长度(路径上的边的权值之和)为完成整个工程所需要的<strong>最短时间</strong>。</li>
+<li>关键路径的长度变化(即任意关键活动的权值变化)将影响整个工程的进度，而其他非关键活动在一定范围内的变化不会影响工期。</li>
+</ol></li>
+</ol>
+<h3 id="求关键路径">7.4 求关键路径</h3>
+<p>思路： <code>e[i]</code> — 活动a<sub>i</sub>的最早开始时间；
+<code>l[i]</code> — 活动a<sub>i</sub>的最晚开始时间；
+若<code>l[i]–e[i]=0</code>，则说明活动a<sub>i</sub>为一个关键活动。
+<code>ee[k]</code> — 事件k的最早发生时间； <code>le[k]</code> —
+事件k的最晚发生时间；
+通过<code>ee[k]</code>和<code>le[k]</code>求出<code>e[i]</code>和<code>l[i]</code>，若<code>e[i] = l[i]</code>则活动a<sub>i</sub>为一个关键活动</p>
+<ol type="1">
+<li><p>计算时间k的最早发生时间<code>ee[k]</code></p>
+<p>事件k的最早发生时间决定了由事件k出发的所有活动的最早开始时间；该时间是指从源点到顶点(事件)k的最大路径长度。</p>
+<p>计算方法： <span class="math display">\[
+ee[0] = 0\\
+ee[k] = \max_{&lt;j, k&gt;∈P(k)}ee[j]+&lt;j, k&gt;的权
+\]</span> 例：<img src="/img/LE-ds8/17.png" srcset="/img/loading.gif" lazyload /></p></li>
+<li><p>计算事件k的最晚发生时间<code>le[k]</code></p>
+<p>所谓事件k的最晚发生时间是指不影响整个工期的前提下事件k必须发生的最晚时间，它必须保证从事件k发出的所有活动的终点事件（k的后继事件）的最迟发生时间。</p>
+<p>计算方法： <span class="math display">\[
+le[n-1] = n-1\\
+le[k] = \min_{&lt;k, j&gt;∈S(k)}le[j]-&lt;k, j&gt;的权
+\]</span> <img src="/img/LE-ds8/18.png" srcset="/img/loading.gif" lazyload /></p></li>
+<li><p>计算活动i的最早开始时间<code>e[i]</code></p>
+<p>所谓活动i的最早开始时间实际上是事件k发生的最早时间，即只有事件k发生，活动i才能开始。</p>
+<p>计算方法： <span class="math display">\[
+e[i] = ee[k]
+\]</span> <img src="/img/LE-ds8/19.png" srcset="/img/loading.gif" lazyload /></p></li>
+<li><p>计算活动i的最晚开始时间<code>l[i]</code></p>
+<p>所谓活动i的最晚开始时间是指不推迟整个工期的前提下活动i开始的最晚时间。</p>
+<p>计算方法： <span class="math display">\[
+l[i] = le[j]-&lt;k, j&gt;的权
+\]</span> <img src="/img/LE-ds8/20.png" srcset="/img/loading.gif" lazyload /></p></li>
+<li><p>求出关键活动与关键路径</p>
+<p>计算方法： <span class="math display">\[
+l[i] = e[i]
+\]</span> <img src="/img/LE-ds8/21.png" srcset="/img/loading.gif" lazyload /></p></li>
+</ol>
+<h3 id="关键路径计算的c实现">7.5 关键路径计算的c实现</h3>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/m0_73070900/article/details/131029666?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=关键路径计算的c实现&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-1-131029666.142%5Ev100%5Epc_search_result_base5&amp;spm=1018.2226.3001.4187">【C语言】关键路径（求解过程及算法实现）_已知关键事件求关键路径-CSDN博客</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40463117/article/details/112472674?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=关键路径计算的c实现&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-2-112472674.142%5Ev100%5Epc_search_result_base5&amp;spm=1018.2226.3001.4187">【C语言】关键路径/最长路径模拟实现_关键路径和最长路径区别-CSDN博客</a></p>
+<h2 id="网络流量问题">8 *网络流量问题</h2>
+<h3 id="相关概念">8.1 相关概念</h3>
+<p>设给定边容量为c<sub>v,w</sub>的有向图G=(V,E)（容量可以表示通过一个管道的水、电、交通、网络等最大流量）。有两个顶点，一个是s称为<strong>源点</strong>(source)，一个是t称为<strong>汇点</strong>(sink)。对于任一条边(v,w)，最多有“流”的c<sub>v,w</sub>个单位（容量）可以通过。<strong>在既不是源点s又不是汇点t的任一顶点v，总的进入流必须等于总的发出的流</strong>。每条边上的流满足下面两个条件：</p>
+<ul>
+<li>通过边的流不能大于边的容量（<strong>容量约束</strong>）</li>
+<li>到达顶点v的流的总和与从v流出的总和相同，其中v不是源点或汇点（<strong>流守恒</strong>）</li>
+</ul>
+<p><strong>最大流问题</strong>：确定从s到t可以通过的最大流量。</p>
+<h3 id="最大流算法原理">8.2 最大流算法原理</h3>
+<p>算法设有3个图（原图G、<strong>流图</strong>Gf、<strong>残余图</strong>Gr），在其上分阶段进行。Gf表示在算法的任意阶段已经达到的流，算法终止时其包含最大流；Gr称为残余图（residual
+graph），它表示每条边还能再添加上多少流（即还残余多少流），对于Gr中每条边（称为残余边，residual
+edge）可以从其容量中减去当前流来计算其残余流。</p>
+<ol type="1">
+<li>初始时Gf所有边都没有流（流为0），Gr与G相同；</li>
+<li>每个阶段，先从Gr中找一条从s到t的路径（称为增长路径augmenting
+path）；
+<ol type="1">
+<li>将该路径上最小边的流量作为整个路径的流（权），并将路径加至流图Gf中；</li>
+<li>将该权值路径从Gr中减去，若某条边权值为0，则从Gr中除去；</li>
+<li>将具有该权的反向路径加到Gr中；</li>
+<li>重新执行步骤2，直到Gr中无从s到t的路径；</li>
+</ol></li>
+<li>将Gf中顶点t的每条入边流值相加得到最大流。</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" class="category-chain-item">学习经验</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">数据结构</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" class="print-no-link">#学习经验</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>【数据结构】ds笔记8-图</div>
+      <div>http://example.com/2024/05/20/LE-ds8/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>May 20, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/09/19/jwsy-shiboqi/" title="【学习经验】示波器预习报告">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【学习经验】示波器预习报告</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/05/13/LE-ds7/" title="【数据结构】ds笔记7-排序">
+                        <span class="hidden-mobile">【数据结构】ds笔记7-排序</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP备2024049620号
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

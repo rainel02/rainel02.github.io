@@ -1,0 +1,839 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon02.jpg">
+  <link rel="icon" href="/img/icon02.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="被无数次告知基物实验的痛苦后焦虑万分，上网努力搜索资料后整理了如下预习笔记。建议预习还是看视频看书，本人整理笔记只是防止过了一个周末自己忘得一干二净，不保证时效性和正确性。 特别鸣谢：【1031】示波器的使用 - 知乎 (zhihu.com)、Only(AR)、zbyzby  示波器的使用 示波器实验(物理老师制作，示波器原理讲解非常详细，非常适合初学者理解示波器原理与操作时使用) 利">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【学习经验】示波器预习报告">
+<meta property="og:url" content="http://example.com/2024/09/19/jwsy-shiboqi/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="被无数次告知基物实验的痛苦后焦虑万分，上网努力搜索资料后整理了如下预习笔记。建议预习还是看视频看书，本人整理笔记只是防止过了一个周末自己忘得一干二净，不保证时效性和正确性。 特别鸣谢：【1031】示波器的使用 - 知乎 (zhihu.com)、Only(AR)、zbyzby  示波器的使用 示波器实验(物理老师制作，示波器原理讲解非常详细，非常适合初学者理解示波器原理与操作时使用) 利">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/jwsy-sbq/1.png">
+<meta property="og:image" content="http://example.com/img/jwsy-sbq/3.png">
+<meta property="og:image" content="http://example.com/img/jwsy-sbq/4.png">
+<meta property="og:image" content="http://example.com/img/jwsy-sbq/5.png">
+<meta property="og:image" content="http://example.com/img/jwsy-sbq/7.png">
+<meta property="og:image" content="http://example.com/img/jwsy-sbq/8.png">
+<meta property="og:image" content="http://example.com/img/jwsy-sbq/9.png">
+<meta property="og:image" content="http://example.com/img/jwsy-sbq/10.png">
+<meta property="og:image" content="http://example.com/img/jwsy-sbq/11.png">
+<meta property="og:image" content="http://example.com/img/jwsy-sbq/13.png">
+<meta property="article:published_time" content="2024-09-19T11:42:22.000Z">
+<meta property="article:modified_time" content="2024-09-23T12:22:10.325Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="学习经验">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/jwsy-sbq/1.png">
+  
+  
+  
+  <title>【学习经验】示波器预习报告 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Rainel</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>Links</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/p2.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="【学习经验】示波器预习报告"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-09-19 19:42" pubdate>
+          September 19, 2024 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          9 mins
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> views
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">【学习经验】示波器预习报告</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>被无数次告知基物实验的痛苦后焦虑万分，上网努力搜索资料后整理了如下预习笔记。建议预习还是看视频看书，本人整理笔记只是防止过了一个周末自己忘得一干二净，不保证时效性和正确性。</p>
+<p>特别鸣谢：<a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/108465655">【1031】示波器的使用 -
+知乎 (zhihu.com)</a>、Only(AR)、zbyzby</p>
+<hr />
+<h1 id="示波器的使用">示波器的使用</h1>
+<p><a
+target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Pg4y1a7HU?p=4&amp;vd_source=fc9422f088d6dd276399cc472e4f7182">示波器实验(物理老师制作，示波器原理讲解非常详细，非常适合初学者理解示波器原理与操作时使用)</a></p>
+<h2
+id="利用校准信号对示波器进行校准测量">利用校准信号对示波器进行校准测量</h2>
+<ol type="1">
+<li><p>示波器的预置：调节<strong>辉度</strong>（亮度）、<strong>聚焦</strong>（粗细）、<strong>水平位移</strong>、<strong>垂直位移</strong>，<strong>触发方式</strong>选择<em>AUTO</em>，使屏幕出现扫描线。
+<img src="/img/jwsy-sbq/1.png" srcset="/img/loading.gif" lazyload /> <img
+src="/img/jwsy-sbq/2.png" srcset="/img/loading.gif" lazyload /></p></li>
+<li><p>连接示波器上信号输出端和通道（CH1或CH2，书上为<em>CH1</em>）</p></li>
+<li><p>关闭所有<strong>微调</strong>（扫描时间和衰减开关，全部顺时针旋转到底）
+<img src="/img/jwsy-sbq/3.png" srcset="/img/loading.gif" lazyload /></p></li>
+<li><p><strong>"VAR"垂直微调旋钮</strong>（垂直偏转系数微调钮）分别调整至<em>顺时针转到底</em>、<em>中间位置</em>、<em>逆时针转到底</em>，<strong>VOLTS/DIV</strong>分别调整至为<em>0.5V/DIV</em>,<em>1V/DIV</em>,<em>2V/DIV</em>，测量3*3组数据。</p>
+<p>其中y轴灵敏度为<strong>VOLTS/DIV</strong>上的示数，格数Y通过读两条线之间竖着的格子数量获得(<span
+class="math inline">\(MAX-MIN\)</span>)，k由公式计算得出(<span
+class="math inline">\(k =
+\frac{u_{pp}}{Y}\)</span>)，其中y轴微调校准位的k应与y轴灵敏度的值相同。
+<img src="/img/jwsy-sbq/4.png" srcset="/img/loading.gif" lazyload /> <img src="/img/jwsy-sbq/5.png" srcset="/img/loading.gif" lazyload /> <img
+src="/img/jwsy-sbq/6.png" srcset="/img/loading.gif" lazyload /></p></li>
+</ol>
+<h2
+id="观察各种波形并测量正弦波的电压与周期">观察各种波形并测量正弦波的电压与周期</h2>
+<p><img src="/img/jwsy-sbq/7.png" srcset="/img/loading.gif" lazyload /></p>
+<ol type="1">
+<li>将DOS函数发生器的信号接入示波器通道，分别输出<strong>方波、三角波、正弦波</strong>，进行<strong>观察</strong></li>
+<li>将正弦波发生器的f<sub>2</sub>和f<sub>4</sub>信号分别接入<em>CH1通道</em>
+<img src="/img/jwsy-sbq/8.png" srcset="/img/loading.gif" lazyload />
+<ol type="1">
+<li>测量两条横线之间格子数量（<span
+class="math inline">\(Y轴偏转格数\)</span>），与<span
+class="math inline">\(Y轴灵敏度\)</span>相乘获得<span
+class="math inline">\(u_{pp}\)</span>，<span
+class="math inline">\(电压有效值u_e =
+\frac{u_{pp}}{2\sqrt2}\)</span></li>
+<li>测量一个周期的格子数量（<span
+class="math inline">\(X轴偏转格数\)</span>），与<span
+class="math inline">\(X轴灵敏度\)</span>相乘获得<span
+class="math inline">\(T\)</span>（记得单位换算），<span
+class="math inline">\(频率f = \frac 1 T\)</span></li>
+</ol></li>
+</ol>
+<h2
+id="观察李萨如图形用李萨如图形测量正弦信号频率">观察李萨如图形，用李萨如图形测量正弦信号频率</h2>
+<p><img src="/img/jwsy-sbq/9.png" srcset="/img/loading.gif" lazyload /></p>
+<p>将正弦波发生器的f<sub>2</sub>信号接入<em>CH1通道</em>，将DOS函数发生器的正弦信号接入<em>CH2通道</em>，将<strong>TIME/DIV旋钮</strong>
+<em>逆时针旋转到头（X-Y档位）</em>，<strong>MODE</strong>置于<em>CH2档</em>，<strong>SOURCE（触发源）</strong>置于<em>CH1档</em>。
+<img src="/img/jwsy-sbq/10.png" srcset="/img/loading.gif" lazyload /></p>
+<p>调节DOS函数发生器正弦信号的<strong>频率(f<sub>y</sub>)</strong>，在屏上分别得到f<sub>y</sub>:f<sub>x</sub>为1:1、1:2、1:3、2:3的稳定图形，列表记下相应的图形、f<sub>y</sub>、图形与水平线相交的点数n<sub>x</sub>、图形与垂直线相交的点数n<sub>y</sub>，并计算出f<sub>x</sub>（<span
+class="math inline">\(f_x = f_y\times \frac {n_y} {n_x}\)</span>）。</p>
+<h1 id="振幅法测声速">振幅法测声速</h1>
+<p><a
+target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1pJ411i741?vd_source=fc9422f088d6dd276399cc472e4f7182">声速的测量</a></p>
+<p><span class="math inline">\(声速v_s = f\lambda\)</span></p>
+<p>其中<span
+class="math inline">\(f\)</span>由信号发生器给出，只需测得<span
+class="math inline">\(\lambda\)</span>即可得出声速<span
+class="math inline">\(v_s\)</span></p>
+<ol type="1">
+<li>电信号极大值之间的距离均为<span
+class="math inline">\(\lambda/2\)</span></li>
+<li>S<sub>1</sub>和S<sub>2</sub>之间间距越大极大值越小（振幅越小）</li>
+</ol>
+<h2 id="实验">实验</h2>
+<ol type="1">
+<li>找共振频率
+<ol type="1">
+<li>调节<strong>频率粗调按钮</strong>，使振幅最大，若振幅超过显示范围，调节y方向的<strong>VOLTS/DIV</strong>。此时信号源显示的频率约为共振频率。</li>
+<li>转动<strong>手轮</strong>使接收器远离发射器，移动到第一次的振幅较大处，再调节<strong>频率细调按钮</strong>，使振幅最大，此时信号源显示的频率即为共振频率，记录此时频率f<sub>1</sub></li>
+</ol></li>
+<li>连续测量第1-10个极大值的位置（波幅最大），记为x<sub>1</sub>至x<sub>10</sub>，再测量第31-40个极大值位置，记为x<sub>31</sub>至x<sub>40</sub>。</li>
+<li>记录实验结束时信号源显示频率f<sub>2</sub>。</li>
+<li>测量室温</li>
+</ol>
+<h2 id="数据处理">数据处理</h2>
+<p><img src="/img/jwsy-sbq/11.png" srcset="/img/loading.gif" lazyload /> <img
+src="/img/jwsy-sbq/12.png" srcset="/img/loading.gif" lazyload /></p>
+<h1 id="相位法测声速">相位法测声速</h1>
+<h2 id="实验-1">实验</h2>
+<ol type="1">
+<li>记录此时频率f<sub>1</sub>。</li>
+<li>将<strong>TIME/DIV旋钮逆时针</strong>旋转到头（<em>X-Y档位</em>），<strong><em>MODE置于CH2档，SOURCE（触发源）置于CH1档</em></strong>（存疑）。</li>
+<li>相同相位（同方向倾斜的斜线）之间为一个<span
+class="math inline">\(\lambda\)</span>，数据测量同振幅法测声速。</li>
+<li>记录实验结束时频率f<sub>2</sub>。</li>
+</ol>
+<h2 id="数据处理-1">数据处理</h2>
+<p>同振幅法测声速（但无需计算不确定度）</p>
+<h1 id="思考题">思考题</h1>
+<p><img src="/img/jwsy-sbq/13.png" srcset="/img/loading.gif" lazyload /></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" class="category-chain-item">学习经验</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/%E5%9F%BA%E7%89%A9%E5%AE%9E%E9%AA%8C/" class="category-chain-item">基物实验</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" class="print-no-link">#学习经验</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>【学习经验】示波器预习报告</div>
+      <div>http://example.com/2024/09/19/jwsy-shiboqi/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>September 19, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/10/25/jwsy-fenGuangYi/" title="【学习经验】分光仪预习报告">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【学习经验】分光仪预习报告</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/05/20/LE-ds8/" title="【数据结构】ds笔记8-图">
+                        <span class="hidden-mobile">【数据结构】ds笔记8-图</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP备2024049620号
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

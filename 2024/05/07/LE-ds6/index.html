@@ -1,0 +1,1092 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon02.jpg">
+  <link rel="icon" href="/img/icon02.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="本篇笔记总结DSPv2b_7(查找) for student内的相关内容。（说到底为什么不先讲图而是先讲查找啊kuso）。依旧，大部分内容照搬ppt，但是5 B-树和B+树中的5.0 说在前面是本人依靠智谱清言写出来的（理直气壮）。起因是问了两位学长都表示“我不道啊”，但本人觉得这问题摆在那里实在难受，只得求助AI sama。 以及3.3 插值查找、3.4 斐波那契查找和4.5倒排索引">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【数据结构】ds笔记6-查找">
+<meta property="og:url" content="http://example.com/2024/05/07/LE-ds6/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="本篇笔记总结DSPv2b_7(查找) for student内的相关内容。（说到底为什么不先讲图而是先讲查找啊kuso）。依旧，大部分内容照搬ppt，但是5 B-树和B+树中的5.0 说在前面是本人依靠智谱清言写出来的（理直气壮）。起因是问了两位学长都表示“我不道啊”，但本人觉得这问题摆在那里实在难受，只得求助AI sama。 以及3.3 插值查找、3.4 斐波那契查找和4.5倒排索引">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/LE-ds6/1.png">
+<meta property="og:image" content="http://example.com/img/LE-ds6/2.png">
+<meta property="og:image" content="http://example.com/img/LE-ds6/3.png">
+<meta property="og:image" content="http://example.com/img/LE-ds6/4.png">
+<meta property="og:image" content="http://example.com/img/LE-ds6/11.png">
+<meta property="og:image" content="http://example.com/img/LE-ds6/5.png">
+<meta property="og:image" content="http://example.com/img/LE-ds6/6.png">
+<meta property="og:image" content="http://example.com/img/LE-ds6/7.png">
+<meta property="og:image" content="http://example.com/img/LE-ds6/8.png">
+<meta property="og:image" content="http://example.com/img/LE-ds6/9.png">
+<meta property="og:image" content="http://example.com/img/LE-ds6/10.png">
+<meta property="article:published_time" content="2024-05-07T11:06:49.000Z">
+<meta property="article:modified_time" content="2024-05-07T11:35:55.885Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="学习经验">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/LE-ds6/1.png">
+  
+  
+  
+  <title>【数据结构】ds笔记6-查找 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Rainel</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>Links</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/p2.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="【数据结构】ds笔记6-查找"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-05-07 19:06" pubdate>
+          May 7, 2024 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.4k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          54 mins
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> views
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">【数据结构】ds笔记6-查找</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>本篇笔记总结<strong>DSPv2b_7(查找) for
+student</strong>内的相关内容。（说到底为什么不先讲图而是先讲查找啊kuso）。依旧，大部分内容照搬ppt，但是<em>5
+B-树和B+树</em>中的<em>5.0
+说在前面</em>是本人依靠智谱清言写出来的（理直气壮）。起因是问了两位学长都表示“我不道啊”，但本人觉得这问题摆在那里实在难受，只得求助AI
+sama。</p>
+<p>以及<em>3.3 插值查找</em>、<em>3.4
+斐波那契查找</em>和<em>4.5倒排索引</em>暂时只有一个标题，大概会在本周内进行更新。再以及，本人的ds笔记中的插图大部分是在是太过不好看，本人争取在下学期开学之前（xd）进行一个大更新。再再以及，祝各位期中顺利。再再再以及，昆明好玩，云南好玩，洋芋和烤蚂蚱都好吃，下辈子一定要投胎到云南！再再再再以及，夏天到了，天气热了，太阳晒了，蚊虫多了，我要躲进屋子里了（卒）</p>
+<p>最后，本人学艺不精，只是一边看着ppt一边敲敲改改，如有疏漏，欢迎提出喵~o(
+=∩ω∩= )m</p>
+<h2 id="trie树">1 Trie树</h2>
+<h3 id="简介">1.1 简介</h3>
+<ol type="1">
+<li>在二叉树遍历中通常是通过比较整个键值来进行的，即每个结点包含一个键
+值，该键值与要查找的键值进行比较从而在树中寻找正确的路径。而用<strong>键值的一部分</strong>来确定查找路径的树称为<strong>trie树</strong>（它来源于retrieval，也可称为<strong>字典树</strong>）。在访问速度要求很高的系统中，如<strong>拼写检查、词频统计</strong>中，Trie结构是一种非常好的选择。</li>
+<li>主要应用：
+<ol type="1">
+<li>信息检索</li>
+<li>用来存储英文字符串，特别是大规模的英文词典（在自然语言理解软件中
+经常用到，如词频统计、拼写检查）</li>
+</ol></li>
+</ol>
+<h3 id="结构">1.2 结构</h3>
+<ol type="1">
+<li><p>两个原则</p>
+<ol type="1">
+<li>键值由固定的字符序列组成（如数字或字母），如Huffman码(只由0,1组成)、英文单词（只由26个字母组成）；</li>
+<li>对应结点的分层标记。</li>
+</ol></li>
+<li><p>结构典型应用：<strong>字典树</strong></p>
+<ol type="1">
+<li>字典树每个内部结点都有26个子结点——多叉树</li>
+<li>树的高度为最长单词长度</li>
+</ol></li>
+<li><p>构造示例</p></li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 一种用于描述单词的trie结构定义</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">tnode</span>&#123;</span>	<span class="hljs-comment">// word tree </span><br>    <span class="hljs-type">char</span> isword;	<span class="hljs-comment">// is or not a word</span><br>    <span class="hljs-type">char</span> isleaf;	<span class="hljs-comment">// is or not a leaf node</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">tnode</span> *<span class="hljs-title">ptr</span>[26];</span><br>&#125;;<br><br><span class="hljs-comment">// 基于trie结构的单词树的构造</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">wordTree</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> tnode *root, <span class="hljs-type">char</span> *w)</span>&#123;<br>    <span class="hljs-comment">// install w at or below p</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">tnode</span> *<span class="hljs-title">p</span>;</span><br>    <span class="hljs-keyword">for</span>(p=root; *w != <span class="hljs-string">&#x27;\0&#x27;</span>; w++)&#123;<br>        <span class="hljs-keyword">if</span>(p-&gt;ptr[*w-<span class="hljs-string">&#x27;a&#x27;</span>] == <span class="hljs-literal">NULL</span>)&#123;<br>            p-&gt;ptr[*w-<span class="hljs-string">&#x27;a&#x27;</span>] = talloc();		<span class="hljs-comment">// 自己写的函数(tree alloc)</span><br>            p-&gt;isleaf = <span class="hljs-number">0</span>;<br>        &#125;<br>        p = p-&gt;ptr[*w-<span class="hljs-string">&#x27;a&#x27;</span>];<br>    &#125;<br>    p-&gt;isword = <span class="hljs-number">1</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="例查家谱">1.3 例：查家谱</h3>
+<ol type="1">
+<li><p>题目：同姓氏中国人见面常说的一句话是“我们五百年前可能是一家”。从当前目录下的文件in.txt中读入一家谱，从标准输入读入两个人的名字（两人的名字肯定会在家谱中出现），编程查找判断这两个人相差几辈，若同辈，还要查找两个人共同的最近祖先以及与
+他（她）们的关系远近。假设输入的家谱中每人最多有两个孩子，例如下图是根据输入形成的一个简单家谱。若要查找的两个人是wangqinian和wangguoan，从家谱中可以看出两人相差两辈；若要查找的两个人是wangping和wanglong，可以看出两人共同的最近祖先是wangguoan，和两人相差两辈。</p>
+<p><img src="/img/LE-ds6/1.png" srcset="/img/loading.gif" lazyload /></p></li>
+<li><p>输入示例：</p>
+<p>假设家谱文件中内容为：</p>
+<p>6</p>
+<p>wangliang wangguoping wangguoan</p>
+<p>wangguoping wangtian wangguang</p>
+<p>wangguoan wangxiang wangsong</p>
+<p>wangtian wangqinian NULL</p>
+<p>wangxiang wangping NULL</p>
+<p>wangsong wanglong NULL</p>
+<p>从标准输入读取：</p>
+<p>wangping wanglong</p></li>
+<li><p>输出示例</p>
+<p>wangguoan wangping 2</p>
+<p>wangguoan wanglong 2</p></li>
+<li><p>说明：wangping和wanglong共同的最近祖先是
+wangguoan，该祖先与两人相差两辈。</p></li>
+<li><p>问题分析与设计</p>
+<ol type="1">
+<li><p>构造家谱（树）：如何利用结点之间的（父子）关系构造树（家谱）。一个简单直接的方法是：</p>
+<p>结点插入法构造。利用前序遍历找到相应的父结点，然后将子结点插入。该方法简单，对结点顺序要求不高（但父结点要在子结点前输入）；该方法的核心就是结点查找。</p></li>
+</ol></li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c">root = <span class="hljs-literal">NULL</span>;<br><span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt;n; i++)&#123; <span class="hljs-comment">//create a family tree</span><br>    <span class="hljs-built_in">fscanf</span>(in,<span class="hljs-string">&quot;%s%s%s&quot;</span>, name0, name1, name2);<br>    root = insert(root, name0, name1, name2);<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="2" type="1">
+<li><p>查家谱：实际上就是查找相应结点。如果能得到结点至根的路径信息，就很容易计算出两个结点关系（如是否同辈、相差几辈、共同的祖先等）。</p>
+<p>如何在查找一个结点时得到其（从根结点至该结点的）路径信息：</p>
+<p>①在前序查找过程中设置一个栈来保存路径信息；</p>
+<p>②一个简单的方法：为每个结点增加一个指向父结点的指针信息，这样在找到结点的同时，也就获得了相应的路径。</p></li>
+</ol>
+<h2 id="查找的基本概念">2 查找的基本概念</h2>
+<h3 id="一些概念">2.1 一些概念</h3>
+<ol type="1">
+<li>属性：描述一个客体某一方面特征的数据信息。</li>
+<li>记录：反映一个客体数据信息的集合（属性的集合），就是数据元素。</li>
+<li>查找表：具有相同属性定义的记录的集合。</li>
+<li>关键字：区分不同记录的属性或属性组（或组合）。
+<ol type="1">
+<li>主关键字(Primary Key)：可以唯一的表示一个记录。</li>
+<li>次关键字</li>
+</ol></li>
+</ol>
+<h3 id="两种类型静态查找表和动态查找表">2.2
+两种类型：静态查找表和动态查找表</h3>
+<ol type="1">
+<li><p>静态查找表(只进行查找操作)</p>
+<p>如果只在查找表中确定某个特定记录是否存在或检索某个特定记录的属性，此类查找表为静态查找表(Static
+Search Table)</p></li>
+<li><p>动态查找表（查找同时可能有插入或者删除操作）</p>
+<p>如果在查找表中需要插入不存在的数据元素（记录）或需要删除检索到的数据元素（记录），此类查找表为动态查找表(Dynamic
+Search Table)</p></li>
+</ol>
+<h2 id="顺序表的查找">3 顺序表的查找</h2>
+<h3 id="折半查找">3.1 折半查找</h3>
+<ol type="1">
+<li><p>思路</p>
+<ol type="1">
+<li>将要查找的关键字值与当前查找范围内位置居中的记录的关键字的值进行比较。</li>
+<li>若匹配，则查找成功，给出被查到记录在查找表中的位置，查找结束。</li>
+<li>若要查找的关键字值小于位置居中的记录的关键字值，则到当前查找范围的前
+半部分重复上述查找过程，否则，到当前查找范围的后半部分重复上述查找过
+程，直到查找成功或者失败。</li>
+<li>若查找失败，则给出错误信息（如：-1）。</li>
+</ol></li>
+<li><p>变量含义</p>
+<ul>
+<li><p><code>n</code>：有序连续顺序查找表中记录的个数</p></li>
+<li><p><code>low</code>：当前查找范围内第一个记录在查找表中的位置</p></li>
+<li><p><code>high</code>：当前查找范围内最后一个记录在查找表中的位置</p></li>
+<li><p><code>mid</code>：当前查找范围内位置居中的记录在查找表中的位置。</p>
+<p><code>mid = (low + high) / 2</code></p></li>
+</ul></li>
+<li><p>算法</p>
+<ol type="1">
+<li>递归算法</li>
+</ol></li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 算法的调用方式</span><br>low = <span class="hljs-number">0</span>;<br>high = n<span class="hljs-number">-1</span>;<br>pos = binsearch2(KEY, low, high, k);<br><br><span class="hljs-comment">// 算法</span><br><span class="hljs-type">int</span> <span class="hljs-title function_">binsearch2</span><span class="hljs-params">(keytype key[], <span class="hljs-type">int</span> low, <span class="hljs-type">int</span> high, keytype k)</span>&#123;<br>    <span class="hljs-type">int</span> mid;<br>    <span class="hljs-keyword">if</span>(low&gt;high)	<span class="hljs-comment">// 查找失败，返回-1。如有要求做插入操作，就在Low的位置</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>    <span class="hljs-keyword">else</span>&#123; <br>        mid = (low+high)/<span class="hljs-number">2</span>;		<span class="hljs-comment">// 取中</span><br>        <span class="hljs-keyword">if</span>(k == key[mid])		<span class="hljs-comment">// 找到</span><br>            <span class="hljs-keyword">return</span> mid;<br>        <span class="hljs-keyword">else</span><br>            <span class="hljs-keyword">if</span>(k &lt; key[mid])<span class="hljs-comment">// 要找的元素小于中间元素，范围缩半到前半部分</span><br>                <span class="hljs-keyword">return</span> binsearch2(key, low, mid–<span class="hljs-number">1</span>, k);<br>            <span class="hljs-keyword">else</span> <span class="hljs-comment">// 要找的元素大于中间元素，范围缩半到后半部分</span><br>                <span class="hljs-keyword">return</span>  binsearch2(key, mid+<span class="hljs-number">1</span>, high, k);<br>&#125; <br></code></pre></td></tr></table></figure>
+<pre><code class="hljs">  2. 非递归算法</code></pre>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">binsearch</span><span class="hljs-params">(keytype key[], <span class="hljs-type">int</span> n, keytype k)</span>&#123;<br><span class="hljs-comment">// 注意区分于递归算法的形式参数</span><br>	<span class="hljs-type">int</span> low=<span class="hljs-number">0</span>, high=n<span class="hljs-number">-1</span>, mid;<br>	<span class="hljs-keyword">while</span> (low &lt;= high) &#123;		<span class="hljs-comment">// 查找结束的条件low &gt;high    </span><br>    	mid = (low+high)/<span class="hljs-number">2</span>;<br>    	<span class="hljs-keyword">if</span>(k == key[mid])<br>        	<span class="hljs-keyword">return</span> mid;		<span class="hljs-comment">// 查找成功</span><br>    	<span class="hljs-keyword">if</span>(k &gt; key[mid])<br>        	low = mid+<span class="hljs-number">1</span>;		<span class="hljs-comment">// 准备查找后半部分</span><br>    	<span class="hljs-keyword">else</span><br>        	high = mid–<span class="hljs-number">1</span>;		<span class="hljs-comment">// 准备查找前半部分</span><br>    &#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;				<span class="hljs-comment">// 查找失败</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="4" type="1">
+<li><p>判定树</p>
+<p>若把当前查找范围内居中的记录的位置作为根结点，前半部分与后半部分记录的位置分别构成根结点的左子树与右子树,则由此得到一棵称为“判定树”的二叉树，利用它来描述折半查找的过程。</p>
+<p><img src="/img/LE-ds6/2.png" srcset="/img/loading.gif" lazyload /></p></li>
+<li><p>平均查找长度ASL</p>
+<p><img src="/img/LE-ds6/3.png" srcset="/img/loading.gif" lazyload /></p></li>
+<li><p>优点：</p>
+<ol type="1">
+<li>查找原理和过程简单，易于理解。</li>
+<li>查找的时间效率较高</li>
+</ol></li>
+<li><p>缺点：</p>
+<ol type="1">
+<li>要求查找表中的记录按照关键字值有序排列（为了保持数据集为排序顺序数据集，在数据集中插入和删除记录时需要移动大量的其它记录）</li>
+<li>对于查找表，只适用于有序连续顺序表</li>
+</ol></li>
+<li><p>使用场景：</p>
+<p>静态查找表；数据元素按值有序排列；采用顺序存储结构</p></li>
+<li><p>对于动态查找表，元素没有查找到时通常要进行插入操作，基于折半查找算法，如何获取元素的插入位置？</p></li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">insertElem</span><span class="hljs-params">(ElemType <span class="hljs-built_in">list</span>[ ], ElemType item)</span>&#123;<br>    <span class="hljs-type">int</span> i=<span class="hljs-number">0</span>, j;<br>    <span class="hljs-keyword">if</span> (N == MAXSIZE)<br>		<span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>; <br>    i = searchElem(<span class="hljs-built_in">list</span>, item);		<span class="hljs-comment">// 寻找item的合适位置     </span><br>    <span class="hljs-keyword">for</span>(j=N<span class="hljs-number">-1</span>; j&gt;=i; j--)<br>        <span class="hljs-built_in">list</span>[j+<span class="hljs-number">1</span>] = <span class="hljs-built_in">list</span>[j];<br>    <span class="hljs-built_in">list</span>[i] = item;					<span class="hljs-comment">// 将item插入表中</span><br>    N++;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-type">int</span> <span class="hljs-title function_">searchElem</span><span class="hljs-params">(ElemType <span class="hljs-built_in">list</span>[ ], ElemType item)</span>&#123;<br>    <span class="hljs-type">int</span> low=<span class="hljs-number">0</span>, high=N<span class="hljs-number">-1</span>, mid;<br>    <span class="hljs-keyword">while</span>(low &lt;= high)&#123;<br>        mid = (high + low) / <span class="hljs-number">2</span>;<br>			<span class="hljs-keyword">if</span>(item &lt; <span class="hljs-built_in">list</span>[mid])<br>				high = mid – <span class="hljs-number">1</span>;<br>			<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(item &gt; <span class="hljs-built_in">list</span>[mid])<br>				low = mid + <span class="hljs-number">1</span>;<br>			<span class="hljs-keyword">else</span><br>				<span class="hljs-keyword">return</span> (mid);<br>    &#125;<br>    <span class="hljs-keyword">return</span> low ;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="链接查找表的查找">3.2 链接查找表的查找</h3>
+<ol type="1">
+<li><p>适合动态查找表，但查找效率低</p></li>
+<li><p>链节点构造：<img src="/img/LE-ds6/4.png" srcset="/img/loading.gif" lazyload /></p>
+<p><code>key</code>是关键字值，<code>rec</code>是记录的存储位置</p></li>
+<li><p>算法</p></li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span>&#123;</span><br>    keytype key;<br>    rectype rec;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> *<span class="hljs-title">link</span>;</span><br>&#125;;<br><span class="hljs-comment">// 从链表的入口指针开始，依次查找每个链结点</span><br><span class="hljs-keyword">struct</span> node *<span class="hljs-title function_">search</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> node *p, keytype k)</span>&#123;    <br>	<span class="hljs-keyword">for</span>(; p!=<span class="hljs-literal">NULL</span>; p=p-&gt;link)<br>		<span class="hljs-keyword">if</span>(p-&gt;key==k)<br>			<span class="hljs-keyword">return</span> p;		<span class="hljs-comment">// 查找成功</span><br>	<span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span>;		<span class="hljs-comment">// 查找失败</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="插值查找interpolation-search">3.3 *插值查找(Interpolation
+Search)</h3>
+<h3 id="斐波那契查找fibonacci-search">3.4 *斐波那契查找(Fibonacci
+Search)</h3>
+<h2 id="索引">4 索引</h2>
+<h3 id="索引的基本概念">4.1 索引的基本概念</h3>
+<ol type="1">
+<li>索引：记录<strong>关键字值</strong>与记录的<strong>存储位置</strong>之间的对应关系。</li>
+<li>索引文件（建立了索引的文件）：由<strong>基本数据</strong>与<strong>索引表</strong>两部分组成的数据集称为索引文件。</li>
+<li>索引表的特点
+<ol type="1">
+<li>一般由基本数据表经处理产生；</li>
+<li>表项按关键字值有序排列。</li>
+</ol></li>
+</ol>
+<h3 id="稠密索引">4.2 稠密索引</h3>
+<ol type="1">
+<li>特点：基本数据中的每一个记录在索引表中都占有一项。</li>
+<li>在稠密索引文件中查找一个记录存在与否的过程是直接查找索引表。</li>
+</ol>
+<h3 id="非稠密索引分块索引">4.3 非稠密索引——分块索引</h3>
+<ol type="1">
+<li><p>特点：将文件的基本数据中记录分成若干块(块与块之间记录按关键字值有序,
+块内记录是否按关键字值有序无所谓),索引表中为每一块建立一项。</p></li>
+<li><p>在非稠密索引(分块)文件中查找一个记录存在与否的过程是：先查找索引表(确定被查找记录所在块)，然后在相应块中查找被查记录存在与否。</p></li>
+</ol>
+<h3 id="多级索引">4.4 多级索引</h3>
+<p>当索引文件本身非常庞大时, 可以把索引文件再分块, 建立索引文件的索引,
+形成树形结构的多级索引结构。</p>
+<h3 id="倒排索引">4.5 *倒排索引</h3>
+<h2 id="b-树和b树">5 B-树和B+树</h2>
+<h3 id="说在前面">5.0 说在前面</h3>
+<p>我在看B-树（B树）和B+树的ppt时看着看着就晕了，为什么B树的叶结点不包含任何关键字信息，B-树和B+树的区别中的第二点是什么意思，特别的，B树节点中的<code>recptr[M+1]</code>究竟指向哪里。想要搞清这些问题，我们首先要搞清B树究竟是用来干什么的。</p>
+<p><a
+href="%5B智谱清言%20(chatglm.cn)%5D(https://chatglm.cn/main/toolsCenter)">智谱清言</a>告诉我，“B树是一种自平衡的树数据结构，它设计用于在磁盘存储或其他直接访问的辅助存储设备上高效地管理和访问大量数据。B树的节点通常对应于磁盘上的一个块，因此它可以减少磁盘I/O操作，提高数据检索的效率”。也就是说，B树的结点最终连接的并不是那堆<code>key</code>，那些<code>key</code>只是数据记录们的一个昵称，就像学号和学生本人一样。我们把数据记录们”翻译“成一个个<code>key</code>，再把每个<code>key</code>和数据记录的地址绑定在一起，这样我们就能够通过对<code>key</code>进行操作来操作数据记录了。在我看来，我们可以把B树和Hash表进行类比，B树就是变成了树的Hash表。以上，我们可以解决刚刚提出的问题：</p>
+<ol type="1">
+<li><p>B树节点中的<code>recptr[i]</code>究竟指向哪里？</p>
+<p>它指向了<code>key[i]</code>对应的那堆数据记录，这些数据记录可能存储在磁盘上，也可能存储在内存中，取决于具体的B树实现和应用程序。</p></li>
+<li><p>为什么B树的叶结点不包含任何关键字信息？</p>
+<p>因为因为B树中的所有“有用的信息”（即关键字和对应的数据记录）都存放在数组<code>key</code>和数组<code>recptr</code>里。</p></li>
+<li><p>B树和B+树的区别中的第二点是什么意思？</p>
+<p>提到的这一点区别是“B-树的每个分支结点中含有指向关键字值对应记录的指针，而B+树只有叶结点有指向关键字值对应记录的指针”。</p>
+<p>这句话的意思是，B树的每个分支结点都有<code>recptr</code>，指向<code>key</code>值对应的数据记录。而B+树的非叶结点的指针仅用于引导搜索过程，不指向<code>key</code>值对应的数据记录；只有其叶结点的指针指向<code>key</code>值对应的数据记录。这也是为什么B+树的叶结点包含了所有的关键字和对应的数据记录的指针，也是为什么B+树会有一个指针指向最左边的叶结点（B+树可以通过遍历所有叶结点来遍历所有的数据记录；但是由于B-树的叶结点全部为空，叶结点的父亲结点也不包括全部的关键字和对应的数据记录，无法通过遍历某一层的结点来遍历所有的数据记录）。</p></li>
+</ol>
+<h3 id="b-树的定义">5.1 B-树的定义</h3>
+<p><img src="/img/LE-ds6/11.png" srcset="/img/loading.gif" lazyload /></p>
+<p>一个m阶的B-树为满足下列条件的m叉树：</p>
+<ol type="1">
+<li><p>每个分支节点最多有m棵子树；</p></li>
+<li><p>除根节点外，每个分支节点最少有⌈m/2⌉棵子树；</p></li>
+<li><p>根结点最少有两棵子树（除非根为叶结点，此时B-树只有一个结点）；</p></li>
+<li><p>所有“叶结点”都在同一层上，叶节点不包含任何关键字信息（可以把叶结点视为实际上不存在的外部结点，指向这些“叶结点”的指针为空）；</p></li>
+<li><p>所有分支结点中包含下列信息：</p>
+<p><strong>n, p<sub>0</sub>, key<sub>1</sub>, p<sub>1</sub>,
+key<sub>2</sub>, p<sub>1</sub>, ..., key<sub>n</sub>,
+p<sub>n</sub></strong></p>
+<p>其中n为结点中关键字值的个数，<strong>n≤m-1</strong>；</p>
+<p>key<sub>i</sub>为关键字，且满足key<sub>i</sub>&lt;key<sub>i+1</sub>，1≤i&lt;n；</p>
+<p>p<sub>i</sub>为指向该结点的第i+1棵子树的根的指针，0≤i≤n，p<sub>i</sub>指的结点中所有关键字值都大于key<sub>i</sub>。</p></li>
+</ol>
+<h3 id="b-树的查找">5.2 B-树的查找</h3>
+<ol type="1">
+<li><p>分析：首先将给定的关键字k在B-树的根结点的关键字集合中采用<strong>顺序查找法</strong>或者<strong>折半查找法</strong>进行查找，若有<strong>k=key<sub>i</sub>，则查找成功</strong>，根据相应的指针取得记录。否则，若<strong>k&lt;keyi,则在指针p<sub>i-1</sub>所指的结点中重复上述查找过程</strong>，直到在某结点中查找成功，或者有<strong>p<sub>i-1</sub>=NULL，查找失败</strong>。</p></li>
+<li><p>算法</p></li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> M 1000</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> &#123;</span><br>	<span class="hljs-type">int</span> keynum;<br>	keytype key[M+<span class="hljs-number">1</span>];<br>	<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> *<span class="hljs-title">ptr</span>[<span class="hljs-title">M</span>+1];</span>		<span class="hljs-comment">// 自引用的指针</span><br>	rectype *recptr[M+<span class="hljs-number">1</span>];		<span class="hljs-comment">// 关键字对应的存储地址，指向key对应的数据记录，这些数据记录可能存储在磁盘上，也可能存储在内存中，取决于具体的B树实现和应用程序</span><br>&#125; BNode;<br><br>keytype <span class="hljs-title function_">searchBTree</span><span class="hljs-params">(BNode *t,keytype k)</span>&#123;<br>    <span class="hljs-type">int</span> i, n;<br>    BNode *p = t;<br>    <span class="hljs-keyword">while</span>(p!=<span class="hljs-literal">NULL</span>)&#123;<br>        n = p-&gt;keynum;		<span class="hljs-comment">// 一共有n个</span><br>        p-&gt;key[n+<span class="hljs-number">1</span>] = Maxkey;<br>        i = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">while</span>(k &gt; p-&gt;key[i])	<span class="hljs-comment">// 直到找到第一个≤k的key</span><br>        	i++;<br>        <span class="hljs-keyword">if</span>(p-&gt;key[i] == k)<br>        	<span class="hljs-keyword">return</span> p-&gt;key[i];<br>        <span class="hljs-keyword">else</span><br>        	p = p-&gt;ptr[i<span class="hljs-number">-1</span>];           <br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="b-树的插入">5.3 B-树的插入</h3>
+<ol type="1">
+<li><p>基本思想</p>
+<p>若将k插入到某结点后使得该结点中关键字值数目<strong>超过m-1</strong>时，则要以该结点位置居中的那个关键字值为界将该结点<strong>一分为二</strong>，产生一个新结点，并把<strong>位置居中的那个关键字值插入到双亲结点中</strong>；如双亲结点也出现上述情况，则需要<strong>再次进行分裂</strong>。最坏情况下，需要一直分裂到根结点，以致于使得B-树的深度加1。</p></li>
+<li><p>例</p>
+<p><img src="/img/LE-ds6/5.png" srcset="/img/loading.gif" lazyload /></p></li>
+</ol>
+<p><img src="/img/LE-ds6/6.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="b树的定义">5.4 B+树的定义</h3>
+<p>一个m阶的B+树为满足下列条件的m叉树：</p>
+<ol type="1">
+<li><p>每个分支结点最多有m棵子树；</p></li>
+<li><p>除根结点外，每个分支结点最少有⌈m/2⌉棵子树；</p></li>
+<li><p>根结点最少有两棵子树(除非根为叶结点结点,此时B+树只有一个结点)；</p></li>
+<li><p>具有n棵子树的结点中一定有n个关键字；</p></li>
+<li><p>叶结点中存放记录的关键字以及指向记录的指针，或者数据分块后每块的最大关键字值及指向该块的指针，并且叶结点按关键字值的大小顺序链接成线性链表。
+<strong>key<sub>1</sub> p<sub>1</sub> key<sub>2</sub> p<sub>2</sub> ……
+key<sub>n</sub> p<sub>n</sub></strong></p></li>
+<li><p>所有分支结点可以看成是索引的索引，结点中仅包含它的各个孩子结点中最大(或最小)关键字值和指向孩子结点的指针。</p>
+<p><img src="/img/LE-ds6/7.png" srcset="/img/loading.gif" lazyload /></p></li>
+</ol>
+<h3 id="b-树和b树的区别">5.5 B-树和B+树的区别</h3>
+<ol type="1">
+<li>B-树的每个分支结点中含有该结点中关键字值的个数，B+树没有；</li>
+<li>B-树的每个分支结点中含有指向关键字值对应记录的指针，而B+树只有叶结点有指向关键字值对应记录的指针；</li>
+<li>B-树只有一个指向根结点的入口，而B+树的叶结点被链接成为一个不等长的链表，因此，B+树有两个入口，一个指向根结点，另一个指向最左边的叶结点(即最小关键字所在的叶结点)。</li>
+</ol>
+<h2 id="散列hash查找">6 散列(Hash)查找</h2>
+<h3 id="三列查找的基本概念">6.1 三列查找的基本概念</h3>
+<ol type="1">
+<li><p><code>A = H(k)</code></p>
+<p>其中<code>k</code>为记录的关键字，<code>H(k)</code>称为散列函数，或哈希(Hash)函数，或杂凑函数。函数值<code>A</code>为<code>k</code>对应的记录在查找表中的位置</p></li>
+<li><p>散列冲突</p>
+<p>对于不同的关键字k<sub>i</sub>与k<sub>j</sub>，经过散列得到相同的散列地址，即有H(k<sub>i</sub>)
+= H(k<sub>j</sub>)，这种现象称为<strong>散列冲突</strong>。</p></li>
+<li><p>什么是散列表</p>
+<p>根据构造的散列函数与处理冲突的方法将一组关键字<strong>映射到一个有限的连续地址集合</strong>上，并以关键字在该集合中的“象”作为记录的存储位置，按照这种方法组织起来表称为<strong>散列表</strong>，或<strong>哈希表</strong>，或称<strong>杂凑表</strong>；建立表的过程称为哈希造表或者散列，得到的存储位置称为<strong>散列地址</strong>或者<strong>杂凑地址</strong>。</p></li>
+</ol>
+<h3 id="散列函数的构造">6.2 散列函数的构造</h3>
+<ol type="1">
+<li><p>原则</p>
+<ul>
+<li>散列函数的定义域必须包括将要存储的全部关键字；若散列表允许有m个位置时，则函数的值域为[0
+.. m–1](地址空间)。</li>
+<li>利用散列函数计算出来的地址应能尽可能均匀分布在整个地址空间中。</li>
+<li>散列函数应该尽可能简单，应该在较短的时间内计算出结果。</li>
+</ul></li>
+<li><p>确立散列表的步骤</p>
+<ul>
+<li>确定散列的地址空间(地址范围)；</li>
+<li>构造合适的散列函数；</li>
+<li>选择处理冲突的方法。</li>
+</ul></li>
+<li><p>散列函数的构造方法</p>
+<ul>
+<li><p>直接定址法</p>
+<p>一般形式：<code>H(k) = ak + b</code></p></li>
+<li><p>数字分析法</p></li>
+<li><p>平方取中法</p></li>
+<li><p>叠加法</p></li>
+<li><p>除留余数法</p>
+<p><code>H(k) = k % p</code>，其中，若<code>m</code>（散列地址为[0...m-1]）为地址范围大小（或称表长），则<code>p</code>可为小于等于m的素数</p></li>
+</ul></li>
+</ol>
+<h3 id="冲突的处理方法">6.3 冲突的处理方法</h3>
+<p>所谓处理冲突，是在发生冲突时，为冲突的元素找到另一个散列地址以存放该元素。如果找到的地址仍然发生冲突，则继续为发生冲突的这个元素寻找另一个地址，直到不再发生冲突。</p>
+<ol type="1">
+<li><p>开放地址法（闭散列方法）</p>
+<p>所谓开放地址法是在散列表中的<strong>“空”地址向处理冲突开放</strong>。即当散列表未满时，处理冲突需要的“下一个”地址在该散列表中解决。</p>
+<p><strong>D<sub>i</sub> = (H(k) + d<sub>i</sub>) % m</strong> (i = 1,
+2, 3, ...)</p>
+<p>其中，H(k)为哈希函数，m为表长，d<sub>i</sub>为地址增量，有：</p>
+<ol type="1">
+<li>d<sub>i</sub> = 1, 2, 3, …, m–1 称为线性探测再散列</li>
+<li>d<sub>i</sub> = 1<sup>2</sup>, -1<sup>2</sup>, 2<sup>2</sup>,
+-2<sup>2</sup>, …, 称为二次探测再散列</li>
+<li>d<sub>i</sub> = 伪随机数序列 称为伪随机再散列</li>
+</ol>
+<p><strong>聚集</strong>：散列地址不同的元素争夺同一个后继散列地址的现象</p>
+<ul>
+<li><p>产生聚集的主要原因：散列函数选择的不合适；负载因子过大</p></li>
+<li><p>负载因子(α)：衡量散列表的饱满程度 <span class="math display">\[
+\alpha = \frac{散列表中实际存入的元素数}{散列表中基本区的最大容量}
+\]</span></p></li>
+</ul>
+<p>特点：</p>
+<ul>
+<li>“线性探测法”容易产生元素“聚集”的问题。</li>
+<li>“二次探测法”可以较好地避免元素“聚集”的问题，但不能探测到表中的所有元素(至少可以探测到表中的一半元素)。</li>
+<li>只能对表项进行逻辑删除(如做删除标记)，而不能进行物理删除。使得表面上看起来很满的散列表实际上存在许多未用位置。</li>
+</ul></li>
+<li><p>再散列法</p>
+<p>D<sub>i</sub> = H<sub>i</sub>(k), i=1,2,3,...</p>
+<p>其中，D<sub>i</sub>为散列地址，H<sub>i</sub>(k)为不同的散列函数。</p></li>
+<li><p>链地址法</p>
+<p>将所有散列地址相同的记录链接成一个<strong>线性链表</strong>。若散列范围为[0...m-1]，则定义指针数组bucket[0...m-1]分别存放m个链表的头指针。</p>
+<p><img src="/img/LE-ds6/8.png" srcset="/img/loading.gif" lazyload /></p>
+<p>散列表查找与创建的算法实现：</p></li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span>&#123;</span>   <br>    ElemType data;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> *<span class="hljs-title">next</span>;</span><br>&#125;; <span class="hljs-comment">//list </span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> *<span class="hljs-title">Hashtab</span>[<span class="hljs-title">NHASH</span>];</span><br><br><span class="hljs-comment">// 散列表的查找和创建函数：</span><br><span class="hljs-comment">// lookup: find key in Hashtab</span><br><span class="hljs-keyword">struct</span> node *<span class="hljs-title function_">lookup</span><span class="hljs-params">(ElemType key, <span class="hljs-type">int</span> create)</span>&#123;		<span class="hljs-comment">// create为1则创建，否则只查找</span><br>    <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> h;<br>    strcut node *p;<br>    h = hash(key);		<span class="hljs-comment">// h为key的hash函数值</span><br>    <span class="hljs-keyword">for</span>(p=Hashtab[h]; p!=<span class="hljs-literal">NULL</span>; p=p-&gt;next)		<span class="hljs-comment">// 遍历hash函数值为h的所有自变量</span><br>    <span class="hljs-keyword">if</span>(p-&gt;data == key)<br>    	<span class="hljs-keyword">return</span> p;<br>    <span class="hljs-keyword">if</span>(create)&#123;		<span class="hljs-comment">// create = 1</span><br>        p = (<span class="hljs-keyword">struct</span> node *)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> node));<br>        p-&gt;data = key; p-&gt;next = Hashtab[h];  Hashtab[h] = p;<br>	&#125;<br>	<span class="hljs-keyword">return</span> p;<br>&#125;<br><span class="hljs-comment">// 当散列出现冲突时，新插入的元素放在链表的头部，这样算法简洁，效率更高；</span><br><span class="hljs-comment">// 由于链表查找效率低，可使用一棵二叉查找树或另一个散列表来代替链表解决冲突。</span><br></code></pre></td></tr></table></figure>
+<p>特点：</p>
+<ul>
+<li>处理冲突简单，不会产生元素“聚集”现象，平均查找长度较小。</li>
+<li>适合建立散列表之前难以确定表长的情况。</li>
+<li>建立的散列表中进行删除操作简单。</li>
+<li>由于指针域需占用额外空间，当规模较小时，不如“开放地址法”节省空间。</li>
+</ul>
+<h3 id="散列表的典型应用">6.4 散列表的典型应用</h3>
+<ol type="1">
+<li><p>符号表</p>
+<p>散列表的一个典型应用是符号表（symbol），用于在<strong>数据值和动态符号（如变量名，关键码）集</strong>的成员间建立一种关联。符号表是编译系统中主要的数据结构，用于管理用户程序中各个变量的信息，通常编程系统使用散列表来组织符号表。散列表的思想就是把关键码送给一个散列函数，以产生一个散列值，这种值通常平均分布在一个适当的整数区间中，用作存储信息的表的下标。常见做法是为每一个散列值关联一个数据项的链表，这此项共有同一个散列值（散列冲突）。</p>
+<p>符号表的定义使用：</p></li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">val</span>&#123;</span> <span class="hljs-comment">//符号散列表义：</span><br>    <span class="hljs-type">char</span> *name;<br>    <span class="hljs-type">int</span> value;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">val</span> *<span class="hljs-title">next</span>;</span><br>&#125;;<br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">val</span> *<span class="hljs-title">symtab</span>[<span class="hljs-title">NHASH</span>];</span><br><br><span class="hljs-comment">// 符号查找和创建函数：</span><br><span class="hljs-comment">// lookup: find name in symtab</span><br><span class="hljs-keyword">struct</span> val *<span class="hljs-title function_">lookup</span><span class="hljs-params">(<span class="hljs-type">char</span> *name, <span class="hljs-type">int</span> create)</span>&#123;<br>	<span class="hljs-type">int</span> h;<br>    strcut val *p;<br>    h = hash(name);<br>    <span class="hljs-keyword">for</span>(p=symtab[h]; p!=<span class="hljs-literal">NULL</span>; p=p-&gt;next)<br>        <span class="hljs-keyword">if</span>(<span class="hljs-built_in">strcmp</span>(name, p-&gt;name) == <span class="hljs-number">0</span>)<br>            <span class="hljs-keyword">return</span> p;<br>    <span class="hljs-keyword">if</span>(create)&#123;<br>        p = (<span class="hljs-keyword">struct</span> val *)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> val));<br>        p-&gt;name = name; p-&gt;next = symtab[h];  symtab[h] = p;<br>    &#125;<br>    <span class="hljs-keyword">return</span> p;<br>&#125;<br><br><span class="hljs-comment">// Hash函数：</span><br><span class="hljs-comment">// hash: compute hash value of string</span><br><span class="hljs-class"><span class="hljs-keyword">enum</span>&#123;</span> <br>    MULTIPLIER = <span class="hljs-number">31</span><br>&#125;; <span class="hljs-comment">//根据经验，对于ASCII串31,37很好</span><br><br><span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> <span class="hljs-title function_">hash</span><span class="hljs-params">(<span class="hljs-type">char</span> *str)</span>&#123;<br>    <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> h=<span class="hljs-number">0</span>; <br>    <span class="hljs-type">char</span> *s;<br>    <span class="hljs-keyword">for</span>(s=str; *s!=<span class="hljs-string">&#x27;\0&#x27;</span>; s++)<br>        h = MULTIPLIER * h + *s;<br>    <span class="hljs-keyword">return</span> h%NHASH;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="2" type="1">
+<li>一个针对字符串好的Hash函数：</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// ( from Data Structures and Algorithm Analysis in C – Mark Allen Weiss)</span><br><span class="hljs-comment">// hash: compute hash value of string</span><br><span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> <span class="hljs-title function_">hash</span><span class="hljs-params">(<span class="hljs-type">char</span> *str)</span>&#123;<br>    <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> h=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span>(*str != <span class="hljs-string">&#x27;\0&#x27;</span>)<br>        h = (h&lt;&lt;<span class="hljs-number">5</span>) + *str++;<br>    <span class="hljs-keyword">return</span> h%TableSize;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="例词频统计hash表">6.5 例：词频统计——Hash表</h3>
+<ol type="1">
+<li><p>问题：编写程序统计一个文件中每个单词的出现次数（词频统计），并按字典序输出每个单词及出现次数。</p></li>
+<li><p>算法分析：基本上只有查找和插入操作。</p>
+<p><img src="/img/LE-ds6/9.png" srcset="/img/loading.gif" lazyload /></p>
+<p>本问题有如下特点：</p>
+<ol type="1">
+<li><p>问题规模不知（即需要统计的单词数量末知），有可很大，如对一本小说进行词频统计；</p></li>
+<li><p>单词表在查找时需要频繁的执行插入操作，是一种典型的动态查找表。</p></li>
+</ol>
+<p>针对上述问题，在“线性表”一章采用了顺序表、链表来实现；在“树”一章中采用了二叉排序树（BST）来实现。BST实现方式虽然查找效率较高，但由于树并不是理想的平衡树，查找效率不如折半查找。有没有更好的方法提高查找效率？</p>
+<p><img src="/img/LE-ds6/10.png" srcset="/img/loading.gif" lazyload /></p></li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" class="category-chain-item">学习经验</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">数据结构</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/" class="print-no-link">#学习经验</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>【数据结构】ds笔记6-查找</div>
+      <div>http://example.com/2024/05/07/LE-ds6/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>May 7, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/05/13/LE-ds7/" title="【数据结构】ds笔记7-排序">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【数据结构】ds笔记7-排序</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/04/23/LE-ds5/" title="【数据结构】ds笔记5-树">
+                        <span class="hidden-mobile">【数据结构】ds笔记5-树</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP备2024049620号
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
