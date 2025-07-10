@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="关于如何利用ppt上给出的主要算法设计在没读懂题的情况下高效地写出bank题，又名究竟什么时候要更新窗口 什么时候要入队 什么时候出队我完全搞不懂，所以还是当成ppt修改题来写吧。也就是说，本文主打一个浑水摸鱼不求甚解，如果你想要真正搞懂bank题，建议去看看学长学姐们写的数据结构debug手册的4.2和ghgg的博客 1 PPT上的旧bank和作业的新bank有何不同 唯一的区别：新bank中每">
+    <meta name="description" content="关于如何利用ppt上给出的主要算法设计在没读懂题的情况下高效地写出bank题，又名究竟什么时候要更新窗口 什么时候要入队 什么时候出队我完全搞不懂，所以还是当成ppt修改题来写吧。也就是说，本文主打一个浑水摸鱼不求甚解，如果你想要真正搞懂bank题，建议去看看学长学姐们写的数据结构debug手册的4.2和ghgg的博客 1 PPT上的旧bank和作业的新bank有何不同 唯一的区别：新b">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【数据结构】简短的新bank题思路分享">
 <meta property="og:url" content="http://example.com/2024/04/09/LE-ds4-1/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="关于如何利用ppt上给出的主要算法设计在没读懂题的情况下高效地写出bank题，又名究竟什么时候要更新窗口 什么时候要入队 什么时候出队我完全搞不懂，所以还是当成ppt修改题来写吧。也就是说，本文主打一个浑水摸鱼不求甚解，如果你想要真正搞懂bank题，建议去看看学长学姐们写的数据结构debug手册的4.2和ghgg的博客 1 PPT上的旧bank和作业的新bank有何不同 唯一的区别：新bank中每">
+<meta property="og:description" content="关于如何利用ppt上给出的主要算法设计在没读懂题的情况下高效地写出bank题，又名究竟什么时候要更新窗口 什么时候要入队 什么时候出队我完全搞不懂，所以还是当成ppt修改题来写吧。也就是说，本文主打一个浑水摸鱼不求甚解，如果你想要真正搞懂bank题，建议去看看学长学姐们写的数据结构debug手册的4.2和ghgg的博客 1 PPT上的旧bank和作业的新bank有何不同 唯一的区别：新b">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-04-09T08:57:00.000Z">
 <meta property="article:modified_time" content="2024-05-07T11:29:45.154Z">
@@ -306,38 +306,38 @@
             
               <div class="markdown-body">
                 
-                <p>关于如何利用ppt上给出的主要算法设计在没读懂题的情况下高效地写出bank题，又名究竟什么时候要更新窗口 什么时候要入队 什么时候出队我完全搞不懂，所以还是当成ppt修改题来写吧。也就是说，本文主打一个浑水摸鱼不求甚解，如果你想要真正搞懂bank题，建议去看看学长学姐们写的<a target="_blank" rel="noopener" href="https://kdocs.cn/l/chaygMiWEss2">数据结构debug手册</a>的4.2和<a target="_blank" rel="noopener" href="https://cool-wind.top/2023/04/24/%E5%85%B3%E4%BA%8E%E6%96%B0BANK%E5%92%8C%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E5%85%B3%E7%B3%BB/">ghgg的博客</a></p>
-<h2 id="1-PPT上的旧bank和作业的新bank有何不同">1 PPT上的旧bank和作业的新bank有何不同</h2>
+                <p>关于如何利用ppt上给出的主要算法设计在没读懂题的情况下高效地写出bank题，又名究竟什么时候要更新窗口
+什么时候要入队
+什么时候出队我完全搞不懂，所以还是当成ppt修改题来写吧。也就是说，本文主打一个浑水摸鱼不求甚解，如果你想要真正搞懂bank题，建议去看看学长学姐们写的<a
+target="_blank" rel="noopener" href="https://kdocs.cn/l/chaygMiWEss2">数据结构debug手册</a>的4.2和<a
+target="_blank" rel="noopener" href="https://cool-wind.top/2023/04/24/关于新BANK和函数调用关系/">ghgg的博客</a></p>
+<h2 id="ppt上的旧bank和作业的新bank有何不同">1
+PPT上的旧bank和作业的新bank有何不同</h2>
 <p>唯一的区别：新bank中每个客户的办业务时间不同。</p>
 <ul>
-<li>
-<p>这代表着可能先来的人后办完业务，也就是说不能出队一个客户就输出一个客户，需要<strong>等到办完所有业务再统一输出</strong>。</p>
-</li>
-<li>
-<p>同时这代表着新bank的输入发生了变化，需要修改主要算法。</p>
+<li><p>这代表着可能先来的人后办完业务，也就是说不能出队一个客户就输出一个客户，需要<strong>等到办完所有业务再统一输出</strong>。</p></li>
+<li><p>同时这代表着新bank的输入发生了变化，需要修改主要算法。</p>
 <p>如何修改？</p>
 <p>首先，原算法是在每一周期内读入本周期入队人数，但由于新bank先输入每一周期入队人数，再输入每个客户的业务时长，故不如改为<strong>直接读入每一周期的客户人数即每一位客户的业务时长</strong>，再进行主要算法的处理。</p>
 <blockquote>
 <p>旧bank主要算法：</p>
 <p>for(clock=1; ; clock++) //在每个时间周期内</p>
 <p>{</p>
-<ol>
-<li>
-<p>If 客户等待队列非空</p>
-<p>​	将每个客户的等待时间增加一个时间单元；</p>
-</li>
-<li>
-<p>If(clock &lt;= simulationtime)</p>
-<p>​	2.1 如果有新客户到来（从输入中读入本周期内新来客户数），将其入队；</p>
-<p>​	<strong>2.2</strong> <strong>根据等待服务客户数重新计算服务窗口数；</strong></p>
-</li>
-<li>
-<p>If 客户等待队列非空</p>
-<p>​	3.1 从客户队列中取（出队）相应数目（按实际服务窗口数）客户获得服务；</p>
-<p>​	<strong>3.2</strong> <strong>然后根据等待服务客户数重新计算服务窗口数；</strong></p>
-</li>
+<ol type="1">
+<li><p>If 客户等待队列非空</p>
+<p>​ 将每个客户的等待时间增加一个时间单元；</p></li>
+<li><p>If(clock &lt;= simulationtime)</p>
+<p>​ 2.1
+如果有新客户到来（从输入中读入本周期内新来客户数），将其入队；</p>
+<p>​ <strong>2.2</strong>
+<strong>根据等待服务客户数重新计算服务窗口数；</strong></p></li>
+<li><p>If 客户等待队列非空</p>
+<p>​ 3.1
+从客户队列中取（出队）相应数目（按实际服务窗口数）客户获得服务；</p>
+<p>​ <strong>3.2</strong>
+<strong>然后根据等待服务客户数重新计算服务窗口数；</strong></p></li>
 </ol>
-<p>​	Else 结束模拟</p>
+<p>​ Else 结束模拟</p>
 <p>}</p>
 </blockquote>
 <blockquote>
@@ -346,44 +346,32 @@
 <p>二 改改旧bank（正式处理）</p>
 <p>for(clock=1; ; clock++) //在每个时间周期内</p>
 <p>{</p>
-<ol>
-<li>
-<p>If 客户等待队列非空</p>
-<p>​	将每个客户的等待时间增加一个时间单元；</p>
-</li>
-<li>
-<p>If(clock &lt;= simulationtime)</p>
-<p>​	2.1 如果有新客户到来，更新已经到来的人数和等待人数；</p>
-<p>​	<strong>2.2</strong> <strong>根据等待服务客户数重新计算服务窗口数；</strong>（只有可能增加）</p>
-</li>
-<li>
-<p>If 客户等待队列非空</p>
-<p>​	3.1 从客户队列中取相应数目（按实际服务窗口数）客户获得服务；</p>
-<p>​	<strong>3.2</strong> <strong>然后根据等待服务客户数重新计算服务窗口数；</strong>（只有可能减少）</p>
-</li>
+<ol type="1">
+<li><p>If 客户等待队列非空</p>
+<p>​ 将每个客户的等待时间增加一个时间单元；</p></li>
+<li><p>If(clock &lt;= simulationtime)</p>
+<p>​ 2.1 如果有新客户到来，更新已经到来的人数和等待人数；</p>
+<p>​ <strong>2.2</strong>
+<strong>根据等待服务客户数重新计算服务窗口数；</strong>（只有可能增加）</p></li>
+<li><p>If 客户等待队列非空</p>
+<p>​ 3.1 从客户队列中取相应数目（按实际服务窗口数）客户获得服务；</p>
+<p>​ <strong>3.2</strong>
+<strong>然后根据等待服务客户数重新计算服务窗口数；</strong>（只有可能减少）</p></li>
 </ol>
-<p>​	Else 结束模拟</p>
+<p>​ Else 结束模拟</p>
 <p>}</p>
 <p>三 输出</p>
-</blockquote>
-</li>
+</blockquote></li>
 </ul>
-<h2 id="2-一些注意事项">2 一些注意事项</h2>
-<ol>
-<li>
-<p>可以考虑用一个指针数组来指向正在办业务的客户们</p>
-</li>
-<li>
-<p>客户结构体包括: <code>id</code>(第几个客户) <code>difficulty</code>(业务难度) <code>wtime</code>(等待时间)</p>
-</li>
-<li>
-<p>在3.1中将正在办业务的客户的<code>difficulty</code>–，当<code>difficulty == 0</code>时客户办完业务，让下一个人来办业务</p>
-</li>
-<li>
-<p>3.2中更新窗口数时小心出现下面情况：</p>
+<h2 id="一些注意事项">2 一些注意事项</h2>
+<ol type="1">
+<li><p>可以考虑用一个指针数组来指向正在办业务的客户们</p></li>
+<li><p>客户结构体包括: <code>id</code>(第几个客户)
+<code>difficulty</code>(业务难度) <code>wtime</code>(等待时间)</p></li>
+<li><p>在3.1中将正在办业务的客户的<code>difficulty</code>--，当<code>difficulty == 0</code>时客户办完业务，让下一个人来办业务</p></li>
+<li><p>3.2中更新窗口数时小心出现下面情况：</p>
 <p>原来开了4个窗口，分别是<code>win[0] win[1] win[2] win[3]</code>，窗口减少后只需要3个窗口。但空出的窗口是<code>win[0]</code>，即<code>win[0] == NULL</code>。</p>
-<p>此时运用指针数组的优势就出现了，你可以从<code>win[3]</code>一直往下（0）遍历，找到值为<code>NULL</code>的指针时将其与<code>win[3]</code>进行交换，这样现在在办业务的窗口就还是<code>win[0] win[1] win[2]</code>了。</p>
-</li>
+<p>此时运用指针数组的优势就出现了，你可以从<code>win[3]</code>一直往下（0）遍历，找到值为<code>NULL</code>的指针时将其与<code>win[3]</code>进行交换，这样现在在办业务的窗口就还是<code>win[0] win[1] win[2]</code>了。</p></li>
 </ol>
 
                 

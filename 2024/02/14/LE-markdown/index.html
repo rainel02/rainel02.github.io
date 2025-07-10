@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="标题 123456# 大标题## 二号标题### 三号标题#### 四号标题##### 五号标题###### 六号标题 字体 1*斜体*  **加粗**  ***斜体加粗***  ~~划掉~~  &#x3D;&#x3D;高亮&#x3D;&#x3D;  ^上标^  ~下标~ 列表   无序列表 123+ dfji + dfj   + dfj   有序列表 1231. sdf2. sdf3. sdf   表格 1234| mon | tue">
+    <meta name="description" content="标题 123456# 大标题## 二号标题### 三号标题#### 四号标题##### 五号标题###### 六号标题 字体 1*斜体*  **加粗**  ***斜体加粗***  ~~划掉~~  &#x3D;&#x3D;高亮&#x3D;&#x3D;  ^上标^  ~下标~ 列表  无序列表 123+ dfji + dfj   + dfj 有序列表 1231. sdf2. sdf3. sdf  表格 1234| m">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【学习经验】markdown入门">
 <meta property="og:url" content="http://example.com/2024/02/14/LE-markdown/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="标题 123456# 大标题## 二号标题### 三号标题#### 四号标题##### 五号标题###### 六号标题 字体 1*斜体*  **加粗**  ***斜体加粗***  ~~划掉~~  &#x3D;&#x3D;高亮&#x3D;&#x3D;  ^上标^  ~下标~ 列表   无序列表 123+ dfji + dfj   + dfj   有序列表 1231. sdf2. sdf3. sdf   表格 1234| mon | tue">
+<meta property="og:description" content="标题 123456# 大标题## 二号标题### 三号标题#### 四号标题##### 五号标题###### 六号标题 字体 1*斜体*  **加粗**  ***斜体加粗***  ~~划掉~~  &#x3D;&#x3D;高亮&#x3D;&#x3D;  ^上标^  ~下标~ 列表  无序列表 123+ dfji + dfj   + dfj 有序列表 1231. sdf2. sdf3. sdf  表格 1234| m">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-02-14T13:09:27.000Z">
 <meta property="article:modified_time" content="2024-05-07T11:30:50.457Z">
@@ -232,7 +232,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k words
+          1.1k words
         
       </span>
     
@@ -311,15 +311,11 @@
 <h2 id="字体">字体</h2>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-emphasis">*斜体*</span>  <span class="hljs-strong">**加粗**</span>  <span class="hljs-strong">**<span class="hljs-emphasis">*斜体加粗*</span>**</span>  ~~划掉~~  ==高亮==  ^上标^  ~下标~<br></code></pre></td></tr></table></figure>
 <h2 id="列表">列表</h2>
-<ol>
-<li>
-<p>无序列表</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">+</span> dfji<br><span class="hljs-bullet"> +</span> dfj<br><span class="hljs-bullet">   +</span> dfj<br></code></pre></td></tr></table></figure>
-</li>
-<li>
-<p>有序列表</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">1.</span> sdf<br><span class="hljs-bullet">2.</span> sdf<br><span class="hljs-bullet">3.</span> sdf<br></code></pre></td></tr></table></figure>
-</li>
+<ol type="1">
+<li><p>无序列表</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">+</span> dfji<br><span class="hljs-bullet"> +</span> dfj<br><span class="hljs-bullet">   +</span> dfj<br></code></pre></td></tr></table></figure></li>
+<li><p>有序列表</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">1.</span> sdf<br><span class="hljs-bullet">2.</span> sdf<br><span class="hljs-bullet">3.</span> sdf<br></code></pre></td></tr></table></figure></li>
 </ol>
 <h2 id="表格">表格</h2>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs markdown">| mon | tue | wed |<br>|-----|-----|:----|<br>|dd|dd|dd|<br>|ss|ss|ss|<br></code></pre></td></tr></table></figure>
@@ -333,334 +329,324 @@
 <p>输入<code>$$</code>回车后即可插入数学公式（公式为独立一行且居中）</p>
 <h3 id="基本运算符">基本运算符</h3>
 <ul>
-<li>
-<p>下标：<code>_</code> 放在字符下时加上<code>\limits</code></p>
-</li>
-<li>
-<p>上标：<code>^</code></p>
-</li>
-<li>
-<p>根号：<code>\sqrt</code></p>
-</li>
-<li>
-<p>分数：<code>\frac&#123;up&#125;&#123;down&#125;</code></p>
+<li><p>下标：<code>_</code>
+放在字符下时加上<code>\limits</code></p></li>
+<li><p>上标：<code>^</code></p></li>
+<li><p>根号：<code>\sqrt</code></p></li>
+<li><p>分数：<code>\frac&#123;up&#125;&#123;down&#125;</code></p>
 <p>例如</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown">x<span class="hljs-emphasis">_&#123;ij&#125; 、y^&#123;ij&#125; 、\max \limits_</span>&#123;a<span class="language-xml">&lt;x&lt;b&#125; \&#123;f(x)\&#125;、\frac&#123;up&#125;&#123;down&#125;、\sqrt&#123;b&#125;、 \sqrt[a]&#123;b&#125;</span><br></code></pre></td></tr></table></figure>
-</li>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown">x<span class="hljs-emphasis">_&#123;ij&#125; 、y^&#123;ij&#125; 、\max \limits_</span>&#123;a<span class="language-xml">&lt;x&lt;b&#125; \&#123;f(x)\&#125;、\frac&#123;up&#125;&#123;down&#125;、\sqrt&#123;b&#125;、 \sqrt[a]&#123;b&#125;</span><br></code></pre></td></tr></table></figure></li>
 </ul>
-<p>$$<br>
-x_{ij} 、y^{ij} 、\max \limits_{a&lt;x&lt;b}{f(x)}、\frac{up}{down}、\sqrt{b}、 \sqrt[a]{b}<br>
-$$</p>
+<p><span class="math display">\[
+x_{ij} 、y^{ij} 、\max
+\limits_{a&lt;x&lt;b}\{f(x)\}、\frac{up}{down}、\sqrt{b}、 \sqrt[a]{b}
+\]</span></p>
 <h3 id="括号">括号</h3>
 <ul>
-<li>
-<table>
+<li><table>
 <thead>
-<tr>
-<th style="text-align:center">markdown语法</th>
-<th style="text-align:center">表示字符</th>
-<th style="text-align:center">markdown语法</th>
-<th style="text-align:center">表示字符</th>
+<tr class="header">
+<th style="text-align: center;">markdown语法</th>
+<th style="text-align: center;">表示字符</th>
+<th style="text-align: center;">markdown语法</th>
+<th style="text-align: center;">表示字符</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center">()</td>
-<td style="text-align:center">()</td>
-<td style="text-align:center">|</td>
-<td style="text-align:center">|</td>
+<tr class="odd">
+<td style="text-align: center;">()</td>
+<td style="text-align: center;">()</td>
+<td style="text-align: center;">|</td>
+<td style="text-align: center;">|</td>
 </tr>
-<tr>
-<td style="text-align:center">[]</td>
-<td style="text-align:center">[]</td>
-<td style="text-align:center">\{\}</td>
-<td style="text-align:center">{}</td>
+<tr class="even">
+<td style="text-align: center;">[]</td>
+<td style="text-align: center;">[]</td>
+<td style="text-align: center;">\{\}</td>
+<td style="text-align: center;">{}</td>
 </tr>
-<tr>
-<td style="text-align:center">\langle</td>
-<td style="text-align:center">⟨</td>
-<td style="text-align:center">\rangle</td>
-<td style="text-align:center">⟩</td>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">⟨</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">⟩</td>
 </tr>
-<tr>
-<td style="text-align:center">\lceil</td>
-<td style="text-align:center">⌈</td>
-<td style="text-align:center">\rceil</td>
-<td style="text-align:center">⌉</td>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">⌈</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">⌉</td>
 </tr>
-<tr>
-<td style="text-align:center">\lfloor</td>
-<td style="text-align:center">⌊</td>
-<td style="text-align:center">\rfloor</td>
-<td style="text-align:center">⌋</td>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">⌊</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">⌋</td>
 </tr>
-<tr>
-<td style="text-align:center">\lbrace</td>
-<td style="text-align:center">{</td>
-<td style="text-align:center">\rbrace</td>
-<td style="text-align:center">}</td>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">{</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">}</td>
 </tr>
 </tbody>
-</table>
-</li>
-<li>
-<p>需要显示大号的括号或分隔符时，用\left和\right命令</p>
+</table></li>
+<li><p>需要显示大号的括号或分隔符时，用</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown">\left[<br>\frac&#123;(x<span class="hljs-emphasis">_&#123;ij&#125;)_</span>&#123;max&#125;^2&#125;&#123;MSE&#125;<br>\right]<br></code></pre></td></tr></table></figure>
-<p>$$<br>
-\left[<br>
-\frac{(x_{ij})_{max}^2}{MSE}<br>
-\right]<br>
-$$</p>
-</li>
+<p><span class="math display">\[
+\left[
+\frac{(x_{ij})_{max}^2}{MSE}
+\right]
+\]</span></p></li>
 </ul>
 <h3 id="运算符">运算符</h3>
 <table>
 <thead>
-<tr>
-<th style="text-align:center">输入</th>
-<th style="text-align:center">显示</th>
-<th style="text-align:center">输入</th>
-<th style="text-align:center">显示</th>
+<tr class="header">
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center">\pm</td>
-<td style="text-align:center">±</td>
-<td style="text-align:center">\mp</td>
-<td style="text-align:center">∓</td>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">±</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">∓</td>
 </tr>
-<tr>
-<td style="text-align:center">\times</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">\cdot</td>
-<td style="text-align:center">⋅</td>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">×</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">⋅</td>
 </tr>
-<tr>
-<td style="text-align:center">\div</td>
-<td style="text-align:center">÷</td>
-<td style="text-align:center">\approx</td>
-<td style="text-align:center">≈</td>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">÷</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">≈</td>
 </tr>
-<tr>
-<td style="text-align:center">\neq</td>
-<td style="text-align:center">≠</td>
-<td style="text-align:center">\equiv</td>
-<td style="text-align:center">≡</td>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">≠</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">≡</td>
 </tr>
-<tr>
-<td style="text-align:center">\leq</td>
-<td style="text-align:center">≤</td>
-<td style="text-align:center">\geq</td>
-<td style="text-align:center">≥</td>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">≤</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">≥</td>
 </tr>
 </tbody>
 </table>
 <h3 id="求和求积">求和求积</h3>
 <table>
 <thead>
-<tr>
-<th style="text-align:center">输入</th>
-<th style="text-align:center">显示</th>
-<th style="text-align:center">输入</th>
-<th style="text-align:center">显示</th>
+<tr class="header">
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center">\sum</td>
-<td style="text-align:center">∑</td>
-<td style="text-align:center">\prod</td>
-<td style="text-align:center">∏</td>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">∑</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">∏</td>
 </tr>
 </tbody>
 </table>
 <h3 id="集合运算符">集合运算符</h3>
 <table>
 <thead>
-<tr>
-<th style="text-align:center">输入</th>
-<th style="text-align:center">显示</th>
-<th style="text-align:center">输入</th>
-<th style="text-align:center">显示</th>
+<tr class="header">
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center">\in</td>
-<td style="text-align:center">∈</td>
-<td style="text-align:center">\notin</td>
-<td style="text-align:center">∉</td>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">∈</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">∉</td>
 </tr>
-<tr>
-<td style="text-align:center">\subset</td>
-<td style="text-align:center">⊂</td>
-<td style="text-align:center">\supset</td>
-<td style="text-align:center">⊃</td>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">⊂</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">⊃</td>
 </tr>
-<tr>
-<td style="text-align:center">\subseteq</td>
-<td style="text-align:center">⊆</td>
-<td style="text-align:center">\supseteq</td>
-<td style="text-align:center">⊇</td>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">⊆</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">⊇</td>
 </tr>
-<tr>
-<td style="text-align:center">\bigcap</td>
-<td style="text-align:center">⋂</td>
-<td style="text-align:center">\bigcup</td>
-<td style="text-align:center">⋃</td>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">⋂</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">⋃</td>
 </tr>
-<tr>
-<td style="text-align:center">\emptyset</td>
-<td style="text-align:center">∅</td>
-<td style="text-align:center">\not\subset</td>
-<td style="text-align:center">￠</td>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">∅</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">￠</td>
 </tr>
 </tbody>
 </table>
 <h3 id="对数运算符">对数运算符</h3>
 <table>
 <thead>
-<tr>
-<th style="text-align:center">输入</th>
-<th style="text-align:center">显示</th>
-<th style="text-align:center">输入</th>
-<th style="text-align:center">显示</th>
-<th style="text-align:center">输入</th>
-<th style="text-align:center">显示</th>
+<tr class="header">
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center">\log</td>
-<td style="text-align:center">log</td>
-<td style="text-align:center">\lg</td>
-<td style="text-align:center">lg</td>
-<td style="text-align:center">\ln</td>
-<td style="text-align:center">ln</td>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">log</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">lg</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">ln</td>
 </tr>
 </tbody>
 </table>
 <h3 id="三角运算符">三角运算符</h3>
 <table>
 <thead>
-<tr>
-<th style="text-align:center">输入</th>
-<th style="text-align:center">显示</th>
-<th style="text-align:center">输入</th>
-<th style="text-align:center">显示</th>
-<th style="text-align:center">输入</th>
-<th style="text-align:center">显示</th>
+<tr class="header">
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center">30^\circ</td>
-<td style="text-align:center">30°</td>
-<td style="text-align:center">\bot</td>
-<td style="text-align:center">⊥</td>
-<td style="text-align:center">\angle A</td>
-<td style="text-align:center">∠<em>A</em></td>
+<tr class="odd">
+<td style="text-align: center;">30^</td>
+<td style="text-align: center;">30°</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">⊥</td>
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">∠<em>A</em></td>
 </tr>
-<tr>
-<td style="text-align:center">\sin</td>
-<td style="text-align:center">sin</td>
-<td style="text-align:center">\cos</td>
-<td style="text-align:center">cos</td>
-<td style="text-align:center">\tan</td>
-<td style="text-align:center">tan</td>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">sin</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">cos</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">tan</td>
 </tr>
-<tr>
-<td style="text-align:center">\csc</td>
-<td style="text-align:center">csc</td>
-<td style="text-align:center">\sec</td>
-<td style="text-align:center">sec</td>
-<td style="text-align:center">\cot</td>
-<td style="text-align:center">cot</td>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">csc</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">sec</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">cot</td>
 </tr>
 </tbody>
 </table>
 <h3 id="微积分运算符">微积分运算符</h3>
 <table>
 <thead>
-<tr>
-<th style="text-align:center">输入</th>
-<th style="text-align:center">显示</th>
-<th style="text-align:center">输入</th>
-<th style="text-align:center">显示</th>
-<th style="text-align:center">输入</th>
-<th style="text-align:center">显示</th>
+<tr class="header">
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center">\int</td>
-<td style="text-align:center">∫</td>
-<td style="text-align:center">\lim</td>
-<td style="text-align:center">lim</td>
-<td style="text-align:center">\infty</td>
-<td style="text-align:center">∞</td>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">∫</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">lim</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">∞</td>
 </tr>
 </tbody>
 </table>
 <h3 id="逻辑运算符">逻辑运算符</h3>
 <table>
 <thead>
-<tr>
-<th style="text-align:center">输入</th>
-<th style="text-align:center">显示</th>
-<th style="text-align:center">输入</th>
-<th style="text-align:center">显示</th>
+<tr class="header">
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center">\because</td>
-<td style="text-align:center">∵</td>
-<td style="text-align:center">\therefore</td>
-<td style="text-align:center">∴</td>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">∵</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">∴</td>
 </tr>
-<tr>
-<td style="text-align:center">\forall</td>
-<td style="text-align:center">∀</td>
-<td style="text-align:center">\exists</td>
-<td style="text-align:center">∃</td>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">∀</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">∃</td>
 </tr>
 </tbody>
 </table>
 <h3 id="上下花括号">上下花括号</h3>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown">\overbrace&#123;a+b+\dots+n&#125;^&#123;m个&#125;、\underbrace&#123;a+b+\dots+n&#125;<span class="hljs-emphasis">_&#123;m个&#125;</span><br></code></pre></td></tr></table></figure>
-<p>$$<br>
-\overbrace{a+b+\dots+n}^{m个}、\underbrace{a+b+\dots+n}_{m个}<br>
-$$</p>
+<p><span class="math display">\[
+\overbrace{a+b+\dots+n}^{m个}、\underbrace{a+b+\dots+n}_{m个}
+\]</span></p>
 <h3 id="箭头">箭头</h3>
 <table>
 <thead>
-<tr>
-<th style="text-align:center">输入</th>
-<th style="text-align:center">显示</th>
-<th style="text-align:center">输入</th>
-<th style="text-align:center">显示</th>
-<th style="text-align:center">输入</th>
-<th style="text-align:center">显示</th>
+<tr class="header">
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center">\leftarrow</td>
-<td style="text-align:center">←</td>
-<td style="text-align:center">\rightarrow</td>
-<td style="text-align:center">→</td>
-<td style="text-align:center">\longleftarrow</td>
-<td style="text-align:center">⟵</td>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">←</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">→</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">⟵</td>
 </tr>
-<tr>
-<td style="text-align:center">\leftrightarrow</td>
-<td style="text-align:center">↔</td>
-<td style="text-align:center">\uparrow</td>
-<td style="text-align:center">↑</td>
-<td style="text-align:center">\Downarrow</td>
-<td style="text-align:center">⇓</td>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">↔︎</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">↑</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">⇓</td>
 </tr>
 </tbody>
 </table>
@@ -670,110 +656,110 @@ $$</p>
 </ul>
 <h3 id="希腊字母">希腊字母</h3>
 <ul>
-<li>
-<p>输入 <code>\小写希腊字母英文全称</code> 和 <code>\首字母大写希腊字母英文全称</code> 来分别输入小写和大写希腊字母。<strong>对于大写希腊字母与现有字母相同的，直接输入大写字母即可。</strong></p>
+<li><p>输入 <code>\小写希腊字母英文全称</code> 和
+<code>\首字母大写希腊字母英文全称</code>
+来分别输入小写和大写希腊字母。<strong>对于大写希腊字母与现有字母相同的，直接输入大写字母即可。</strong></p>
 <table>
 <thead>
-<tr>
-<th style="text-align:center">输入</th>
-<th style="text-align:center">显示</th>
-<th style="text-align:center">输入</th>
-<th style="text-align:center">显示</th>
-<th style="text-align:center">输入</th>
-<th style="text-align:center">显示</th>
+<tr class="header">
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
+<th style="text-align: center;">输入</th>
+<th style="text-align: center;">显示</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center">\alpha</td>
-<td style="text-align:center"><em>α</em></td>
-<td style="text-align:center">\beta</td>
-<td style="text-align:center"><em>β</em></td>
-<td style="text-align:center">\gamma</td>
-<td style="text-align:center"><em>γ</em></td>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><em>α</em></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><em>β</em></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><em>γ</em></td>
 </tr>
-<tr>
-<td style="text-align:center">\delta</td>
-<td style="text-align:center"><em>δ</em></td>
-<td style="text-align:center">\epsilon</td>
-<td style="text-align:center"><em>ϵ</em></td>
-<td style="text-align:center">\eta</td>
-<td style="text-align:center"><em>η</em></td>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><em>δ</em></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><em>ϵ</em></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><em>η</em></td>
 </tr>
-<tr>
-<td style="text-align:center">\theta</td>
-<td style="text-align:center"><em>θ</em></td>
-<td style="text-align:center">\lambda</td>
-<td style="text-align:center"><em>λ</em></td>
-<td style="text-align:center">\mu</td>
-<td style="text-align:center"><em>μ</em></td>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><em>θ</em></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><em>λ</em></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><em>μ</em></td>
 </tr>
-<tr>
-<td style="text-align:center">\sigma</td>
-<td style="text-align:center"><em>σ</em></td>
-<td style="text-align:center">\pi</td>
-<td style="text-align:center"><em>π</em></td>
-<td style="text-align:center">\omega</td>
-<td style="text-align:center"><em>ω</em></td>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><em>σ</em></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><em>π</em></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><em>ω</em></td>
 </tr>
 </tbody>
-</table>
-</li>
+</table></li>
 </ul>
-<h3 id="字体-2">字体</h3>
+<h3 id="字体-1">字体</h3>
 <ul>
-<li>
-<p>若要对公式的某一部分字符进行字体转换，可以用 <code>&#123;\字体 &#123;需转换的部分字符&#125;&#125;</code> 命令，其中 <code>\字体</code> 部分可以参照下方选择合适的字体。一般情况下，公式默认为意大利体 。</p>
+<li><p>若要对公式的某一部分字符进行字体转换，可以用
+<code>&#123;\字体 &#123;需转换的部分字符&#125;&#125;</code> 命令，其中 <code>\字体</code>
+部分可以参照下方选择合适的字体。一般情况下，公式默认为意大利体 。</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown">意大利体\it&#123;sample&#125;、罗马体\rm&#123;sample&#125;、粗体\bf&#123;sample&#125;、等线体\sf&#123;sample&#125;、打字机体\tt&#123;sample&#125;、旧德式字体\frak&#123;sample&#125;、花体\cal&#123;sample&#125;、黑板粗体\Bbb&#123;sample&#125;、数字斜体\mit&#123;sample&#125;、手写体\scr&#123;sample&#125;<br></code></pre></td></tr></table></figure>
-<p>$$<br>
-意大利体\it{sample}、罗马体\rm{sample}、粗体\bf{sample}、等线体\sf{sample}、打字机体\tt{sample}、旧德式字体\frak{sample}、花体\cal{sample}、黑板粗体\Bbb{sample}、数字斜体\mit{sample}、手写体\scr{sample}<br>
-$$</p>
-</li>
+<p><span class="math display">\[
+意大利体\it{sample}、罗马体\rm{sample}、粗体\bf{sample}、等线体\sf{sample}、打字机体\tt{sample}、旧德式字体\frak{sample}、花体\cal{sample}、黑板粗体\Bbb{sample}、数字斜体\mit{sample}、手写体\scr{sample}
+\]</span></p></li>
 </ul>
 <h3 id="矩阵">矩阵</h3>
-<p><code>\begin&#123;matrix&#125;...\end&#123;matrix&#125;</code>括起来，使用&amp;分割同行元素，\换行</p>
+<p><code>\begin&#123;matrix&#125;...\end&#123;matrix&#125;</code>括起来，使用&amp;分割同行元素，</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs markdown">\begin&#123;matrix&#125;<br>1 &amp; x &amp; x^2\\<br>1 &amp; y &amp; y^2\\<br>1 &amp; z &amp; z^2\\<br>\end&#123;matrix&#125;<br></code></pre></td></tr></table></figure>
-<p>$$<br>
-\begin{matrix}<br>
-1 &amp; x &amp; x^2\<br>
-1 &amp; y &amp; y^2\<br>
-1 &amp; z &amp; z^2\<br>
-\end{matrix}<br>
-$$</p>
+<p><span class="math display">\[
+\begin{matrix}
+  1 &amp; x &amp; x^2\\
+  1 &amp; y &amp; y^2\\
+  1 &amp; z &amp; z^2\\
+  \end{matrix}
+\]</span></p>
 <h3 id="行列式">行列式</h3>
 <p>在矩阵基础上添加<code>\left| ... \right|</code></p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs markdown">X=\left|<br>  \begin&#123;matrix&#125;<br><span class="hljs-code">    x_&#123;11&#125; &amp; x_&#123;12&#125; &amp; \cdots &amp; x_&#123;1d&#125;\\</span><br><span class="hljs-code">    x_&#123;21&#125; &amp; x_&#123;22&#125; &amp; \cdots &amp; x_&#123;2d&#125;\\</span><br><span class="hljs-code">    \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\</span><br><span class="hljs-code">    x_&#123;11&#125; &amp; x_&#123;12&#125; &amp; \cdots &amp; x_&#123;1d&#125;\\</span><br><span class="hljs-code">  \end&#123;matrix&#125;</span><br><span class="hljs-code">\right|</span><br></code></pre></td></tr></table></figure>
-<p>$$<br>
-X=\left|<br>
-\begin{matrix}<br>
-x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1d}\<br>
-x_{21} &amp; x_{22} &amp; \cdots &amp; x_{2d}\<br>
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \<br>
-x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1d}\<br>
-\end{matrix}<br>
-\right|<br>
-$$</p>
+<p><span class="math display">\[
+X=\left|
+  \begin{matrix}
+    x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1d}\\
+    x_{21} &amp; x_{22} &amp; \cdots &amp; x_{2d}\\
+    \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+    x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1d}\\
+  \end{matrix}
+\right|
+\]</span></p>
 <h3 id="分段函数">分段函数</h3>
 <p><code>\begin&#123;cases&#125; ... \end&#123;cases&#125;</code>包括</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs markdown">f(n)=<br>  \begin&#123;cases&#125;<br><span class="hljs-code">    n/2, &amp; \text&#123;if $n$ is even&#125;\\</span><br><span class="hljs-code">    3n+1,&amp; \text&#123;if $n$ is odd&#125;</span><br><span class="hljs-code">  \end&#123;cases&#125;</span><br></code></pre></td></tr></table></figure>
-<p>$$<br>
-f(n)=<br>
-\begin{cases}<br>
-n/2, &amp; \text{if $n$ is even}\<br>
-3n+1,&amp; \text{if $n$ is odd}<br>
-\end{cases}<br>
-$$</p>
+<p><span class="math display">\[
+f(n)=
+  \begin{cases}
+    n/2, &amp; \text{if $n$ is even}\\
+    3n+1,&amp; \text{if $n$ is odd}
+  \end{cases}
+\]</span></p>
 <h3 id="方程组">方程组</h3>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs markdown">\left\&#123;<br>  \begin&#123;array&#125;&#123;c&#125;<br><span class="hljs-code">    a_1x+b_1y+c_1z=d_1\\</span><br><span class="hljs-code">    a_2x+b_2y+c_2z=d_2\\</span><br><span class="hljs-code">    a_3x+b_3y+c_3z=d_3</span><br><span class="hljs-code">  \end&#123;array&#125;</span><br><span class="hljs-code">\right.</span><br></code></pre></td></tr></table></figure>
-<p>$$<br>
-\left{<br>
-\begin{array}{c}<br>
-a_1x+b_1y+c_1z=d_1\<br>
-a_2x+b_2y+c_2z=d_2\<br>
-a_3x+b_3y+c_3z=d_3<br>
-\end{array}<br>
-\right.<br>
-$$</p>
+<p><span class="math display">\[
+\left\{
+  \begin{array}{c}
+    a_1x+b_1y+c_1z=d_1\\
+    a_2x+b_2y+c_2z=d_2\\
+    a_3x+b_3y+c_3z=d_3
+  \end{array}
+\right.
+\]</span></p>
 
                 
               </div>
