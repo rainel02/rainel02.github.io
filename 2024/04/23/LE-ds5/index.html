@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="本篇笔记总结DSPv2b_5(树与二叉树) for student内的相关内容。更加的抽象，更多的图片……程序员上辈子是伐木工吗，这辈子种树还债。最后，本人学艺不精，只是一边看着ppt一边敲敲改改，如有疏漏，欢迎提出喵~o( &#x3D;∩ω∩&#x3D; )m 1 树的基本概念 1.1 树的定义 树是由n&gt;&#x3D;0个结点组成的有穷集合(不妨用符号D表示)以及结点之间关系组成的集合构成的结构，记为T。当n">
+    <meta name="description" content="本篇笔记总结DSPv2b_5(树与二叉树) for student内的相关内容。更加的抽象，更多的图片……程序员上辈子是伐木工吗，这辈子种树还债。最后，本人学艺不精，只是一边看着ppt一边敲敲改改，如有疏漏，欢迎提出喵~o( &#x3D;∩ω∩&#x3D; )m 1 树的基本概念 1.1 树的定义 树是由n&gt;&#x3D;0个结点组成的有穷集合(不妨用符号D表示)以及结点之间关系组成的集合构成的结构，记为T。当n&#x3D;0时，称">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【数据结构】ds笔记5-树">
 <meta property="og:url" content="http://example.com/2024/04/23/LE-ds5/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="本篇笔记总结DSPv2b_5(树与二叉树) for student内的相关内容。更加的抽象，更多的图片……程序员上辈子是伐木工吗，这辈子种树还债。最后，本人学艺不精，只是一边看着ppt一边敲敲改改，如有疏漏，欢迎提出喵~o( &#x3D;∩ω∩&#x3D; )m 1 树的基本概念 1.1 树的定义 树是由n&gt;&#x3D;0个结点组成的有穷集合(不妨用符号D表示)以及结点之间关系组成的集合构成的结构，记为T。当n">
+<meta property="og:description" content="本篇笔记总结DSPv2b_5(树与二叉树) for student内的相关内容。更加的抽象，更多的图片……程序员上辈子是伐木工吗，这辈子种树还债。最后，本人学艺不精，只是一边看着ppt一边敲敲改改，如有疏漏，欢迎提出喵~o( &#x3D;∩ω∩&#x3D; )m 1 树的基本概念 1.1 树的定义 树是由n&gt;&#x3D;0个结点组成的有穷集合(不妨用符号D表示)以及结点之间关系组成的集合构成的结构，记为T。当n&#x3D;0时，称">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/LE-ds5/1.png">
 <meta property="og:image" content="http://example.com/img/LE-ds5/2.png">
@@ -51,6 +51,7 @@
 <meta property="og:image" content="http://example.com/img/LE-ds5/26.png">
 <meta property="og:image" content="http://example.com/img/LE-ds5/27.png">
 <meta property="og:image" content="http://example.com/img/LE-ds5/28.png">
+<meta property="og:image" content="http://example.com/img/LE-ds5/29.png">
 <meta property="og:image" content="http://example.com/img/LE-ds5/30.png">
 <meta property="og:image" content="http://example.com/img/LE-ds5/31.png">
 <meta property="og:image" content="http://example.com/img/LE-ds5/32.png">
@@ -344,381 +345,530 @@
             
               <div class="markdown-body">
                 
-                <p>本篇笔记总结<strong>DSPv2b_5(树与二叉树) for
-student</strong>内的相关内容。更加的抽象，更多的图片……程序员上辈子是伐木工吗，这辈子种树还债。最后，本人学艺不精，只是一边看着ppt一边敲敲改改，如有疏漏，欢迎提出喵~o(
-=∩ω∩= )m</p>
-<h2 id="树的基本概念">1 树的基本概念</h2>
-<h3 id="树的定义">1.1 树的定义</h3>
-<p>树是由n&gt;=0个结点组成的有穷集合(不妨用符号<code>D</code>表示)以及结点之间关系组成的集合构成的结构，记为<code>T</code>。当n=0时，称T为空树。在任何一棵非空的树中,有一个特殊的结点t∈D，称之为该树的根结点;其余结点D–{t}被分割成m&gt;0个不相交的子集D1,
-D2, …
-,Dm,其中,每一个子集D<sub>i</sub>分别构成一棵树,称之为t的<strong>子树</strong>。</p>
-<p><img src="/img/LE-ds5/1.png" srcset="/img/loading.gif" lazyload /></p>
-<h3 id="树的特点">1.2 树的特点</h3>
-<ol type="1">
+                <p>本篇笔记总结<strong>DSPv2b_5(树与二叉树) for student</strong>内的相关内容。更加的抽象，更多的图片……程序员上辈子是伐木工吗，这辈子种树还债。最后，本人学艺不精，只是一边看着ppt一边敲敲改改，如有疏漏，欢迎提出喵~o( =∩ω∩= )m</p>
+<h2 id="1-树的基本概念">1 树的基本概念</h2>
+<h3 id="1-1-树的定义">1.1 树的定义</h3>
+<p>树是由n&gt;=0个结点组成的有穷集合(不妨用符号<code>D</code>表示)以及结点之间关系组成的集合构成的结构，记为<code>T</code>。当n=0时，称T为空树。在任何一棵非空的树中,有一个特殊的结点t∈D，称之为该树的根结点;其余结点D–{t}被分割成m&gt;0个不相交的子集D1, D2, … ,Dm,其中,每一个子集D<sub>i</sub>分别构成一棵树,称之为t的<strong>子树</strong>。</p>
+<p><img src="/img/LE-ds5/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="1-2-树的特点">1.2 树的特点</h3>
+<ol>
 <li>有且仅有一个结点没有前驱结点,该结点为树的<strong>根结点</strong>；</li>
 <li>除了根结点外,每个结点有且仅有<strong>一个直接前驱结点</strong>；</li>
 <li>包括根结点在内，每个结点可以有<strong>多个后继结点</strong>。</li>
 </ol>
-<h3 id="树的逻辑表示方式">1.3 树的逻辑表示方式</h3>
-<ol type="1">
-<li><p>文氏图表示法</p>
-<p><img src="/img/LE-ds5/2.png" srcset="/img/loading.gif" lazyload /></p></li>
-<li><p>凹入表示法</p>
-<p><img src="/img/LE-ds5/3.png" srcset="/img/loading.gif" lazyload /></p></li>
-<li><p>嵌套括号法（广义表表示法）</p>
-<p>A(B(E, F), C(G(K)), D(H, I, J))</p></li>
-<li><p>树形表示法</p>
-<p><img src="/img/LE-ds5/4.png" srcset="/img/loading.gif" lazyload /></p></li>
+<h3 id="1-3-树的逻辑表示方式">1.3 树的逻辑表示方式</h3>
+<ol>
+<li>
+<p>文氏图表示法</p>
+<p><img src="/img/LE-ds5/2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
+<li>
+<p>凹入表示法</p>
+<p><img src="/img/LE-ds5/3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
+<li>
+<p>嵌套括号法（广义表表示法）</p>
+<p>A(B(E, F), C(G(K)), D(H, I, J))</p>
+</li>
+<li>
+<p>树形表示法</p>
+<p><img src="/img/LE-ds5/4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
 </ol>
-<h3 id="基本名词术语">1.4 基本名词术语</h3>
-<ol type="1">
-<li><p>结点的度：该结点拥有的子树的数目。</p></li>
-<li><p>树的度：树中结点度的最大值。</p></li>
-<li><p>叶结点<em>（终端结点）</em>：度为0的结点。</p></li>
-<li><p>分支结点<em>（非终端结点）</em>：度非0的结点。</p></li>
-<li><p>树的层次：根结点在第1层，若某结点在第i层，则其孩子结点（若存在）为第i+1层。</p></li>
-<li><p>树的深度/高度：树中结点所处的最大层次数。</p></li>
-<li><p>路径：对于树中任意两个结点d<sub>i</sub>和d<sub>j</sub>，若在树中存在一个结点序列d<sub>1</sub>,
-d<sub>2</sub>, ..., d<sub>i</sub>, ..,
-d<sub>j</sub>，使得d<sub>i</sub>是d<sub>i+1</sub>的双亲（1&lt;=i&lt;j），则称该结点序列是从d<sub>i</sub>到d<sub>j</sub>的一条路径。路径长度为<strong>路径结点数-1</strong>。</p></li>
-<li><p>祖先与子孙：若树中结点d到d<sub>s</sub>存在一条路径，则称d是d<sub>s</sub>的祖先，d<sub>s</sub>和d的子孙。</p>
+<h3 id="1-4-基本名词术语">1.4 基本名词术语</h3>
+<ol>
+<li>
+<p>结点的度：该结点拥有的子树的数目。</p>
+</li>
+<li>
+<p>树的度：树中结点度的最大值。</p>
+</li>
+<li>
+<p>叶结点*（终端结点）*：度为0的结点。</p>
+</li>
+<li>
+<p>分支结点*（非终端结点）*：度非0的结点。</p>
+</li>
+<li>
+<p>树的层次：根结点在第1层，若某结点在第i层，则其孩子结点（若存在）为第i+1层。</p>
+</li>
+<li>
+<p>树的深度/高度：树中结点所处的最大层次数。</p>
+</li>
+<li>
+<p>路径：对于树中任意两个结点d<sub>i</sub>和d<sub>j</sub>，若在树中存在一个结点序列d<sub>1</sub>, d<sub>2</sub>, …, d<sub>i</sub>, …, d<sub>j</sub>，使得d<sub>i</sub>是d<sub>i+1</sub>的双亲（1&lt;=i&lt;j），则称该结点序列是从d<sub>i</sub>到d<sub>j</sub>的一条路径。路径长度为<strong>路径结点数-1</strong>。</p>
+</li>
+<li>
+<p>祖先与子孙：若树中结点d到d<sub>s</sub>存在一条路径，则称d是d<sub>s</sub>的祖先，d<sub>s</sub>和d的子孙。</p>
 <p><em>从根结点到树中其余结点均分别存在一条唯一路径。</em></p>
-<p><em>一个结点的祖先是从根结点到该结点路径上所经过的所有结点；而一个结点的子孙则是以该结点为根的子树上的所有其他结点。</em></p></li>
-<li><p>树林（森林）：m&gt;=0棵不相交的树组成的树的集合。</p></li>
-<li><p>树的有序性：若树中结点的子树的相对位置不能随意改变，则称该树为<strong>有序树</strong>，否则称该树为<strong>无序树</strong>。</p></li>
+<p><em>一个结点的祖先是从根结点到该结点路径上所经过的所有结点；而一个结点的子孙则是以该结点为根的子树上的所有其他结点。</em></p>
+</li>
+<li>
+<p>树林（森林）：m&gt;=0棵不相交的树组成的树的集合。</p>
+</li>
+<li>
+<p>树的有序性：若树中结点的子树的相对位置不能随意改变，则称该树为<strong>有序树</strong>，否则称该树为<strong>无序树</strong>。</p>
+</li>
 </ol>
-<h2 id="树的存储结构">2 树的存储结构</h2>
+<h2 id="2-树的存储结构">2 树的存储结构</h2>
 <p>分为<strong>顺序存储结构</strong>和<strong>链式存储结构</strong>（居多）。</p>
-<h3 id="多重链表结构">2.1 多重链表结构</h3>
-<h4 id="定长结点的多重链表结构">2.1.1 定长结点的多重链表结构</h4>
-<p><img src="/img/LE-ds5/5.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="2-1-多重链表结构">2.1 多重链表结构</h3>
+<h4 id="2-1-1-定长结点的多重链表结构">2.1.1 定长结点的多重链表结构</h4>
+<p><img src="/img/LE-ds5/5.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
-<li><p>缺点：存储空间比较浪费</p></li>
-<li><p>对于具有n个结点且度为k的树，空指针域的数目为n*(k-1)+1</p></li>
+<li>
+<p>缺点：存储空间比较浪费</p>
+</li>
+<li>
+<p>对于具有n个结点且度为k的树，空指针域的数目为n*(k-1)+1</p>
+</li>
 </ul>
-<p><img src="/img/LE-ds5/6.png" srcset="/img/loading.gif" lazyload /></p>
-<h4 id="不定长结点的多重链表结构">2.1.2 不定长结点的多重链表结构</h4>
-<p><img src="/img/LE-ds5/7.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="/img/LE-ds5/6.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="2-1-2-不定长结点的多重链表结构">2.1.2 不定长结点的多重链表结构</h4>
+<p><img src="/img/LE-ds5/7.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
-<li><p>缺点：对数的操作不方便</p>
-<p><img src="/img/LE-ds5/8.png" srcset="/img/loading.gif" lazyload /></p></li>
+<li>
+<p>缺点：对数的操作不方便</p>
+<p><img src="/img/LE-ds5/8.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
 </ul>
-<h3 id="三重链表结构">2.2 三重链表结构</h3>
-<p><img src="/img/LE-ds5/9.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="2-2-三重链表结构">2.2 三重链表结构</h3>
+<p><img src="/img/LE-ds5/9.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li><code>data</code>为数据域；</li>
 <li><code>child</code>为指针域，指向该节点的第一个孩子结点；</li>
 <li><code>parent</code>为指针域，指向该结点的双亲结点；</li>
 <li><code>brother</code>为指针域，指向右边的第一个兄弟结点。</li>
 </ul>
-<p><img src="/img/LE-ds5/10.png" srcset="/img/loading.gif" lazyload /></p>
-<h2 id="二叉树">3 二叉树</h2>
-<h3 id="二叉树的定义">3.1 二叉树的定义</h3>
+<p><img src="/img/LE-ds5/10.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="3-二叉树">3 二叉树</h2>
+<h3 id="3-1-二叉树的定义">3.1 二叉树的定义</h3>
 <ul>
-<li><p><strong>二叉树</strong>是n&gt;=0个结点的有穷集合D与D上关系的集合R构成的结构，记为<code>T</code>。当n=0时，称T为空二叉树；否则,它为包含了一个根结点以及两棵不相交的、分别称之为<strong>左子树</strong>与<strong>右子树</strong>的二叉树。</p></li>
-<li><p>二叉树是有序树。</p></li>
-<li><p>二叉树的基本形态：</p>
-<p><img src="/img/LE-ds5/11.png" srcset="/img/loading.gif" lazyload /></p></li>
-<li><p>辨析：</p>
+<li>
+<p><strong>二叉树</strong>是n&gt;=0个结点的有穷集合D与D上关系的集合R构成的结构，记为<code>T</code>。当n=0时，称T为空二叉树；否则,它为包含了一个根结点以及两棵不相交的、分别称之为<strong>左子树</strong>与<strong>右子树</strong>的二叉树。</p>
+</li>
+<li>
+<p>二叉树是有序树。</p>
+</li>
+<li>
+<p>二叉树的基本形态：</p>
+<p><img src="/img/LE-ds5/11.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
+<li>
+<p>辨析：</p>
 <ul>
-<li><ol start="24" type="a">
-<li>度为2的树是二叉树。</li>
-</ol></li>
-<li><ol start="24" type="a">
-<li>度为2的有序树是二叉树。</li>
-</ol></li>
-<li><p>(√) 子树有严格的左右之分且度&lt;=2的树是二叉树。</p></li>
-<li><p>具有3个结点的二叉树可以有<strong>5种</strong>形态。</p>
-<p><img src="/img/LE-ds5/12.png" srcset="/img/loading.gif" lazyload /></p></li>
-<li><p>具有3个结点的树可以有<strong>1种</strong>形态。</p>
-<p><img src="/img/LE-ds5/13.png" srcset="/img/loading.gif" lazyload /></p></li>
-</ul></li>
+<li>
+<p>(x) 度为2的树是二叉树。</p>
+</li>
+<li>
+<p>(x) 度为2的有序树是二叉树。</p>
+</li>
+<li>
+<p>(√) 子树有严格的左右之分且度&lt;=2的树是二叉树。</p>
+</li>
+<li>
+<p>具有3个结点的二叉树可以有<strong>5种</strong>形态。</p>
+<p><img src="/img/LE-ds5/12.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
+<li>
+<p>具有3个结点的树可以有<strong>1种</strong>形态。</p>
+<p><img src="/img/LE-ds5/13.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
 </ul>
-<h3 id="两种特殊形态的二叉树">3.2 两种特殊形态的二叉树</h3>
-<ol type="1">
-<li><p>满二叉树</p>
-<p>若一棵二叉树中的结点，或者为叶结点，或者具有<strong>两棵非空子树</strong>,并且叶结点<strong>都集中在二叉树的最下面一层</strong>。这样的二叉树为满二叉树。</p></li>
-<li><p>完全二叉树</p>
-<p>若一棵二叉树中只有<strong>最下面两层</strong>的结点的度可以小于2,并且最下面一层的结点(叶结点)依次排列在该层<strong>从左至右</strong>的位置上.这样的二叉树为完全二叉树。</p></li>
+</li>
+</ul>
+<h3 id="3-2-两种特殊形态的二叉树">3.2 两种特殊形态的二叉树</h3>
+<ol>
+<li>
+<p>满二叉树</p>
+<p>若一棵二叉树中的结点，或者为叶结点，或者具有<strong>两棵非空子树</strong>,并且叶结点<strong>都集中在二叉树的最下面一层</strong>。这样的二叉树为满二叉树。</p>
+</li>
+<li>
+<p>完全二叉树</p>
+<p>若一棵二叉树中只有<strong>最下面两层</strong>的结点的度可以小于2,并且最下面一层的结点(叶结点)依次排列在该层<strong>从左至右</strong>的位置上.这样的二叉树为完全二叉树。</p>
+</li>
 </ol>
-<h3 id="二叉树的性质">3.3 二叉树的性质</h3>
-<ol type="1">
-<li><p>具有n个结点的非空二叉树共有<strong>n-1</strong>个分支。</p>
-<p><img src="/img/LE-ds5/14.png" srcset="/img/loading.gif" lazyload /></p></li>
-<li><p>非空二叉树的第i层最多有2<sup>i–1</sup>个结点(i&gt;=1)。</p>
-<p><img src="/img/LE-ds5/15.png" srcset="/img/loading.gif" lazyload /></p></li>
-<li><p>深度为h的非空二叉树最多有2<sup>h</sup>–1个结点。深度为h的完全二叉树至少有2<sup>h-1</sup>个结点。</p>
-<p><img src="/img/LE-ds5/16.png" srcset="/img/loading.gif" lazyload /></p></li>
-<li><p>若非空二叉树有n0个叶结点，有n2个度为2的结点，则n0=n2+1。</p>
-<p><img src="/img/LE-ds5/17.png" srcset="/img/loading.gif" lazyload /></p></li>
-<li><p>具有n个结点的非空完全二叉树的深度为h= ⌊log2n⌋+1。</p>
-<p><img src="/img/LE-ds5/18.png" srcset="/img/loading.gif" lazyload /></p></li>
-<li><p>若对具有n个结点的<strong>完全二叉树</strong>按照层次从上到下,每层从左到右的顺序进行编号,
-则编号为i(i≥1)的结点具有以下性质:</p>
-<ol type="1">
-<li><p>当i=1,则编号为i的结点为二叉树的根结点；</p>
-<p>若i&gt;1,则编号为i的结点的双亲的编号为<strong>⌊i/2⌋</strong>；</p></li>
-<li><p>若2i&gt;n,则编号为i的结点<strong>无左子树</strong>;</p>
-<p>若2i&gt;n,则编号为i的结点的左孩子的编号为<strong>2i</strong>；</p></li>
-<li><p>若2i+1&gt;n,则编号为i的结点<strong>无右子树</strong>;</p>
-<p>若2i+1≤n,则编号为i的结点的右孩子的编号为<strong>2i+1</strong>。</p></li>
+<h3 id="3-3-二叉树的性质">3.3 二叉树的性质</h3>
+<ol>
+<li>
+<p>具有n个结点的非空二叉树共有<strong>n-1</strong>个分支。</p>
+<p><img src="/img/LE-ds5/14.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
+<li>
+<p>非空二叉树的第i层最多有2<sup>i–1</sup>个结点(i&gt;=1)。</p>
+<p><img src="/img/LE-ds5/15.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
+<li>
+<p>深度为h的非空二叉树最多有2<sup>h</sup>–1个结点。深度为h的完全二叉树至少有2<sup>h-1</sup>个结点。</p>
+<p><img src="/img/LE-ds5/16.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
+<li>
+<p>若非空二叉树有n0个叶结点，有n2个度为2的结点，则n0=n2+1。</p>
+<p><img src="/img/LE-ds5/17.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
+<li>
+<p>具有n个结点的非空完全二叉树的深度为h= ⌊log2n⌋+1。</p>
+<p><img src="/img/LE-ds5/18.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
+<li>
+<p>若对具有n个结点的<strong>完全二叉树</strong>按照层次从上到下,每层从左到右的顺序进行编号, 则编号为i(i≥1)的结点具有以下性质:</p>
+<ol>
+<li>
+<p>当i=1,则编号为i的结点为二叉树的根结点；</p>
+<p>若i&gt;1,则编号为i的结点的双亲的编号为**⌊i/2⌋**；</p>
+</li>
+<li>
+<p>若2i&gt;n,则编号为i的结点<strong>无左子树</strong>;</p>
+<p>若2i&gt;n,则编号为i的结点的左孩子的编号为<strong>2i</strong>；</p>
+</li>
+<li>
+<p>若2i+1&gt;n,则编号为i的结点<strong>无右子树</strong>;</p>
+<p>若2i+1≤n,则编号为i的结点的右孩子的编号为<strong>2i+1</strong>。</p>
+</li>
 </ol>
-<p><img src="/img/LE-ds5/19.png" srcset="/img/loading.gif" lazyload /></p></li>
-<li><p>若对具有n个结点的完全二叉树按照层次从上到下,每层从左到右的顺序进行编号,
-则编号为i(i≥0)的结点具有以下性质:</p>
-<ol type="1">
-<li><p>当i=0,则编号为i的结点为二叉树的根结点；</p>
-<p>若i&gt;0,则编号为i的结点的双亲的编号为<strong>⌊(i-1)/2⌋</strong>；</p></li>
-<li><p>若2i+1≥n,则编号为i的结点<strong>无左子树</strong>;</p>
-<p>若2i+1&lt;n,则编号为i的结点的左孩子的编号为<strong>2i+1</strong>；</p></li>
-<li><p>若2i+2≥n,则编号为i的结点<strong>无右子树</strong>;</p>
-<p>若2i+2&lt;n,则编号为i的结点的右孩子的编号为<strong>2i+2</strong>。</p></li>
+<p><img src="/img/LE-ds5/19.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
+<li>
+<p>若对具有n个结点的完全二叉树按照层次从上到下,每层从左到右的顺序进行编号, 则编号为i(i≥0)的结点具有以下性质:</p>
+<ol>
+<li>
+<p>当i=0,则编号为i的结点为二叉树的根结点；</p>
+<p>若i&gt;0,则编号为i的结点的双亲的编号为**⌊(i-1)/2⌋**；</p>
+</li>
+<li>
+<p>若2i+1≥n,则编号为i的结点<strong>无左子树</strong>;</p>
+<p>若2i+1&lt;n,则编号为i的结点的左孩子的编号为<strong>2i+1</strong>；</p>
+</li>
+<li>
+<p>若2i+2≥n,则编号为i的结点<strong>无右子树</strong>;</p>
+<p>若2i+2&lt;n,则编号为i的结点的右孩子的编号为<strong>2i+2</strong>。</p>
+</li>
 </ol>
-<p><img src="/img/LE-ds5/20.png" srcset="/img/loading.gif" lazyload /></p>
-<p>例：<img src="/img/LE-ds5/21.png" srcset="/img/loading.gif" lazyload /></p></li>
+<p><img src="/img/LE-ds5/20.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>例：<img src="/img/LE-ds5/21.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
 </ol>
-<h3 id="二叉树的基本操作">3.4 二叉树的基本操作</h3>
-<ol type="1">
-<li><p><code>INITAL(T)</code> ：初始（创建）一棵二叉树。</p></li>
-<li><p><code>ROOT(T)</code>或<code>ROOT(x)</code>：求二叉树T的根结点，或求结点x所在二叉树的根结点。</p></li>
-<li><p><code>PARENT(T, x)</code>：求二叉树T中结点x的双亲结点。<em>若x是二叉树的根结点，或二叉树中不存在结点x，则返回“空”。</em></p></li>
-<li><p><code>LCHILD(T, x)</code>或<code>RCHILD(T, x)</code>：分别求二叉树T中结点x的左孩子结点或右孩子结点。</p></li>
-<li><p><code>LDELETE(T, x)</code>或<code>RDELETE(T, x)</code>：分别删除二叉树T中以结点x为根的左子树或右子树。</p></li>
-<li><p><strong><code>TRAVERSE(T)</code>：按照某种次序（或原则）依次访问二叉树T中各个结点，得到由该二叉树的所有结点组成的序列。</strong></p></li>
-<li><p><code>LAYER(T, x)</code>：求二叉树中结点x所处的层次。</p></li>
-<li><p><code>DEPTH(T)</code>：求二叉树T的深度。</p></li>
-<li><p><code>DESTROY(T)</code>：销毁一棵二叉树。<em>删除T的所有结点，并释放结点空间,使之成为一棵空二叉树。</em></p></li>
+<h3 id="3-4-二叉树的基本操作">3.4 二叉树的基本操作</h3>
+<ol>
+<li>
+<p><code>INITAL(T)</code> ：初始（创建）一棵二叉树。</p>
+</li>
+<li>
+<p><code>ROOT(T)</code>或<code>ROOT(x)</code>：求二叉树T的根结点，或求结点x所在二叉树的根结点。</p>
+</li>
+<li>
+<p><code>PARENT(T, x)</code>：求二叉树T中结点x的双亲结点。<em>若x是二叉树的根结点，或二叉树中不存在结点x，则返回“空”。</em></p>
+</li>
+<li>
+<p><code>LCHILD(T, x)</code>或<code>RCHILD(T, x)</code>：分别求二叉树T中结点x的左孩子结点或右孩子结点。</p>
+</li>
+<li>
+<p><code>LDELETE(T, x)</code>或<code>RDELETE(T, x)</code>：分别删除二叉树T中以结点x为根的左子树或右子树。</p>
+</li>
+<li>
+<p><strong><code>TRAVERSE(T)</code>：按照某种次序（或原则）依次访问二叉树T中各个结点，得到由该二叉树的所有结点组成的序列。</strong></p>
+</li>
+<li>
+<p><code>LAYER(T, x)</code>：求二叉树中结点x所处的层次。</p>
+</li>
+<li>
+<p><code>DEPTH(T)</code>：求二叉树T的深度。</p>
+</li>
+<li>
+<p><code>DESTROY(T)</code>：销毁一棵二叉树。<em>删除T的所有结点，并释放结点空间,使之成为一棵空二叉树。</em></p>
+</li>
 </ol>
-<h3 id="二叉树与树树林之间的转换">3.5 *二叉树与树、树林之间的转换</h3>
-<ol type="1">
-<li><p>树-&gt;二叉树</p>
-<ol type="1">
+<h3 id="3-5-二叉树与树、树林之间的转换">3.5 *二叉树与树、树林之间的转换</h3>
+<ol>
+<li>
+<p>树-&gt;二叉树</p>
+<ol>
 <li>在所有相邻的兄弟结点之间分别加一条连线；</li>
 <li>对于每一个分支结点，除了其最左孩子外，删除该结点与其他孩子结点之间的连线；</li>
 <li>以根结点为轴心，顺时针旋转45。</li>
 </ol>
-<p><img src="/img/LE-ds5/22.png" srcset="/img/loading.gif" lazyload /></p></li>
-<li><p>树林-&gt;二叉树</p>
-<ol type="1">
+<p><img src="/img/LE-ds5/22.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
+<li>
+<p>树林-&gt;二叉树</p>
+<ol>
 <li>分别将树林中每一棵树转换为一棵二叉树；</li>
 <li>从最后那一棵二叉树开始，依次将<strong>后一棵二叉树的根结点作为前一棵二叉树的根结点的右孩子</strong>，直到所有二叉树都这样处理。这样得到的二叉树的根结点是树林中第一棵二叉树的根结点。</li>
 </ol>
-<p><img src="/img/LE-ds5/23.png" srcset="/img/loading.gif" lazyload /></p></li>
-<li><p>二叉树还原为树<em>（前提：由一棵树转换而来）</em></p>
-<ol type="1">
+<p><img src="/img/LE-ds5/23.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
+<li>
+<p>二叉树还原为树*（前提：由一棵树转换而来）*</p>
+<ol>
 <li>若某结点是其双亲结点的左孩子，则将<strong>该结点的右孩子以及当且仅当连续地沿此右孩子的右子树方向的所有结点</strong>都分别与该结点的双亲结点用一根虚线连接；</li>
 <li>去掉二叉树中所有双亲结点与其<strong>右孩子</strong>的连线；</li>
 <li>规整图形(即使各结点按照层次排列),并将虚线改成实线。</li>
 </ol>
-<p><img src="/img/LE-ds5/24.png" srcset="/img/loading.gif" lazyload /></p></li>
+<p><img src="/img/LE-ds5/24.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
 </ol>
-<h2 id="二叉树的存储结构">4 二叉树的存储结构</h2>
-<h3 id="二叉树的顺序存储结构">4.1 二叉树的顺序存储结构</h3>
-<ol type="1">
-<li><p>完全二叉树的顺序存储结构</p>
-<p>根据完全二叉树的<strong>性质6</strong>，对于深度为h的完全二叉树，将树中所有结点的数据信息按照编号的顺序依次存储到一维数组<strong>BT[0...2<sup>h</sup>-2]</strong>中，由于编号与数组下标一一对应，该数组就是该完全二叉树的顺序存储结构。</p>
-<p>对于一个<strong>下标为i</strong>的结点，其<strong>父结点</strong>下标为<strong>(i-1)/2</strong>；其<strong>子结点</strong>下标为：<strong>2i+1,
-2i+2</strong></p></li>
-<li><p>一般二叉树的顺序存储结构</p>
-<p>对于一般二叉树,
-只须在二叉树中“添加”一些实际上二叉树中并不存在的<strong>“虚结点”</strong>(可以认为这些结点的数据信息为空),
-使其在形式上成为一棵“完全二叉树”,
-然后按照完全二叉树的顺序存储结构的构造方法将所有结点的数据信息依次存放于数组<strong>BT[0..2<sup>h</sup>-2]</strong>中。</p></li>
-<li><p>结论：</p>
-<ol type="1">
+<h2 id="4-二叉树的存储结构">4 二叉树的存储结构</h2>
+<h3 id="4-1-二叉树的顺序存储结构">4.1 二叉树的顺序存储结构</h3>
+<ol>
+<li>
+<p>完全二叉树的顺序存储结构</p>
+<p>根据完全二叉树的<strong>性质6</strong>，对于深度为h的完全二叉树，将树中所有结点的数据信息按照编号的顺序依次存储到一维数组**BT[0…2<sup>h</sup>-2]**中，由于编号与数组下标一一对应，该数组就是该完全二叉树的顺序存储结构。</p>
+<p>对于一个<strong>下标为i</strong>的结点，其<strong>父结点</strong>下标为**(i-1)/2**；其<strong>子结点</strong>下标为：<strong>2i+1, 2i+2</strong></p>
+</li>
+<li>
+<p>一般二叉树的顺序存储结构</p>
+<p>对于一般二叉树, 只须在二叉树中“添加”一些实际上二叉树中并不存在的**“虚结点”<strong>(可以认为这些结点的数据信息为空),  使其在形式上成为一棵“完全二叉树”, 然后按照完全二叉树的顺序存储结构的构造方法将所有结点的数据信息依次存放于数组</strong>BT[0…2<sup>h</sup>-2]**中。</p>
+</li>
+<li>
+<p>结论：</p>
+<ol>
 <li>顺序存储结构比较适合<strong>满二叉树</strong>，或者接近于满二叉树的<strong>完全二叉树</strong>，对于一些称为“<strong>退化二叉树</strong>”的二叉树,顺序存储结构的空间开销浪费的缺点表现比较突出。</li>
 <li><strong>顺序存储结构便于结点的检索</strong>（由双亲查子、由子查双亲）。</li>
 <li>顺序存储结构由于需要事先分配存储空间，对于<strong>动态数据容易溢出</strong>。</li>
-</ol></li>
 </ol>
-<h3 id="二叉树的链式存储结构">4.2 二叉树的链式存储结构</h3>
-<ol type="1">
-<li><p>二叉链表</p>
-<ol type="1">
-<li><p>定长结点的多重链表结构</p>
-<ol type="1">
-<li><p>链结点的构造： <img src="/img/LE-ds5/25.png" srcset="/img/loading.gif" lazyload /></p>
-<p>其中<code>data</code>为数据域；<code>left</code>和<code>right</code>分别为指向左、右子树的指针域。</p></li>
-<li><p>结点类型定义</p>
+</li>
+</ol>
+<h3 id="4-2-二叉树的链式存储结构">4.2 二叉树的链式存储结构</h3>
+<ol>
+<li>
+<p>二叉链表</p>
+<ol>
+<li>
+<p>定长结点的多重链表结构</p>
+<ol>
+<li>
+<p>链结点的构造：   <img src="/img/LE-ds5/25.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>其中<code>data</code>为数据域；<code>left</code>和<code>right</code>分别为指向左、右子树的指针域。</p>
+</li>
+<li>
+<p>结点类型定义</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span>&#123;</span><br>    Datatype data;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> *<span class="hljs-title">left</span>, *<span class="hljs-title">right</span>;</span><br>&#125;;<br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> <span class="hljs-title">BTNode</span>;</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> *<span class="hljs-title">BTNodeptr</span>;</span><br>BTNodeptr T, p, q;<br></code></pre></td></tr></table></figure>
-<p><img src="/img/LE-ds5/26.png" srcset="/img/loading.gif" lazyload /></p></li>
-</ol></li>
-<li><p>不定长结点的多重链表结构</p>
-<p><img src="/img/LE-ds5/27.png" srcset="/img/loading.gif" lazyload /></p></li>
-</ol></li>
-<li><p>*三叉链表</p>
-<ul>
-<li><p>链结点的构造：<img src="/img/LE-ds5/28.png" srcset="/img/loading.gif" lazyload /></p>
-<p>其中，<code>data</code>为数据域，<code>parent</code>为指向双亲结点的指针；<code>left</code>和<code>right</code>分别为指向左、右孩子结点的指针。</p></li>
-<li><p>优点：当找到一个结点时，可以很方便的得到<strong>其所有祖先结点</strong>，或得到从<strong>根到该结点的路径</strong>。<img
-src="/img/LE-ds5/29.png" srcset="/img/loading.gif" lazyload /></p></li>
-</ul></li>
+<p><img src="/img/LE-ds5/26.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
 </ol>
-<h2 id="典型操作遍历等">5 典型操作（遍历等）</h2>
-<h3 id="二叉树的遍历">5.1 二叉树的遍历</h3>
+</li>
+<li>
+<p>不定长结点的多重链表结构</p>
+<p><img src="/img/LE-ds5/27.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
+</ol>
+</li>
+<li>
+<p>*三叉链表</p>
 <ul>
-<li><p>定义：按照一定的顺序(原则)对二叉树中每一个结点都访问一次(仅访问一次)，得到一个由该二叉树的所有结点组成的序列，这一过程称为<strong>二叉树的遍历</strong>。</p></li>
-<li><p>常用的遍历方法</p>
+<li>
+<p>链结点的构造：<img src="/img/LE-ds5/28.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>其中，<code>data</code>为数据域，<code>parent</code>为指向双亲结点的指针；<code>left</code>和<code>right</code>分别为指向左、右孩子结点的指针。</p>
+</li>
+<li>
+<p>优点：当找到一个结点时，可以很方便的得到<strong>其所有祖先结点</strong>，或得到从<strong>根到该结点的路径</strong>。<img src="/img/LE-ds5/29.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="5-典型操作（遍历等）">5 典型操作（遍历等）</h2>
+<h3 id="5-1-二叉树的遍历">5.1 二叉树的遍历</h3>
+<ul>
+<li>
+<p>定义：按照一定的顺序(原则)对二叉树中每一个结点都访问一次(仅访问一次)，得到一个由该二叉树的所有结点组成的序列，这一过程称为<strong>二叉树的遍历</strong>。</p>
+</li>
+<li>
+<p>常用的遍历方法</p>
 <ul>
 <li>前序遍历（DLR）</li>
 <li>中序遍历（LDR）</li>
 <li>后序遍历（LRD）</li>
 <li>按层次遍历</li>
 </ul>
-<p>其中L表示遍历左子树，R表示遍历右子树，D表示访问根结点。前序、中序及后序遍历实质为<strong>深度优先算法（DFS）</strong>，层次遍历为一种<strong>广度优先算法（BFS）</strong>。</p></li>
-<li><p>可以利用<strong>前序序列和中序序列</strong>恢复二叉树，可以利用<strong>中序序列和后序序列</strong>恢复二叉树，<strong>不能</strong>利用前序序列和后序序列恢复二叉树。</p></li>
+<p>其中L表示遍历左子树，R表示遍历右子树，D表示访问根结点。前序、中序及后序遍历实质为<strong>深度优先算法（DFS）</strong>，层次遍历为一种<strong>广度优先算法（BFS）</strong>。</p>
+</li>
+<li>
+<p>可以利用<strong>前序序列和中序序列</strong>恢复二叉树，可以利用<strong>中序序列和后序序列</strong>恢复二叉树，<strong>不能</strong>利用前序序列和后序序列恢复二叉树。</p>
+</li>
 </ul>
-<h4 id="前序遍历">5.1.2 前序遍历</h4>
+<h4 id="5-1-2-前序遍历">5.1.2 前序遍历</h4>
 <p>原则：若被遍历的二叉树非空，则</p>
-<ol type="1">
+<ol>
 <li>访问根结点</li>
 <li>以前序遍历原则遍历根结点的左子树；</li>
 <li>以前序遍历原则遍历根结点的右子树。</li>
 </ol>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">perorder</span><span class="hljs-params">(BTNodeptr t)</span>&#123;<br>    <span class="hljs-keyword">if</span>(t!=<span class="hljs-literal">NULL</span>)&#123;<br>        VISIT(t);       <span class="hljs-comment">// 访问t指向结点</span><br>        preorder(t-&gt;left);<br>        preorder(t-&gt;right);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h4 id="中序遍历">5.1.3 中序遍历</h4>
+<h4 id="5-1-3-中序遍历">5.1.3 中序遍历</h4>
 <p>原则：若被遍历的二叉树非空，则</p>
-<ol type="1">
+<ol>
 <li>以中序遍历原则遍历根结点的左子树；</li>
 <li>访问根结点；</li>
 <li>以中序遍历原则遍历根结点的右子树。</li>
 </ol>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">inorder</span><span class="hljs-params">(BTNodeptr t)</span>&#123;<br>    <span class="hljs-keyword">if</span>(t!=<span class="hljs-literal">NULL</span>)&#123;<br>        inorder(t-&gt;left);<br>        VISIT(T);       <span class="hljs-comment">// 访问T指结点</span><br>        inorder(t-&gt;right);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h4 id="后序遍历">5.1.4 后序遍历</h4>
+<h4 id="5-1-4-后序遍历">5.1.4 后序遍历</h4>
 <p>原则：若被遍历的二叉树非空，则</p>
-<ol type="1">
+<ol>
 <li>以后序遍历原则遍历根结点的左子树；</li>
 <li>以后序遍历原则遍历根结点的右子树；</li>
 <li>访问根结点。</li>
 </ol>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">postorder</span><span class="hljs-params">(BTNodeptr t)</span>&#123;<br>    <span class="hljs-keyword">if</span>(t!=<span class="hljs-literal">NULL</span>)&#123;<br>        postorder(t-&gt;left);<br>        postorder(t-&gt;right);<br>        VISIT(T);       <span class="hljs-comment">// 访问T指结点</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h4 id="按层次遍历">5.1.5 按层次遍历</h4>
+<h4 id="5-1-5-按层次遍历">5.1.5 按层次遍历</h4>
 <p>原则：若被遍历的二叉树非空，则按照层次从上到下，每一层从左到右依次访问节点。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 把根结点为p的树转化为非循环队列</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> NodeNum 100</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">layerorder</span><span class="hljs-params">(BTNodeptr t)</span>&#123;<br>    BTNodeptr <span class="hljs-built_in">queue</span>[NodeNum], p;<br>    <span class="hljs-type">int</span> front, rear;<br>    <span class="hljs-keyword">if</span>(t!=<span class="hljs-literal">NULL</span>)&#123;<br>        <span class="hljs-built_in">queue</span>[<span class="hljs-number">0</span>]=t;<br>        front=<span class="hljs-number">0</span>;<br>        rear=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span>(front&lt;=rear)&#123;		<span class="hljs-comment">// 若队列不空</span><br>            p=<span class="hljs-built_in">queue</span>[front++]; <br>            VISIT(p);				<span class="hljs-comment">// 访问p指结点</span><br>            <span class="hljs-keyword">if</span>(p-&gt;left!=<span class="hljs-literal">NULL</span>)		<span class="hljs-comment">// 若左孩子非空</span><br>            	<span class="hljs-built_in">queue</span>[++rear]=p-&gt;left;<br>            <span class="hljs-keyword">if</span>(p-&gt;right!=<span class="hljs-literal">NULL</span>)		<span class="hljs-comment">// 若右孩子非空</span><br>            	<span class="hljs-built_in">queue</span>[++rear]=p-&gt;right;<br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// 转化为循环队列</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">layerorder</span><span class="hljs-params">(BTNodeptr t)</span>&#123;<br>    BTNodeptr p;<br>    <span class="hljs-keyword">if</span>(t!=<span class="hljs-literal">NULL</span>)&#123;<br>        enQueue(t);<br>        <span class="hljs-keyword">while</span>(!isEmpty())&#123;                      <br>            p=deQueue(); <br>            VISIT(p);                              <br>            <span class="hljs-keyword">if</span>(p-&gt;lchild!=<span class="hljs-literal">NULL</span>)           <br>            	enQueue(p-&gt;left);<br>            <span class="hljs-keyword">if</span>(p-&gt;rchild!=<span class="hljs-literal">NULL</span>)           <br>            	enQueue(p-&gt;right);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h4 id="由遍历序列恢复二叉树">5.1.6 由遍历序列恢复二叉树</h4>
-<ol type="1">
-<li><p>已知前序序列和中序序列，恢复二叉树：<strong>在前序序列中确定根;
-到中序序列中分左右</strong>。</p></li>
-<li><p>已知中序序列和后序序列，恢复二叉树：<strong>在后序序列中确定根;
-到中序序列中分左右</strong>。</p></li>
+<h4 id="5-1-6-由遍历序列恢复二叉树">5.1.6 由遍历序列恢复二叉树</h4>
+<ol>
+<li>
+<p>已知前序序列和中序序列，恢复二叉树：<strong>在前序序列中确定根; 到中序序列中分左右</strong>。</p>
+</li>
+<li>
+<p>已知中序序列和后序序列，恢复二叉树：<strong>在后序序列中确定根; 到中序序列中分左右</strong>。</p>
+</li>
 </ol>
-<h3 id="树的遍历">5.2 树的遍历</h3>
-<ol type="1">
-<li><p>前序遍历</p>
+<h3 id="5-2-树的遍历">5.2 树的遍历</h3>
+<ol>
+<li>
+<p>前序遍历</p>
 <p>原则：若被遍历的树非空,则</p>
-<ol type="1">
+<ol>
 <li>访问根结点；</li>
 <li>依次按前序遍历方式遍历根结点每一棵子树。</li>
-</ol></li>
-<li><p>后序遍历</p>
+</ol>
+</li>
+<li>
+<p>后序遍历</p>
 <p>原则：若被遍历的树非空,则</p>
-<ol type="1">
+<ol>
 <li>依次按后序遍历方式遍历根结点每一棵子树；</li>
 <li>访问根结点。</li>
-</ol></li>
-<li><p>深度优先遍历算法</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> MAXD 3   <span class="hljs-comment">//树的度</span></span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span>&#123;</span><br>    Datatype data;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> *<span class="hljs-title">next</span>[<span class="hljs-title">MAXD</span>];</span><br> &#125;;<br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> <span class="hljs-title">TNode</span>;</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> *<span class="hljs-title">TNodeptr</span>;</span><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">DFStree</span><span class="hljs-params">(TNodeptr t)</span>&#123;<br>    <span class="hljs-type">int</span> i;<br>    <span class="hljs-keyword">if</span>(t!=<span class="hljs-literal">NULL</span>)&#123;<br>        VISIT(t);       <span class="hljs-comment">/* 访问t指向结点  */</span><br>        <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;MAXD; i++)<br>        	<span class="hljs-keyword">if</span>(t-&gt;next[i] != <span class="hljs-literal">NULL</span>)<br>        		DFStree(t-&gt;next[i]);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
-<li><p>广度优先遍历算法</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> MAXD 3   <span class="hljs-comment">//树的度</span></span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span>&#123;</span><br>    Datatype data;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> *<span class="hljs-title">next</span>[<span class="hljs-title">MAXD</span>];</span><br> &#125;;<br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> <span class="hljs-title">TNode</span>;</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> *<span class="hljs-title">TNodeptr</span>;</span><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">BFStree</span><span class="hljs-params">(TNodeptr t)</span>&#123;<br>    TNodeptr p;<br>    <span class="hljs-type">int</span> i;<br>    <span class="hljs-keyword">if</span>(t!=<span class="hljs-literal">NULL</span>)&#123;<br>        enQueue(t);<br>        <span class="hljs-keyword">while</span>(!isEmpty())&#123;			<span class="hljs-comment">// 若队列不空</span><br>            p= deQueue(); <br>            VISIT(p);    <br>            <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt;MAXD; i++)	<span class="hljs-comment">// 依次访问p指向的子结点</span><br>            <span class="hljs-keyword">if</span>(p-&gt;next[i] != <span class="hljs-literal">NULL</span>)   <br>            	enQueue(p);<br>        &#125;<br>    &#125;    <br>&#125;<br></code></pre></td></tr></table></figure></li>
 </ol>
-<h3 id="二叉树的拷贝">5.3 二叉树的拷贝</h3>
+</li>
+<li>
+<p>深度优先遍历算法</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> MAXD 3   <span class="hljs-comment">//树的度</span></span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span>&#123;</span><br>    Datatype data;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> *<span class="hljs-title">next</span>[<span class="hljs-title">MAXD</span>];</span><br> &#125;;<br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> <span class="hljs-title">TNode</span>;</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> *<span class="hljs-title">TNodeptr</span>;</span><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">DFStree</span><span class="hljs-params">(TNodeptr t)</span>&#123;<br>    <span class="hljs-type">int</span> i;<br>    <span class="hljs-keyword">if</span>(t!=<span class="hljs-literal">NULL</span>)&#123;<br>        VISIT(t);       <span class="hljs-comment">/* 访问t指向结点  */</span><br>        <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;MAXD; i++)<br>        	<span class="hljs-keyword">if</span>(t-&gt;next[i] != <span class="hljs-literal">NULL</span>)<br>        		DFStree(t-&gt;next[i]);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>广度优先遍历算法</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> MAXD 3   <span class="hljs-comment">//树的度</span></span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span>&#123;</span><br>    Datatype data;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> *<span class="hljs-title">next</span>[<span class="hljs-title">MAXD</span>];</span><br> &#125;;<br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> <span class="hljs-title">TNode</span>;</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> *<span class="hljs-title">TNodeptr</span>;</span><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">BFStree</span><span class="hljs-params">(TNodeptr t)</span>&#123;<br>    TNodeptr p;<br>    <span class="hljs-type">int</span> i;<br>    <span class="hljs-keyword">if</span>(t!=<span class="hljs-literal">NULL</span>)&#123;<br>        enQueue(t);<br>        <span class="hljs-keyword">while</span>(!isEmpty())&#123;			<span class="hljs-comment">// 若队列不空</span><br>            p= deQueue(); <br>            VISIT(p);    <br>            <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt;MAXD; i++)	<span class="hljs-comment">// 依次访问p指向的子结点</span><br>            <span class="hljs-keyword">if</span>(p-&gt;next[i] != <span class="hljs-literal">NULL</span>)   <br>            	enQueue(p);<br>        &#125;<br>    &#125;    <br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="5-3-二叉树的拷贝">5.3 二叉树的拷贝</h3>
 <p>树拷贝时先拷贝当前结点，再拷贝子结点（同<strong>前序遍历</strong>）</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c">BTNodeptr <span class="hljs-title function_">copyTree</span><span class="hljs-params">(BTNodeptr src)</span>&#123;<br>    BTNodeptr obj;<br>    <span class="hljs-keyword">if</span>(src == <span class="hljs-literal">NULL</span>)&#123;<br>		obj = <span class="hljs-literal">NULL</span>;<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        obj = (BTNodeptr) <span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(BTNode));<br>        obj-&gt;data = src-&gt;data;<br>        obj-&gt;left = copyTree(src-&gt;left);<br>        obj-&gt;right = copyTree(src-&gt;right);<br>    &#125;<br>    <span class="hljs-keyword">return</span> obj;<br>&#125;    <span class="hljs-comment">// 以前序遍历思路实现二叉树的拷贝</span><br></code></pre></td></tr></table></figure>
-<h3 id="二叉树的删除">5.4 二叉树的删除</h3>
+<h3 id="5-4-二叉树的删除">5.4 二叉树的删除</h3>
 <p>树删除时先删除子结点，再删除当前结点。（同<strong>后序遍历</strong>）</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">destoryTree</span><span class="hljs-params">(BTNodeptr  p)</span>&#123;<br>    <span class="hljs-keyword">if</span>(p != <span class="hljs-literal">NULL</span>)&#123;<br>         destoryTree(p-&gt;left);<br>         destoryTree(p-&gt;right);<br>         <span class="hljs-built_in">free</span>(p);<br>         p = <span class="hljs-literal">NULL</span>; <br>    &#125;<br>&#125;    <span class="hljs-comment">//二叉树删除，采用后序遍历的思路</span><br></code></pre></td></tr></table></figure>
-<h3 id="二叉树的高度">5.5 二叉树的高度</h3>
+<h3 id="5-5-二叉树的高度">5.5 二叉树的高度</h3>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">max</span><span class="hljs-params">(x,y)</span>&#123;<br>    <span class="hljs-keyword">if</span>(x&gt;y)<br>        <span class="hljs-keyword">return</span> x;<br>    <span class="hljs-keyword">else</span><br>        <span class="hljs-keyword">return</span> y;<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">heightTree</span><span class="hljs-params">(BTNodeptr p)</span>&#123;<br>    <span class="hljs-keyword">if</span>(p == <span class="hljs-literal">NULL</span>)<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">else</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span> + max(heightTree(p-&gt;left), heightTree(p-&gt;right));<br> &#125;     <span class="hljs-comment">//计算树的高度</span><br></code></pre></td></tr></table></figure>
-<h2 id="线索二叉树threaded-binary-tree">6 *线索二叉树(Threaded Binary
-Tree)</h2>
-<h3 id="基本概念">6.1 基本概念</h3>
+<h2 id="6-线索二叉树-Threaded-Binary-Tree">6 *线索二叉树(Threaded Binary Tree)</h2>
+<h3 id="6-1-基本概念">6.1 基本概念</h3>
 <p>利用二叉链表中空的指针域指出结点在某种遍历序列中的直接前驱或直接后继。指向前驱和后继的指针称为<strong>线索</strong>,加了线索的二叉树称为<strong>线索二叉树</strong>。</p>
-<h3 id="线索二叉树的构造">6.2 线索二叉树的构造</h3>
+<h3 id="6-2-线索二叉树的构造">6.2 线索二叉树的构造</h3>
 <p>利用链结点的<strong>空的左指针域</strong>存放该结点的直接前驱的地址，<strong>空的右指针域</strong>存放该结点直接后继的地址；而非空的指针域仍然存放结点的左孩子或右孩子的地址。</p>
-<p><img src="/img/LE-ds5/30.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="/img/LE-ds5/30.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
-<li><p>指针与线索的区分</p>
+<li>
+<p>指针与线索的区分</p>
 <ul>
-<li>法1：<img src="/img/LE-ds5/31.png" srcset="/img/loading.gif" lazyload /></li>
+<li>法1：<img src="/img/LE-ds5/31.png" srcset="/img/loading.gif" lazyload alt=""></li>
 <li>法2：不改变链结点的构造,而是在作为线索的地址前加一个负号,即“负地址”表示线索，“正地址”表示指针。</li>
-</ul></li>
-<li><p>线索二叉树链结点类型定义：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span>&#123;</span><br>    Datatype data;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> *<span class="hljs-title">left</span>, *<span class="hljs-title">right</span>;</span><br>    <span class="hljs-type">char</span> lbit, rbit;<br>&#125;;<br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> <span class="hljs-title">TBTNode</span>;</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> *<span class="hljs-title">TBTNodeptr</span>;</span><br></code></pre></td></tr></table></figure>
-<p><img src="/img/LE-ds5/32.png" srcset="/img/loading.gif" lazyload /></p></li>
 </ul>
-<h3 id="线索二叉树的应用">6.3 线索二叉树的应用</h3>
+</li>
+<li>
+<p>线索二叉树链结点类型定义：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span>&#123;</span><br>    Datatype data;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> *<span class="hljs-title">left</span>, *<span class="hljs-title">right</span>;</span><br>    <span class="hljs-type">char</span> lbit, rbit;<br>&#125;;<br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> <span class="hljs-title">TBTNode</span>;</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> *<span class="hljs-title">TBTNodeptr</span>;</span><br></code></pre></td></tr></table></figure>
+<p><img src="/img/LE-ds5/32.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
+</ul>
+<h3 id="6-3-线索二叉树的应用">6.3 线索二叉树的应用</h3>
 <p>为中序线索二叉树确定地址为x的结点的直接后继</p>
 <ul>
-<li><p>规律：</p>
+<li>
+<p>规律：</p>
 <ul>
 <li>当<code>x-&gt;rbit=0</code>时,<code>x-&gt;right</code>指出的结点就是x的直接后继结点。</li>
-<li>当<code>x-&gt;rbit=1</code>时，沿着x的右子树的根的左子树方向查找,直到某结点的<code>left</code>域为线索时,
-此结点就是<code>x</code>结点直接后继结点。</li>
-</ul></li>
-<li><p>代码实现</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 确定x的直接后继</span><br>TBTNodeptr <span class="hljs-title function_">insucc</span><span class="hljs-params">(TBTNodeptr x)</span>&#123;<br>    TBTNodeptr s;<br>    s=x-&gt;right;<br>    <span class="hljs-keyword">if</span>(x-&gt;rbit==<span class="hljs-number">1</span>)<br>    	<span class="hljs-keyword">while</span> (s-&gt;lbit==<span class="hljs-number">1</span>)<br>    		s=s-&gt;left;<br>    <span class="hljs-keyword">return</span>(s);<br>&#125;<br><br><span class="hljs-comment">// 利用上面函数实现非递归中序遍历</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">torder</span><span class="hljs-params">(TBTNodeptr head)</span>&#123;    <br>    TBTNodeptr  p=head;<br>    <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>)&#123;<br>        p=insucc(p);<br>        <span class="hljs-keyword">if</span>(p==head)<br>        	<span class="hljs-keyword">break</span>;<br>        VISIT(p);<br>    &#125;  <br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>当<code>x-&gt;rbit=1</code>时，沿着x的右子树的根的左子树方向查找,直到某结点的<code>left</code>域为线索时, 此结点就是<code>x</code>结点直接后继结点。</li>
 </ul>
-<h3 id="线索二叉树的建立">6.4 线索二叉树的建立</h3>
+</li>
+<li>
+<p>代码实现</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 确定x的直接后继</span><br>TBTNodeptr <span class="hljs-title function_">insucc</span><span class="hljs-params">(TBTNodeptr x)</span>&#123;<br>    TBTNodeptr s;<br>    s=x-&gt;right;<br>    <span class="hljs-keyword">if</span>(x-&gt;rbit==<span class="hljs-number">1</span>)<br>    	<span class="hljs-keyword">while</span> (s-&gt;lbit==<span class="hljs-number">1</span>)<br>    		s=s-&gt;left;<br>    <span class="hljs-keyword">return</span>(s);<br>&#125;<br><br><span class="hljs-comment">// 利用上面函数实现非递归中序遍历</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">torder</span><span class="hljs-params">(TBTNodeptr head)</span>&#123;    <br>    TBTNodeptr  p=head;<br>    <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>)&#123;<br>        p=insucc(p);<br>        <span class="hljs-keyword">if</span>(p==head)<br>        	<span class="hljs-keyword">break</span>;<br>        VISIT(p);<br>    &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="6-4-线索二叉树的建立">6.4 线索二叉树的建立</h3>
 <ul>
-<li><p>建立线索的规矩：</p>
+<li>
+<p>建立线索的规矩：</p>
 <ul>
-<li><p><code>prior</code>：指向前一次访问结点</p>
-<p><code>p</code>：指向当前访问结点</p></li>
-<li><p>若当前访问的结点的<strong>左指针域</strong>为空，则它指向<code>prior</code>指的结点，同时置<code>lbit</code>为0，否则，置<code>lbit</code>为1；</p></li>
-<li><p>若<code>prior</code>所指结点的<strong>右指针域</strong>为空，则它指向当前访问的结点，同时置<code>rbit</code>为0，否则，置<code>rbit</code>为1。</p></li>
-<li><p><code>p=NULL</code>时遍历结束，将<code>prior-&gt;right</code>指向头结点，并置<code>prior-&gt;rbit</code>为0。</p></li>
-</ul></li>
-<li><p>代码实现（对根结点<code>root</code>引领的树进行中序线索化）</p>
+<li>
+<p><code>prior</code>：指向前一次访问结点</p>
+<p><code>p</code>：指向当前访问结点</p>
+</li>
+<li>
+<p>若当前访问的结点的<strong>左指针域</strong>为空，则它指向<code>prior</code>指的结点，同时置<code>lbit</code>为0，否则，置<code>lbit</code>为1；</p>
+</li>
+<li>
+<p>若<code>prior</code>所指结点的<strong>右指针域</strong>为空，则它指向当前访问的结点，同时置<code>rbit</code>为0，否则，置<code>rbit</code>为1。</p>
+</li>
+<li>
+<p><code>p=NULL</code>时遍历结束，将<code>prior-&gt;right</code>指向头结点，并置<code>prior-&gt;rbit</code>为0。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>代码实现（对根结点<code>root</code>引领的树进行中序线索化）</p>
 <p>递归版本</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs c">TBTNodeptr piror;<br>TBTNodeptr <span class="hljs-title function_">threading</span><span class="hljs-params">(TBTNodeptr  root)</span>&#123;<br>    TBTNodeptr head;<br>    head = (TBTNodeptr)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(TBTNode));<br>    head-&gt;left = root; head-&gt;right = head; head-&gt;lbit = head-&gt;rbit=<span class="hljs-number">1</span>;<br>    piror = head;<br>    inThreading(root);<br>    piror-&gt;right = head; piror-&gt;rbit = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">return</span> head;<br>&#125;<br><br><span class="hljs-comment">// 中序遍历进行中序线索化	piror是一个全局变量，初始时，piror指向树head结点</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">inThreading</span><span class="hljs-params">(TBTNodeptr p)</span>&#123;<br>    <span class="hljs-keyword">if</span>(p != <span class="hljs-literal">NULL</span>) &#123;<br>    	inThreading(p-&gt;left); 	 <span class="hljs-comment">//递归左子树线索化</span><br>        <span class="hljs-keyword">if</span>(p-&gt;left == <span class="hljs-literal">NULL</span>) &#123; 	<span class="hljs-comment">//没有左孩子</span><br>            p-&gt;lbit = <span class="hljs-number">0</span>;		<span class="hljs-comment">//前驱线索</span><br>            p-&gt;left = prior;	<span class="hljs-comment">//左孩子指针指向前驱</span><br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            p-&gt;lbit = <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(prior-&gt;right == <span class="hljs-literal">NULL</span>) &#123; <span class="hljs-comment">//前驱没有右孩子</span><br>            prior-&gt;rbit = <span class="hljs-number">0</span>;	<span class="hljs-comment">//后继线索</span><br>            prior-&gt;right = p;	<span class="hljs-comment">//前驱右孩子指向后继</span><br>        &#125;<span class="hljs-keyword">else</span>&#123; <br>            prior-&gt;rbit = <span class="hljs-number">1</span>;<br>        &#125;<br>        prior = p;		<span class="hljs-comment">//保持prior指向p的前驱</span><br>        inThreading(p-&gt;right); 	<span class="hljs-comment">//递归右子树线索化</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>非递归版本</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> NodeNum 100		<span class="hljs-comment">// 定义二叉树中结点最大数目</span></span><br>TBTNodeptr <span class="hljs-title function_">inthread</span><span class="hljs-params">(TBTNodeptr t)</span>&#123;  <br>    TBTNodeptr  head, p=t, prior, <span class="hljs-built_in">stack</span>[NodeNum];<br>    <span class="hljs-type">int</span> top=<span class="hljs-number">-1</span>;<br>    head=(TBTNoteptr)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(TBNode));  <br>    <span class="hljs-comment">// 申请线索二叉树的头结点空间</span><br>    head-&gt;left=t;<br>	head-&gt;right=head;<br>    head-&gt;lbit=<span class="hljs-number">1</span>;  <br>    prior=head;		<span class="hljs-comment">// 假设中序序列的第1个结点的“前驱”为头结点</span><br>     <br>    <span class="hljs-keyword">do</span>&#123; <br>        <span class="hljs-keyword">for</span>(; p!=<span class="hljs-literal">NULL</span>; p=p-&gt;left)		<span class="hljs-comment">// p移到左孩子结点</span><br>        	<span class="hljs-built_in">stack</span>[++top]=p;		<span class="hljs-comment">// p指结点的地址进栈 </span><br>        p=<span class="hljs-built_in">stack</span>[top--];		<span class="hljs-comment">// 退栈</span><br>        <br>        <span class="hljs-keyword">if</span>(p-&gt;left==<span class="hljs-literal">NULL</span>)&#123;        <span class="hljs-comment">// 若当前访问结点的左孩子为空</span><br>            p-&gt;left=prior; <span class="hljs-comment">// 当前访问结点的左指针域指向前一次访问结点</span><br>            p-&gt;lbit=<span class="hljs-number">0</span>;  <span class="hljs-comment">// 当前访问结点的左标志域置0(表示地址为线索)</span><br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>        	p-&gt;lbit=<span class="hljs-number">1</span>;      <span class="hljs-comment">// 当前访问结点的左标志域置1(表示地址为指针)</span><br>        &#125;<br>        <span class="hljs-keyword">if</span>(prior-&gt;right==<span class="hljs-literal">NULL</span>)&#123;     <span class="hljs-comment">// 若前一次访问的结点的右孩子为空</span><br>            prior-&gt;right=p;<br>            <span class="hljs-comment">// 前一次访问结点的右指针域指向当前访问结点</span><br>            prior-&gt;rbit=<span class="hljs-number">0</span>;<br>            <span class="hljs-comment">// 前一次访问结点的右标志域置0(表示地址为线索)</span><br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>        	prior-&gt;rbit=<span class="hljs-number">1</span>;<br>        	<span class="hljs-comment">// 前一次访问结点的右标志域置1(表示地址为指针)</span><br>        &#125;<br>        <br>        prior=p;		<span class="hljs-comment">// 记录当前访问的结点的地址</span><br>        p=p-&gt;right;		<span class="hljs-comment">// p移到右孩子结点</span><br>    &#125;<span class="hljs-keyword">while</span>(!(p==<span class="hljs-literal">NULL</span> &amp;&amp; top==<span class="hljs-number">-1</span>));<br>     <br>    prior-&gt;right=head;		<span class="hljs-comment">// 设中序序列的最后结点的后继为头结点</span><br>    prior-&gt;rbit=<span class="hljs-number">0</span>;			<span class="hljs-comment">// prior指结点的右标志域置0(表示地址为线索)</span><br>    <span class="hljs-keyword">return</span> head;			<span class="hljs-comment">// 返回线索二叉树的头结点指针</span><br>&#125; <br></code></pre></td></tr></table></figure></li>
-<li><p>二叉树线索化的好处：线索化二叉树等于将一棵二叉树转变成了一个<strong>双向链表</strong>，这为二叉树结点的插入、删除和查找带来了方便。在实际问题中，如果所用的二叉树需要<strong>经常遍历或查找结点时需要访问结点的前驱和后继</strong>，则采用线索二叉树结构是一个很好的选择。将二叉树线索化可以实现不用栈的树深度优先遍历算法。</p></li>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> NodeNum 100		<span class="hljs-comment">// 定义二叉树中结点最大数目</span></span><br>TBTNodeptr <span class="hljs-title function_">inthread</span><span class="hljs-params">(TBTNodeptr t)</span>&#123;  <br>    TBTNodeptr  head, p=t, prior, <span class="hljs-built_in">stack</span>[NodeNum];<br>    <span class="hljs-type">int</span> top=<span class="hljs-number">-1</span>;<br>    head=(TBTNoteptr)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(TBNode));  <br>    <span class="hljs-comment">// 申请线索二叉树的头结点空间</span><br>    head-&gt;left=t;<br>	head-&gt;right=head;<br>    head-&gt;lbit=<span class="hljs-number">1</span>;  <br>    prior=head;		<span class="hljs-comment">// 假设中序序列的第1个结点的“前驱”为头结点</span><br>     <br>    <span class="hljs-keyword">do</span>&#123; <br>        <span class="hljs-keyword">for</span>(; p!=<span class="hljs-literal">NULL</span>; p=p-&gt;left)		<span class="hljs-comment">// p移到左孩子结点</span><br>        	<span class="hljs-built_in">stack</span>[++top]=p;		<span class="hljs-comment">// p指结点的地址进栈 </span><br>        p=<span class="hljs-built_in">stack</span>[top--];		<span class="hljs-comment">// 退栈</span><br>        <br>        <span class="hljs-keyword">if</span>(p-&gt;left==<span class="hljs-literal">NULL</span>)&#123;        <span class="hljs-comment">// 若当前访问结点的左孩子为空</span><br>            p-&gt;left=prior; <span class="hljs-comment">// 当前访问结点的左指针域指向前一次访问结点</span><br>            p-&gt;lbit=<span class="hljs-number">0</span>;  <span class="hljs-comment">// 当前访问结点的左标志域置0(表示地址为线索)</span><br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>        	p-&gt;lbit=<span class="hljs-number">1</span>;      <span class="hljs-comment">// 当前访问结点的左标志域置1(表示地址为指针)</span><br>        &#125;<br>        <span class="hljs-keyword">if</span>(prior-&gt;right==<span class="hljs-literal">NULL</span>)&#123;     <span class="hljs-comment">// 若前一次访问的结点的右孩子为空</span><br>            prior-&gt;right=p;<br>            <span class="hljs-comment">// 前一次访问结点的右指针域指向当前访问结点</span><br>            prior-&gt;rbit=<span class="hljs-number">0</span>;<br>            <span class="hljs-comment">// 前一次访问结点的右标志域置0(表示地址为线索)</span><br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>        	prior-&gt;rbit=<span class="hljs-number">1</span>;<br>        	<span class="hljs-comment">// 前一次访问结点的右标志域置1(表示地址为指针)</span><br>        &#125;<br>        <br>        prior=p;		<span class="hljs-comment">// 记录当前访问的结点的地址</span><br>        p=p-&gt;right;		<span class="hljs-comment">// p移到右孩子结点</span><br>    &#125;<span class="hljs-keyword">while</span>(!(p==<span class="hljs-literal">NULL</span> &amp;&amp; top==<span class="hljs-number">-1</span>));<br>     <br>    prior-&gt;right=head;		<span class="hljs-comment">// 设中序序列的最后结点的后继为头结点</span><br>    prior-&gt;rbit=<span class="hljs-number">0</span>;			<span class="hljs-comment">// prior指结点的右标志域置0(表示地址为线索)</span><br>    <span class="hljs-keyword">return</span> head;			<span class="hljs-comment">// 返回线索二叉树的头结点指针</span><br>&#125; <br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>二叉树线索化的好处：线索化二叉树等于将一棵二叉树转变成了一个<strong>双向链表</strong>，这为二叉树结点的插入、删除和查找带来了方便。在实际问题中，如果所用的二叉树需要<strong>经常遍历或查找结点时需要访问结点的前驱和后继</strong>，则采用线索二叉树结构是一个很好的选择。将二叉树线索化可以实现不用栈的树深度优先遍历算法。</p>
+</li>
 </ul>
-<h2 id="二叉查找树二叉搜索树二叉排序树binary-search-tree-bst">7
-二叉查找树（二叉搜索树、二叉排序树）(Binary Search Tree, BST)</h2>
+<h2 id="7-二叉查找树（二叉搜索树、二叉排序树）-Binary-Search-Tree-BST">7 二叉查找树（二叉搜索树、二叉排序树）(Binary Search Tree, BST)</h2>
 <p>适合于<strong>数据量大</strong>且<strong>无序</strong>的数据，如单词词频统计（单词索引）等。</p>
-<h3 id="二叉查找树的定义">7.1 二叉查找树的定义</h3>
+<h3 id="7-1-二叉查找树的定义">7.1 二叉查找树的定义</h3>
 <p>二叉查找树或者为空二叉树, 或者为具有以下性质的二叉树:</p>
 <ul>
 <li>若根结点的左子树不空, 则左子树上所有结点的值都小于根结点的值;</li>
-<li>若根结点的右子树不空,
-则右子树上所有结点的值都大于或等于根结点的值;</li>
+<li>若根结点的右子树不空, 则右子树上所有结点的值都大于或等于根结点的值;</li>
 <li>每一棵子树分别也是二叉查找树。</li>
 </ul>
-<h3 id="二叉查找树的建立逐点插入法">7.2
-二叉查找树的建立（逐点插入法）</h3>
-<ol type="1">
-<li><p>规律</p>
-<p>设K=( k<sub>1</sub>, k<sub>2</sub>, k<sub>3</sub>, … , k<sub>n</sub>
-)为具有n个数据元素的序列。从序列的第一个元素开始，依次取序列中的元素，每取一个元素k<sub>i</sub>，按照下述原则将k<sub>i</sub>插入到二叉树中:</p>
-<ol type="1">
+<h3 id="7-2-二叉查找树的建立（逐点插入法）">7.2 二叉查找树的建立（逐点插入法）</h3>
+<ol>
+<li>
+<p>规律</p>
+<p>设K=( k<sub>1</sub>, k<sub>2</sub>, k<sub>3</sub>, … , k<sub>n</sub> )为具有n个数据元素的序列。从序列的第一个元素开始，依次取序列中的元素，每取一个元素k<sub>i</sub>，按照下述原则将k<sub>i</sub>插入到二叉树中:</p>
+<ol>
 <li>若二叉树为空，则k<sub>i</sub>作为该二叉树的根结点；</li>
 <li>若二叉树非空，则将k<sub>i</sub>与该二叉树的根结点的值进行比较，若k<sub>i</sub>小于根结点的值,则将k<sub>i</sub>插入到根结点的左子树中；否则，将k<sub>i</sub>插入到根结点的右子树中。</li>
 <li>将k<sub>i</sub>插入到左子树或者右子树中仍然遵循上述原则(递归)。</li>
-</ol></li>
-<li><p>代码实现（将一个数据元素<code>item</code>插入到根指针为<code>root</code>的二叉排序树中）</p>
+</ol>
+</li>
+<li>
+<p>代码实现（将一个数据元素<code>item</code>插入到根指针为<code>root</code>的二叉排序树中）</p>
 <p>递归算法</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-keyword">typedef</span> <span class="hljs-type">int</span> Datatype;<br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> &#123;</span><br>    Datatype data;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> *<span class="hljs-title">left</span>, *<span class="hljs-title">right</span>;</span><br>&#125;;<br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> <span class="hljs-title">BTNode</span>, *<span class="hljs-title">BTNodeptr</span>;</span><br>BTNodeptr <span class="hljs-title function_">insertBST</span><span class="hljs-params">(BTNodeptr p, Datatype item)</span>;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span> i, item;<br>    BTNodeptr  root=<span class="hljs-literal">NULL</span>;<br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">10</span>; i++)&#123; <span class="hljs-comment">//构造一个有10个元素的BST树</span><br>		<span class="hljs-built_in">scanf</span>(“%d”, &amp;item);<br>		root = insertBST(root, item);<br>	&#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br>BTNodeptr <span class="hljs-title function_">insertBST</span><span class="hljs-params">(BTNodeptr p, Datatype item)</span>&#123;<br>    <span class="hljs-keyword">if</span>(p == <span class="hljs-literal">NULL</span>)&#123;		<span class="hljs-comment">// 如果二叉树为空</span><br>        p = (BTNodeptr)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(BTNode));<br>        p-&gt;data = item;<br>        p-&gt;left = p-&gt;right = <span class="hljs-literal">NULL</span>;<br>    &#125;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(item &lt; p-&gt;data)		<span class="hljs-comment">// 小于根结点放左边</span><br>        p-&gt;left = insertBST(p-&gt;left, item);<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(item &gt; p-&gt;data)		<span class="hljs-comment">// 大于根结点放右边</span><br>		p-&gt;right = insertBST(p-&gt;right,item);<br>    <span class="hljs-keyword">else</span>   <br>		<span class="hljs-keyword">do</span>-something; 	<span class="hljs-comment">//树中存在该元素</span><br>    <span class="hljs-keyword">return</span> p;<br>&#125; <br></code></pre></td></tr></table></figure>
 <p>非递归算法</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs c">BTNodeptr  Root=<span class="hljs-literal">NULL</span>; <span class="hljs-comment">//Root是一个全局变量</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">insertBST</span><span class="hljs-params">(Typedata item)</span>&#123;<br>    BTNodeptr p, q;<br>    p=(BTNodeptr)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(BTNode));<br>    p-&gt;data=item;<br>    p-&gt;left=<span class="hljs-literal">NULL</span>;<br>    p-&gt;right=<span class="hljs-literal">NULL</span>;<br>    <span class="hljs-keyword">if</span>(Root==<span class="hljs-literal">NULL</span>)&#123;		<span class="hljs-comment">// 根结点为空</span><br>		Root=p;<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>	    q=Root;<br>    	<span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>)&#123;		<span class="hljs-comment">/* 比较值的大小 */</span><br>         <span class="hljs-comment">/* ，大于向右 */</span><br>			<span class="hljs-keyword">if</span>(item &lt; q-&gt;data)&#123;				<span class="hljs-comment">// 小于向左</span><br>				<span class="hljs-keyword">if</span>(q-&gt;left == <span class="hljs-literal">NULL</span>)&#123;<br>                    q-&gt;left=p;<br>                    <span class="hljs-keyword">break</span>;<br>				&#125;<span class="hljs-keyword">else</span>&#123;<br>                	q = q-&gt;left;<br>                &#125;<br>			&#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(item &gt; q-&gt;data)&#123;		<span class="hljs-comment">// 大于向右</span><br>                <span class="hljs-keyword">if</span>(q-&gt;right==<span class="hljs-literal">NULL</span>)&#123;<br>                    q-&gt;right=p;<br>                    <span class="hljs-keyword">break</span>;     <br>                &#125;<span class="hljs-keyword">else</span>&#123;<br>					q=q-&gt;right;<br>                &#125;<br>			&#125;<span class="hljs-keyword">else</span>&#123;<br>                <span class="hljs-comment">/* do-something */</span> <br>            &#125;<br>		&#125;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
-<li><p>通过调用非递归插入算法建立二叉查找树的（主）算法</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c">BTNodeptr Root=<span class="hljs-literal">NULL</span>;<br><span class="hljs-type">void</span> <span class="hljs-title function_">sortTree</span><span class="hljs-params">(Datatype k[ ], <span class="hljs-type">int</span> n)</span> &#123;<br>    <span class="hljs-type">int</span> i;<br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt;n; i++)<br>    	insertBST(k[i]);<br>    <span class="hljs-keyword">return</span> ;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs c">BTNodeptr  Root=<span class="hljs-literal">NULL</span>; <span class="hljs-comment">//Root是一个全局变量</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">insertBST</span><span class="hljs-params">(Typedata item)</span>&#123;<br>    BTNodeptr p, q;<br>    p=(BTNodeptr)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(BTNode));<br>    p-&gt;data=item;<br>    p-&gt;left=<span class="hljs-literal">NULL</span>;<br>    p-&gt;right=<span class="hljs-literal">NULL</span>;<br>    <span class="hljs-keyword">if</span>(Root==<span class="hljs-literal">NULL</span>)&#123;		<span class="hljs-comment">// 根结点为空</span><br>		Root=p;<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>	    q=Root;<br>    	<span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>)&#123;		<span class="hljs-comment">/* 比较值的大小 */</span><br>         <span class="hljs-comment">/* ，大于向右 */</span><br>			<span class="hljs-keyword">if</span>(item &lt; q-&gt;data)&#123;				<span class="hljs-comment">// 小于向左</span><br>				<span class="hljs-keyword">if</span>(q-&gt;left == <span class="hljs-literal">NULL</span>)&#123;<br>                    q-&gt;left=p;<br>                    <span class="hljs-keyword">break</span>;<br>				&#125;<span class="hljs-keyword">else</span>&#123;<br>                	q = q-&gt;left;<br>                &#125;<br>			&#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(item &gt; q-&gt;data)&#123;		<span class="hljs-comment">// 大于向右</span><br>                <span class="hljs-keyword">if</span>(q-&gt;right==<span class="hljs-literal">NULL</span>)&#123;<br>                    q-&gt;right=p;<br>                    <span class="hljs-keyword">break</span>;     <br>                &#125;<span class="hljs-keyword">else</span>&#123;<br>					q=q-&gt;right;<br>                &#125;<br>			&#125;<span class="hljs-keyword">else</span>&#123;<br>                <span class="hljs-comment">/* do-something */</span> <br>            &#125;<br>		&#125;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>通过调用非递归插入算法建立二叉查找树的（主）算法</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c">BTNodeptr Root=<span class="hljs-literal">NULL</span>;<br><span class="hljs-type">void</span> <span class="hljs-title function_">sortTree</span><span class="hljs-params">(Datatype k[ ], <span class="hljs-type">int</span> n)</span> &#123;<br>    <span class="hljs-type">int</span> i;<br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt;n; i++)<br>    	insertBST(k[i]);<br>    <span class="hljs-keyword">return</span> ;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
 </ol>
-<h3 id="二叉查找树的删除">7.3 二叉查找树的删除</h3>
-<ol type="1">
+<h3 id="7-3-二叉查找树的删除">7.3 二叉查找树的删除</h3>
+<ol>
 <li>被删除节点为叶节点，则直接删除；</li>
 <li>被删除结点无左子树，则用右子树的根结点取代被删除结点；</li>
 <li>被删除结点无右子树，则用左子树的根结点取代被删除结点。</li>
 <li>被删除结点的左、右子树都存在，则用被删除结点的右子树中值最小的结点（或被删除结点的左子树中值最大的结点)取代被删除结点。</li>
 </ol>
 <ul>
-<li>懒惰删除(lazy
-deletion)：当一个元素要被删除时，它仍留在树中，而是只做一个被删除的记号。如果删除的次数不多，则通常使用的策略是<strong>懒惰删除</strong>。</li>
+<li>懒惰删除(lazy deletion)：当一个元素要被删除时，它仍留在树中，而是只做一个被删除的记号。如果删除的次数不多，则通常使用的策略是<strong>懒惰删除</strong>。</li>
 </ul>
-<h3 id="二叉查找树的查找">7.4 二叉查找树的查找</h3>
-<ol type="1">
-<li><p>查找过程</p>
+<h3 id="7-4-二叉查找树的查找">7.4 二叉查找树的查找</h3>
+<ol>
+<li>
+<p>查找过程</p>
 <ul>
 <li>若二叉查找树为空,则查找失败,查找结束。</li>
 <li>若二叉查找树非空，则将被查找元素与二叉排序树的根结点的值进行比较,
@@ -727,253 +877,317 @@ deletion)：当一个元素要被删除时，它仍留在树中，而是只做�
 <li>若小于根结点的值,则到根结点的左子树中重复上述查找过程;</li>
 <li>若大于根结点的值,则到根结点的右子树中重复上述查找过程;</li>
 <li>直到查找成功或者失败。</li>
-</ul></li>
+</ul>
+</li>
 <li>若查找成功，给出被查找元素所在结点的地址；若查找失败，给出信息NULL。</li>
-</ul></li>
-<li><p>代码实现</p>
+</ul>
+</li>
+<li>
+<p>代码实现</p>
 <p>非递归算法</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c">BTNodeptr <span class="hljs-title function_">searchBST</span><span class="hljs-params">(BTNodeptr t,Datatype  key)</span>&#123;<br>    BTNodeptr p = t;<br>    <span class="hljs-keyword">while</span>(p!=<span class="hljs-literal">NULL</span>)&#123;<br>        <span class="hljs-keyword">if</span>(key == p-&gt;data)  <br>            <span class="hljs-keyword">return</span> p;		<span class="hljs-comment">// 查找成功</span><br>        <span class="hljs-keyword">if</span>(key &gt; p-&gt;data)<br>            p=p-&gt;right;		<span class="hljs-comment">// 将p移到右子树的根结点</span><br>        <span class="hljs-keyword">else</span><br>            p=p-&gt;left;		<span class="hljs-comment">// 将p移到左子树的根结点</span><br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span>;			<span class="hljs-comment">// 查找失败</span><br>&#125;<br></code></pre></td></tr></table></figure>
 <p>递归算法</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c">BTNodeptr <span class="hljs-title function_">searchBST</span><span class="hljs-params">( BTNodeptr t, Datatype key )</span>&#123;<br>    <span class="hljs-keyword">if</span>(t!=<span class="hljs-literal">NULL</span>)&#123;<br>        <span class="hljs-keyword">if</span>(key == t-&gt;data) <br>            <span class="hljs-keyword">return</span> t;			<span class="hljs-comment">// 查找成功</span><br>        <span class="hljs-keyword">if</span>(key &gt; t-&gt;data)<br>            <span class="hljs-keyword">return</span> searchBST(t-&gt;right, key);		<span class="hljs-comment">// 查找T的右子树   </span><br>        <span class="hljs-keyword">else</span><br>			<span class="hljs-keyword">return</span> searchBST(t-&gt;left, key);			<span class="hljs-comment">// 查找T的左子树</span><br>    &#125;<br>    <span class="hljs-keyword">else</span><br>    	<span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span>;			<span class="hljs-comment">// 查找失败</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
-<li><p>查找效率</p>
-<p>平均查找长度ASL：确定一个元素在树中位置所需要进行的元素间的比较次数的期望值（平均值）。
-<span class="math display">\[
-ASL = \sum_{i=1}^{k} p_ic_i
-\]</span>
-其中n表示二叉树中结点的总数；p<sub>i</sub>表示查找第i个元素的概率；c<sub>i</sub>表示查找第i个元素需要进行的元素之间的比较次数。</p></li>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c">BTNodeptr <span class="hljs-title function_">searchBST</span><span class="hljs-params">( BTNodeptr t, Datatype key )</span>&#123;<br>    <span class="hljs-keyword">if</span>(t!=<span class="hljs-literal">NULL</span>)&#123;<br>        <span class="hljs-keyword">if</span>(key == t-&gt;data) <br>            <span class="hljs-keyword">return</span> t;			<span class="hljs-comment">// 查找成功</span><br>        <span class="hljs-keyword">if</span>(key &gt; t-&gt;data)<br>            <span class="hljs-keyword">return</span> searchBST(t-&gt;right, key);		<span class="hljs-comment">// 查找T的右子树   </span><br>        <span class="hljs-keyword">else</span><br>			<span class="hljs-keyword">return</span> searchBST(t-&gt;left, key);			<span class="hljs-comment">// 查找T的左子树</span><br>    &#125;<br>    <span class="hljs-keyword">else</span><br>    	<span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span>;			<span class="hljs-comment">// 查找失败</span><br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>查找效率</p>
+<p>平均查找长度ASL：确定一个元素在树中位置所需要进行的元素间的比较次数的期望值（平均值）。<br>
+$$<br>
+ASL = \sum_{i=1}^{k} p_ic_i<br>
+$$<br>
+其中n表示二叉树中结点的总数；p~i~表示查找第i个元素的概率；c~i~表示查找第i个元素需要进行的元素之间的比较次数。</p>
+</li>
 </ol>
-<h2 id="平衡二叉树adelson-velskii-and-landis-avl">8
-平衡二叉树(Adelson-Velskii and Landis, AVL)</h2>
+<h2 id="8-平衡二叉树-Adelson-Velskii-and-Landis-AVL">8 平衡二叉树(Adelson-Velskii and Landis, AVL)</h2>
 <ul>
-<li><p>二叉查找树的缺陷：树的形态无法预料、随意性大。得到的可能是一个不平衡的树，即树的深度差很大。丧失了利用二叉树组织数据带来的好处。</p></li>
-<li><p>平衡二叉树又称AVL树。它或者是一棵空树，或者是具有下列性质的二叉树：</p>
-<p>它的左子树和右子树都是平衡二叉树，且左子树和右子树的深度之差的绝对值不超过1。若将二叉树的平衡因子定义为该结点<strong>左子树深度减去右子树深度</strong>，则平衡二叉树上所有结点的平衡因子只可能是-1、0和1。</p></li>
+<li>
+<p>二叉查找树的缺陷：树的形态无法预料、随意性大。得到的可能是一个不平衡的树，即树的深度差很大。丧失了利用二叉树组织数据带来的好处。</p>
+</li>
+<li>
+<p>平衡二叉树又称AVL树。它或者是一棵空树，或者是具有下列性质的二叉树：</p>
+<p>它的左子树和右子树都是平衡二叉树，且左子树和右子树的深度之差的绝对值不超过1。若将二叉树的平衡因子定义为该结点<strong>左子树深度减去右子树深度</strong>，则平衡二叉树上所有结点的平衡因子只可能是-1、0和1。</p>
+</li>
 </ul>
-<hr />
+<hr>
 <h2 id="例">例</h2>
-<h3
-id="已知二叉查找树采用二叉链表存储结构根结点地址为t请写一非递归算法打印数据信息为item的结点的所有祖先结点设该结点存在祖先结点">1
-已知二叉查找树采用二叉链表存储结构，根结点地址为T，请写一非递归算法，打印数据信息为item的结点的所有祖先结点。（设该结点存在祖先结点）</h3>
+<h3 id="1-已知二叉查找树采用二叉链表存储结构，根结点地址为T，请写一非递归算法，打印数据信息为item的结点的所有祖先结点。（设该结点存在祖先结点）">1 已知二叉查找树采用二叉链表存储结构，根结点地址为T，请写一非递归算法，打印数据信息为item的结点的所有祖先结点。（设该结点存在祖先结点）</h3>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">searchBST</span><span class="hljs-params">(BTNodeptr t, Datatype item)</span>&#123;<br>    BTNodeptr  p = t;<br>    <span class="hljs-keyword">while</span>(p!=<span class="hljs-literal">NULL</span>)&#123;<br>        <span class="hljs-keyword">if</span>(item == p-&gt;data) <br>        	<span class="hljs-keyword">break</span>;                      <span class="hljs-comment">// 查找结束</span><br>        <span class="hljs-keyword">if</span>(item &gt; p-&gt;data)&#123;<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>,p-&gt;data);<br>            p=p-&gt;right;          <span class="hljs-comment">// 将p 移到右子树的根结点</span><br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>,p-&gt;data);<br>            p=p-&gt;left;           <span class="hljs-comment">// 将p 移到左子树的根结点</span><br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
 <ul>
 <li>若需要保存祖先结点序列（即结点路径），可以设一个<strong>栈</strong>保存路径节点，或设一个指向<strong>父结点</strong>的指针</li>
 </ul>
-<h3 id="获取一个普通二叉树的数据信息为item的结点的所有祖先结点">2
-获取一个普通二叉树的数据信息为item的结点的所有祖先结点。</h3>
+<h3 id="2-获取一个普通二叉树的数据信息为item的结点的所有祖先结点。">2 获取一个普通二叉树的数据信息为item的结点的所有祖先结点。</h3>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">perorder</span><span class="hljs-params">(BTNodeptr t, Datatype item)</span>&#123;<br>    <span class="hljs-keyword">if</span>(t!=<span class="hljs-literal">NULL</span>)&#123;<br>        push(t);      <br>        <span class="hljs-keyword">if</span>(item == t-&gt;data) <br>        	弹出栈中所有元素； <br>        preorder(t-&gt;left);<br>        preorder(t-&gt;right);<br>        pop();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="词频统计二叉查找树">3 词频统计——二叉查找树</h3>
-<h4 id="问题">3.1 问题</h4>
+<h3 id="3-词频统计——二叉查找树">3 词频统计——二叉查找树</h3>
+<h4 id="3-1-问题">3.1 问题</h4>
 <p>编写程序统计一个文件中每个单词的出现次数（词频统计），并按字典序输出每个单词及出现次数。</p>
-<h4 id="算法分析">3.2 算法分析</h4>
+<h4 id="3-2-算法分析">3.2 算法分析</h4>
 <p>本问题算法很简单，基本上只有<strong>查找</strong>和<strong>插入</strong>操作。</p>
-<p><img src="/img/LE-ds5/33.png" srcset="/img/loading.gif" lazyload /></p>
-<h4 id="代码实现">3.3 代码实现</h4>
+<p><img src="/img/LE-ds5/33.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="3-3-代码实现">3.3 代码实现</h4>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> MAXWORD  100</span><br><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">tnode</span> &#123;</span><br>    <span class="hljs-type">char</span> word[MAXWORD];<br>    <span class="hljs-type">int</span> count;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">tnode</span> *<span class="hljs-title">left</span>,*<span class="hljs-title">right</span>;</span><br>&#125; ; <span class="hljs-comment">//BST,单词树结构</span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">getword</span><span class="hljs-params">(FILE *bfp,<span class="hljs-type">char</span> *w)</span>;<br><span class="hljs-keyword">struct</span> tnode *<span class="hljs-title function_">addtree</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> tnode *p,<span class="hljs-type">char</span> *w)</span>;<br><span class="hljs-type">void</span> <span class="hljs-title function_">treeprint</span><span class="hljs-params">( <span class="hljs-keyword">struct</span> tnode *p)</span>;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">char</span> filename[<span class="hljs-number">32</span>], word[MAXWORD];<br>    FILE *bfp;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">tnode</span> *<span class="hljs-title">root</span>=</span><span class="hljs-literal">NULL</span>; <span class="hljs-comment">//BST树根节点指针</span><br><br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%s&quot;</span>, filename);<br>    <span class="hljs-keyword">if</span>((bfp = fopen(filename, <span class="hljs-string">&quot;r&quot;</span>)) == <span class="hljs-literal">NULL</span>)&#123; <span class="hljs-comment">//打开一个文件</span><br>        <span class="hljs-built_in">fprintf</span>(<span class="hljs-built_in">stderr</span>, <span class="hljs-string">&quot;%s can’t open!\n&quot;</span>,filename);<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>    &#125;<br>    <span class="hljs-keyword">while</span>( getword(bfp,word) != EOF) <span class="hljs-comment">//从文件中读入一个单词</span><br>        root = addtree(root, word);<br>    treeprint(root);  <span class="hljs-comment">//遍历输出单词树</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125; <br></code></pre></td></tr></table></figure>
-<h4 id="拓展">3.4 拓展</h4>
+<h4 id="3-4-拓展">3.4 拓展</h4>
 <p>如果对统计好的词频按单词频率序输出该怎么办（如何对非线性数据进行排序？）（实际应用通常是这么要求的）</p>
-<h2 id="堆heap二叉树的应用">9 *堆(heap)——二叉树的应用</h2>
-<h3 id="堆的基本性质">9.1 堆的基本性质</h3>
-<ol type="1">
-<li><p>堆是一种特殊类型的二叉树，具有以下两个性质：</p>
-<ol type="1">
+<h2 id="9-堆-heap-——二叉树的应用">9 *堆(heap)——二叉树的应用</h2>
+<h3 id="9-1-堆的基本性质">9.1 堆的基本性质</h3>
+<ol>
+<li>
+<p>堆是一种特殊类型的二叉树，具有以下两个性质：</p>
+<ol>
 <li>每个节点的值大于（或小于）等于其每个子节点的值；</li>
 <li>该树完全平衡，其最后一层的叶子都处于最左侧的位置。</li>
 </ol>
-<p>满足上面两个性质定义的是<strong>大顶堆(max
-heap)</strong>(或<strong>小顶堆(min
-heap)</strong>)。即大顶堆的根节点包含了最大的元素，小顶堆的根节点包含了最小的元素。</p></li>
-<li><p>由于堆是一个完全树，一般采用数组实现，对于一个下标为i的结点:</p>
-<ol type="1">
+<p>满足上面两个性质定义的是<strong>大顶堆(max heap)</strong>(或<strong>小顶堆(min heap)</strong>)。即大顶堆的根节点包含了最大的元素，小顶堆的根节点包含了最小的元素。</p>
+</li>
+<li>
+<p>由于堆是一个完全树，一般采用数组实现，对于一个下标为i的结点:</p>
+<ol>
 <li>其父结点下标为：<strong>(i-1)/2</strong></li>
 <li>其子结点下标为：<strong>2i+1, 2i+2</strong></li>
-<li>（如果是大顶堆）：heap[i] ≧heap[2*i+1]; heap[i] ≧heap[2*i+2]</li>
-</ol></li>
-<li><p>堆结构的最大好处是元素查找、插入和删除效率高（O(log2n)）</p></li>
-<li><p>堆的主要应用：</p>
-<ol type="1">
+<li>（如果是大顶堆）：heap[i] ≧heap[2*i+1];   heap[i] ≧heap[2*i+2]</li>
+</ol>
+</li>
+<li>
+<p>堆结构的最大好处是元素查找、插入和删除效率高（O(log2n)）</p>
+</li>
+<li>
+<p>堆的主要应用：</p>
+<ol>
 <li>可用来实现优先队列（Priority Queue）</li>
-<li>用来实现一种高效排序算法-堆排序（Heap
-Sort），在排序一讲中详细介绍</li>
-</ol></li>
+<li>用来实现一种高效排序算法-堆排序（Heap Sort），在排序一讲中详细介绍</li>
 </ol>
-<h3 id="堆的基本操作以大顶堆为例">9.2 堆的基本操作（以大顶堆为例）</h3>
-<ol type="1">
-<li><p>插入算法</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c">heapInsert(e)<br>    将e放在堆的末尾;<br>    <span class="hljs-keyword">while</span> e 不是根 &amp;&amp; e &gt; parent(e)<br>        e 与其父节点交换;<br></code></pre></td></tr></table></figure></li>
-<li><p>删除算法（获取堆顶元素，并从堆中删除）</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c">heapDelete()   <span class="hljs-comment">//取堆顶（树根）元素</span><br>    从根节点提取元素;<br>    将最后一个叶节点中的元素放到要删除的元素位置;<br>    删除最后一个叶节点;<br>    <span class="hljs-comment">//根的两个子树都是堆</span><br>    p = 根节点;<br>    <span class="hljs-keyword">while</span> p 不是叶节点 &amp;&amp; p &lt; 它的任何子节点<br>        p与其较大的子节点交换;<br></code></pre></td></tr></table></figure></li>
+</li>
 </ol>
-<h3 id="堆的构造">9.3 堆的构造</h3>
-<ol type="1">
+<h3 id="9-2-堆的基本操作（以大顶堆为例）">9.2 堆的基本操作（以大顶堆为例）</h3>
+<ol>
+<li>
+<p>插入算法</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c">heapInsert(e)<br>    将e放在堆的末尾;<br>    <span class="hljs-keyword">while</span> e 不是根 &amp;&amp; e &gt; parent(e)<br>        e 与其父节点交换;<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>删除算法（获取堆顶元素，并从堆中删除）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c">heapDelete()   <span class="hljs-comment">//取堆顶（树根）元素</span><br>    从根节点提取元素;<br>    将最后一个叶节点中的元素放到要删除的元素位置;<br>    删除最后一个叶节点;<br>    <span class="hljs-comment">//根的两个子树都是堆</span><br>    p = 根节点;<br>    <span class="hljs-keyword">while</span> p 不是叶节点 &amp;&amp; p &lt; 它的任何子节点<br>        p与其较大的子节点交换;<br></code></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="9-3-堆的构造">9.3 堆的构造</h3>
+<ol>
 <li>自顶向下：从空堆开始，按顺序向堆中添加（用<code>headinsert</code>函数）元素</li>
 <li>自底向上：首先从底层开始构造较小的堆，然后再重复构造较大的堆。（算法将在堆排序一节中介绍）</li>
 </ol>
-<h3 id="堆的典型应用">9.4 堆的典型应用</h3>
-<ol type="1">
-<li>优先队列（Priority
-queue）：与传统队列不同的是下一个服务对象是队列中优先级最高的元素。优先队列常用的实现方式是用堆，其最大好处是管理元素的效率高（O(log2
-N)）。<em>优先队列是计算机中常用的一种数据结构，如操作系统中进程调度就是基于优先队例。</em></li>
+<h3 id="9-4-堆的典型应用">9.4 堆的典型应用</h3>
+<ol>
+<li>优先队列（Priority queue）：与传统队列不同的是下一个服务对象是队列中优先级最高的元素。优先队列常用的实现方式是用堆，其最大好处是管理元素的效率高（O(log2 N)）。<em>优先队列是计算机中常用的一种数据结构，如操作系统中进程调度就是基于优先队例。</em></li>
 <li>堆排序（Heap sort）：一种基于堆的高效（O(nlog2 n)）的排序算法。</li>
 </ol>
-<h2 id="表达式树expression-tree二叉树的应用">10 表达式树(expression
-tree)——二叉树的应用</h2>
-<h3 id="表达式树的定义">10.1 表达式树的定义</h3>
-<ol type="1">
-<li><p>表达式树是一种特殊类型的树，其叶结点是操作数(operand)，而其它结点为操作符(operator)：</p>
-<ol type="1">
+<h2 id="10-表达式树-expression-tree-——二叉树的应用">10 表达式树(expression tree)——二叉树的应用</h2>
+<h3 id="10-1-表达式树的定义">10.1 表达式树的定义</h3>
+<ol>
+<li>
+<p>表达式树是一种特殊类型的树，其叶结点是操作数(operand)，而其它结点为操作符(operator)：</p>
+<ol>
 <li>由于操作符一般都是双目的，通常情况下该树是一棵二叉树；</li>
 <li>对于单目操作符（如++），其只有一个子结点。</li>
 </ol>
-<p>例：<img src="/img/LE-ds5/34.png" srcset="/img/loading.gif" lazyload /></p></li>
-<li><p>主要应用：编译器用来处理程序中的表达式</p></li>
+<p>例：<img src="/img/LE-ds5/34.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
+<li>
+<p>主要应用：编译器用来处理程序中的表达式</p>
+</li>
 </ol>
-<h3 id="表达式树的构造">10.2 表达式树的构造</h3>
+<h3 id="10-2-表达式树的构造">10.2 表达式树的构造</h3>
 <p>表达式树是这样一种树，非叶节点为操作符，叶节点为操作数，对其进行遍历可计算表达式的值。由<strong>后缀表达式生成表达式树</strong>的方法如下：</p>
-<ol type="1">
+<ol>
 <li>从左至右从后缀表达式中读入一个符号：
-<ol type="1">
+<ol>
 <li>如果是操作数，则建立一个单节点树并将指向该节点的指针推入栈中；（栈中元素为树节点的指针）</li>
 <li>如果是运算符，就从栈中弹出指向两棵树T1和T2的指针（T1先弹出）并形成一棵新树，树根为该运算符，它的左、右子树分别指向T2和T1，然后将新树的指针压入栈中。</li>
-</ol></li>
+</ol>
+</li>
 <li>重复步骤1，直到后缀表达式处理完。</li>
 </ol>
-<h2 id="哈夫曼huffman树及其应用">11 哈夫曼(Huffman)树及其应用</h2>
-<h3 id="哈夫曼树的基本概念">11.1 哈夫曼树的基本概念</h3>
-<ol type="1">
-<li><p>一些定义</p>
+<h2 id="11-哈夫曼-Huffman-树及其应用">11 哈夫曼(Huffman)树及其应用</h2>
+<h3 id="11-1-哈夫曼树的基本概念">11.1 哈夫曼树的基本概念</h3>
+<ol>
+<li>
+<p>一些定义</p>
 <ul>
-<li><p>结点之间的路径：这两个结点之间的分支</p></li>
-<li><p>路径长度：路径上经过的分支数目</p></li>
-<li><p>树的路径长度：根结点到所有结点的路径长度之和</p></li>
-<li><p><strong>树的带权路径长度</strong>：若给具有m个叶结点的二叉树的每个叶结点赋予一个权值，则该二叉树的带权路径长度定义为
-<span class="math display">\[
-WPL =\sum_{i=1}^{M} w_il_i
-\]</span>
-其中，w<sub>i</sub>为第i个叶结点被赋予的权值，l<sub>i</sub>为第i个叶结点的路径长度。</p></li>
-</ul></li>
-<li><p>哈夫曼树的定义：给定一组权值，构造出的具有最小带权路径长度的二叉树称为哈夫曼树。</p></li>
-<li><p>哈夫曼树的特点</p>
-<ol type="1">
+<li>
+<p>结点之间的路径：这两个结点之间的分支</p>
+</li>
+<li>
+<p>路径长度：路径上经过的分支数目</p>
+</li>
+<li>
+<p>树的路径长度：根结点到所有结点的路径长度之和</p>
+</li>
+<li>
+<p><strong>树的带权路径长度</strong>：若给具有m个叶结点的二叉树的每个叶结点赋予一个权值，则该二叉树的带权路径长度定义为<br>
+$$<br>
+WPL =\sum_{i=1}^{M} w_il_i<br>
+$$<br>
+其中，w~i~为第i个叶结点被赋予的权值，l~i~为第i个叶结点的路径长度。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>哈夫曼树的定义：给定一组权值，构造出的具有最小带权路径长度的二叉树称为哈夫曼树。</p>
+</li>
+<li>
+<p>哈夫曼树的特点</p>
+<ol>
 <li><strong>权值越大</strong>的叶结点离根结点<strong>越近</strong>，权值越小的叶结点离根结点越远；</li>
 <li>无度为1的结点</li>
 <li>哈夫曼树不是唯一的</li>
-</ol></li>
 </ol>
-<h3 id="哈夫曼树的构造">11.2 哈夫曼树的构造</h3>
-<ol type="1">
-<li><p>对于给定的权值W={ w<sub>1</sub>, w<sub>2</sub>,...,
-w<sub>m</sub>}，构造出树林F={ T<sub>1</sub>, T<sub>2</sub>,...,
-T<sub>m</sub>}，其中，Ti(1≤i≤m)为左、右子树为空，且根结点(叶结点)的权值为w<sub>i</sub>的二叉树。</p></li>
-<li><p>将F中根结点权值最小的两棵二叉树合并成为一棵新的二叉树，即把这两棵二叉树分别作为新的二叉树的左、右子树，并令新的二叉树的根结点权值为这两棵二叉树的根结点的权值之和，将新的二叉树加入F的同时从F中删除这两棵二叉树。</p></li>
-<li><p>重复步骤2，直到F中只有一棵二叉树。</p></li>
+</li>
 </ol>
-<h3 id="例-huffman编码">11.3 例 Huffman编码</h3>
-<h4 id="背景huffman编码">11.3.1 背景：Huffman编码</h4>
-<p><img src="/img/LE-ds5/35.png" srcset="/img/loading.gif" lazyload /></p>
-<h4 id="问题提出">11.3.2 问题提出</h4>
+<h3 id="11-2-哈夫曼树的构造">11.2 哈夫曼树的构造</h3>
+<ol>
+<li>
+<p>对于给定的权值W={ w~1~, w~2~,…, w~m~}，构造出树林F={ T~1~, T~2~,…, T~m~}，其中，Ti(1≤i≤m)为左、右子树为空，且根结点(叶结点)的权值为w~i~的二叉树。</p>
+</li>
+<li>
+<p>将F中根结点权值最小的两棵二叉树合并成为一棵新的二叉树，即把这两棵二叉树分别作为新的二叉树的左、右子树，并令新的二叉树的根结点权值为这两棵二叉树的根结点的权值之和，将新的二叉树加入F的同时从F中删除这两棵二叉树。</p>
+</li>
+<li>
+<p>重复步骤2，直到F中只有一棵二叉树。</p>
+</li>
+</ol>
+<h3 id="11-3-例-Huffman编码">11.3 例 Huffman编码</h3>
+<h4 id="11-3-1-背景：Huffman编码">11.3.1 背景：Huffman编码</h4>
+<p><img src="/img/LE-ds5/35.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="11-3-2-问题提出">11.3.2 问题提出</h4>
 <ul>
 <li>编写一个程序采用Huffman编码实现对一个文件的压缩。</li>
 <li>要求：首先读取文件，对文件中出现的每个字符进行字符频率统计，然后根据频率采用Huffman方法对每个字符进行编码，最后根据新字符编码表输出文件。</li>
 </ul>
-<h4 id="问题分析">11.3.3 问题分析</h4>
-<p><img src="/img/LE-ds5/36.png" srcset="/img/loading.gif" lazyload /></p>
-<h4 id="算法设计">11.3.4 算法设计</h4>
-<ol type="1">
-<li><p>定义</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> MAXSIZE 32</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">cc</span> &#123;</span>	 <span class="hljs-comment">//字符及出现次数结构</span><br>    <span class="hljs-type">char</span> c;<br>    <span class="hljs-type">int</span> count;<br>&#125; ;<br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">tnode</span> &#123;</span> <span class="hljs-comment">//Huffman树结构</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">cc</span> <span class="hljs-title">ccount</span>;</span> <span class="hljs-comment">//字符及出现次数</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">tnode</span> *<span class="hljs-title">left</span>, *<span class="hljs-title">right</span>;</span>  <span class="hljs-comment">//树的左右节点指针</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">tnode</span> *<span class="hljs-title">next</span>;</span>  <span class="hljs-comment">//一个有序链表的节点指针</span><br>&#125; ; <br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">tnode</span> *<span class="hljs-title">Head</span> =</span> <span class="hljs-literal">NULL</span>; <span class="hljs-comment">//一个有序链表的头节点，也是最后Huffman树的根节点</span><br><span class="hljs-type">char</span> Huffman[MAXSIZE]; <span class="hljs-comment">//用于生成Huffman编码</span><br><span class="hljs-type">char</span> HCode[<span class="hljs-number">128</span>][MAXSIZE]; <span class="hljs-comment">//字符的Huffman编码，Hcode[0]为文件结束符的编码</span><br><br>例如：Hcode[<span class="hljs-string">&#x27;a&#x27;</span>]表示字符a的Huffman编码串。 <br><br></code></pre></td></tr></table></figure></li>
-<li><p>为了生成Huffman树，首先根据字符统计结果生成一个有序链表:</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 字符频率统计：</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">cc</span> <span class="hljs-title">ccount</span>[128];</span><br><span class="hljs-keyword">while</span>( (c=fgetc(fp)) != EOF)&#123;<br>	ccount[c].c=c;<br>    ccount[c].count++;<br>&#125;<br><span class="hljs-comment">// 根据字符统计结果生成一个有序链表：</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">tnode</span> *<span class="hljs-title">p</span>;</span><br><span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">128</span>; i++)&#123;<br>    <span class="hljs-keyword">if</span>(ccount[i].count != <span class="hljs-number">0</span>)&#123;<br>        p = (<span class="hljs-keyword">struct</span> tnode *)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> tnode));<br>        p-&gt;ccount = ccount[i];<br>        p-&gt;left = p-&gt;right = p-&gt;next = <span class="hljs-literal">NULL</span>;<br>        insertSortLink(p);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
-<li><p>按Huffman树生成算法，由有序表构造Huffman树：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">while</span>(Head-&gt;next != <span class="hljs-literal">NULL</span>)&#123;<br>    p = (<span class="hljs-keyword">struct</span> tnode *)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> tnode));  <br>    p -&gt;ccount.count = Head-&gt;ccount.count + Head-&gt;next-&gt;ccount.count;<br>    p-&gt;left = Head;<br>    p-&gt;right = Head-&gt;next;  <span class="hljs-comment">/*将新树的根结点加入到有序结点链表中*/</span><br>    p-&gt;next = <span class="hljs-literal">NULL</span>;<br>    Head = Head-&gt;next-&gt;next; <br>    insertSortLink(p);<br>&#125;<br></code></pre></td></tr></table></figure></li>
-<li><p>遍历（前序）Huffman树，为每个叶结点生成Huffman编码：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">createHCode</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> tnode *p, <span class="hljs-type">char</span> code, <span class="hljs-type">int</span> level)</span>&#123;<br>    <span class="hljs-keyword">if</span>(level != <span class="hljs-number">0</span>)<br>        Huffman[level<span class="hljs-number">-1</span>] = code;  <br>    <span class="hljs-keyword">if</span>(p-&gt;left == <span class="hljs-literal">NULL</span> &amp;&amp; p-&gt;right == <span class="hljs-literal">NULL</span>)&#123;<br>        Huffman[level] =<span class="hljs-string">&#x27;\0&#x27;</span>;<br>        <span class="hljs-built_in">strcpy</span>(HCode[p-&gt;ccount.c], Huffman);<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        createHCode(p-&gt;left,<span class="hljs-string">&#x27;0&#x27;</span>, level+<span class="hljs-number">1</span>);<br>        createHCode(p-&gt;right,<span class="hljs-string">&#x27;1&#x27;</span>, level+<span class="hljs-number">1</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
-<li><p>第四步：根据Huffman编码，遍历源文件，生成相应压缩文件：</p>
+<h4 id="11-3-3-问题分析">11.3.3 问题分析</h4>
+<p><img src="/img/LE-ds5/36.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="11-3-4-算法设计">11.3.4 算法设计</h4>
+<ol>
+<li>
+<p>定义</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> MAXSIZE 32</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">cc</span> &#123;</span>	 <span class="hljs-comment">//字符及出现次数结构</span><br>    <span class="hljs-type">char</span> c;<br>    <span class="hljs-type">int</span> count;<br>&#125; ;<br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">tnode</span> &#123;</span> <span class="hljs-comment">//Huffman树结构</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">cc</span> <span class="hljs-title">ccount</span>;</span> <span class="hljs-comment">//字符及出现次数</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">tnode</span> *<span class="hljs-title">left</span>, *<span class="hljs-title">right</span>;</span>  <span class="hljs-comment">//树的左右节点指针</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">tnode</span> *<span class="hljs-title">next</span>;</span>  <span class="hljs-comment">//一个有序链表的节点指针</span><br>&#125; ; <br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">tnode</span> *<span class="hljs-title">Head</span> =</span> <span class="hljs-literal">NULL</span>; <span class="hljs-comment">//一个有序链表的头节点，也是最后Huffman树的根节点</span><br><span class="hljs-type">char</span> Huffman[MAXSIZE]; <span class="hljs-comment">//用于生成Huffman编码</span><br><span class="hljs-type">char</span> HCode[<span class="hljs-number">128</span>][MAXSIZE]; <span class="hljs-comment">//字符的Huffman编码，Hcode[0]为文件结束符的编码</span><br><br>例如：Hcode[<span class="hljs-string">&#x27;a&#x27;</span>]表示字符a的Huffman编码串。 <br><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>为了生成Huffman树，首先根据字符统计结果生成一个有序链表:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 字符频率统计：</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">cc</span> <span class="hljs-title">ccount</span>[128];</span><br><span class="hljs-keyword">while</span>( (c=fgetc(fp)) != EOF)&#123;<br>	ccount[c].c=c;<br>    ccount[c].count++;<br>&#125;<br><span class="hljs-comment">// 根据字符统计结果生成一个有序链表：</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">tnode</span> *<span class="hljs-title">p</span>;</span><br><span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">128</span>; i++)&#123;<br>    <span class="hljs-keyword">if</span>(ccount[i].count != <span class="hljs-number">0</span>)&#123;<br>        p = (<span class="hljs-keyword">struct</span> tnode *)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> tnode));<br>        p-&gt;ccount = ccount[i];<br>        p-&gt;left = p-&gt;right = p-&gt;next = <span class="hljs-literal">NULL</span>;<br>        insertSortLink(p);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>按Huffman树生成算法，由有序表构造Huffman树：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">while</span>(Head-&gt;next != <span class="hljs-literal">NULL</span>)&#123;<br>    p = (<span class="hljs-keyword">struct</span> tnode *)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> tnode));  <br>    p -&gt;ccount.count = Head-&gt;ccount.count + Head-&gt;next-&gt;ccount.count;<br>    p-&gt;left = Head;<br>    p-&gt;right = Head-&gt;next;  <span class="hljs-comment">/*将新树的根结点加入到有序结点链表中*/</span><br>    p-&gt;next = <span class="hljs-literal">NULL</span>;<br>    Head = Head-&gt;next-&gt;next; <br>    insertSortLink(p);<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>遍历（前序）Huffman树，为每个叶结点生成Huffman编码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">createHCode</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> tnode *p, <span class="hljs-type">char</span> code, <span class="hljs-type">int</span> level)</span>&#123;<br>    <span class="hljs-keyword">if</span>(level != <span class="hljs-number">0</span>)<br>        Huffman[level<span class="hljs-number">-1</span>] = code;  <br>    <span class="hljs-keyword">if</span>(p-&gt;left == <span class="hljs-literal">NULL</span> &amp;&amp; p-&gt;right == <span class="hljs-literal">NULL</span>)&#123;<br>        Huffman[level] =<span class="hljs-string">&#x27;\0&#x27;</span>;<br>        <span class="hljs-built_in">strcpy</span>(HCode[p-&gt;ccount.c], Huffman);<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        createHCode(p-&gt;left,<span class="hljs-string">&#x27;0&#x27;</span>, level+<span class="hljs-number">1</span>);<br>        createHCode(p-&gt;right,<span class="hljs-string">&#x27;1&#x27;</span>, level+<span class="hljs-number">1</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>第四步：根据Huffman编码，遍历源文件，生成相应压缩文件：</p>
 <p>下面通过实例来说明：</p>
-<p>原始文件input.txt中内容以“I
-will…”开始，依据所生成的Huffman码表，字母I对应的Huffman编码串为“0101111”，空格对应“111”，w对应“1001110”，i对应“01010”，l对应“11001”。因此，将其转换后得到一个Huffman编码串“01011111111001110010101100111001…”，由于在C中，最小输出单位是字节（共8位），因此，要通过C语言的位操作符将每8个01字符串放进一个字节中，如第一个8字符串“01011111”中的每个0和1放入到一个字符中十六进制（即<code>printf(”%x”,c)</code>输出时，屏幕上将显示5f）（如下图所示）。</p>
-<p><img src="/img/LE-ds5/37.png" srcset="/img/loading.gif" lazyload /></p>
+<p>原始文件input.txt中内容以“I will…”开始，依据所生成的Huffman码表，字母I对应的Huffman编码串为“0101111”，空格对应“111”，w对应“1001110”，i对应“01010”，l对应“11001”。因此，将其转换后得到一个Huffman编码串“01011111111001110010101100111001…”，由于在C中，最小输出单位是字节（共8位），因此，要通过C语言的位操作符将每8个01字符串放进一个字节中，如第一个8字符串“01011111”中的每个0和1放入到一个字符中十六进制（即<code>printf(”%x”,c)</code>输出时，屏幕上将显示5f）（如下图所示）。</p>
+<p><img src="/img/LE-ds5/37.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>下面程序段将Huffman编码串每8个字符串放入一个字节（字符变量<code>hc</code>）中：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">char</span> hc;<br><span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; s[i] != <span class="hljs-string">&#x27;\0&#x27;</span>; i++)&#123;<br>    hc = (hc &lt;&lt; <span class="hljs-number">1</span>) | (s[i]-<span class="hljs-string">&#x27;0&#x27;</span>);<br>    <span class="hljs-keyword">if</span>((i+<span class="hljs-number">1</span>)%<span class="hljs-number">8</span> == <span class="hljs-number">0</span>) &#123;<br>        fputc(hc, obj); <span class="hljs-comment">//输出到目标（压缩）文件中</span><br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%x&quot;</span>, hc);<span class="hljs-comment">//按十六进制输出到屏幕上</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>完整代码：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">madeHZIP</span><span class="hljs-params">(FILE *src, FILE *obj)</span>&#123;<br>    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *pc,hc=<span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> c=<span class="hljs-number">0</span>,i=<span class="hljs-number">0</span>;<br>    fseek(src,<span class="hljs-number">0</span>, SEEK_SET); <span class="hljs-comment">//从src文件头开始</span><br>    <span class="hljs-keyword">do</span>&#123;<br>        c=fgetc(src);	 <span class="hljs-comment">//依次获取源文件中每个字符</span><br>        <span class="hljs-keyword">if</span> (c == EOF) <br>            c=<span class="hljs-number">0</span>; 	<span class="hljs-comment">//源文件结束</span><br>        <span class="hljs-keyword">for</span>(pc = HCode[c]; *pc != <span class="hljs-string">&#x27;\0&#x27;</span>; pc++)&#123; 	<span class="hljs-comment">//转换为huffman码</span><br>            hc = (hc &lt;&lt; <span class="hljs-number">1</span>) | (*pc-<span class="hljs-string">&#x27;0&#x27;</span>); i++; <br>            <span class="hljs-keyword">if</span>(i==<span class="hljs-number">8</span>)&#123; 	<span class="hljs-comment">//每满8位输出一个字节</span><br>                fputc(hc,obj);<br>                i = <span class="hljs-number">0</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(c==<span class="hljs-number">0</span> &amp;&amp; i!=<span class="hljs-number">0</span>)&#123; <span class="hljs-comment">//处理文件结束时不满一个字节的情况</span><br>             <span class="hljs-keyword">while</span>(i++&lt;<span class="hljs-number">8</span>) hc = (hc &lt;&lt; <span class="hljs-number">1</span>);<br>             fputc(hc,obj); <br>        &#125;<br>     &#125;<span class="hljs-keyword">while</span>(c); <span class="hljs-comment">//c=0时文件结束</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">madeHZIP</span><span class="hljs-params">(FILE *src, FILE *obj)</span>&#123;<br>    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *pc,hc=<span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> c=<span class="hljs-number">0</span>,i=<span class="hljs-number">0</span>;<br>    fseek(src,<span class="hljs-number">0</span>, SEEK_SET); <span class="hljs-comment">//从src文件头开始</span><br>    <span class="hljs-keyword">do</span>&#123;<br>        c=fgetc(src);	 <span class="hljs-comment">//依次获取源文件中每个字符</span><br>        <span class="hljs-keyword">if</span> (c == EOF) <br>            c=<span class="hljs-number">0</span>; 	<span class="hljs-comment">//源文件结束</span><br>        <span class="hljs-keyword">for</span>(pc = HCode[c]; *pc != <span class="hljs-string">&#x27;\0&#x27;</span>; pc++)&#123; 	<span class="hljs-comment">//转换为huffman码</span><br>            hc = (hc &lt;&lt; <span class="hljs-number">1</span>) | (*pc-<span class="hljs-string">&#x27;0&#x27;</span>); i++; <br>            <span class="hljs-keyword">if</span>(i==<span class="hljs-number">8</span>)&#123; 	<span class="hljs-comment">//每满8位输出一个字节</span><br>                fputc(hc,obj);<br>                i = <span class="hljs-number">0</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(c==<span class="hljs-number">0</span> &amp;&amp; i!=<span class="hljs-number">0</span>)&#123; <span class="hljs-comment">//处理文件结束时不满一个字节的情况</span><br>             <span class="hljs-keyword">while</span>(i++&lt;<span class="hljs-number">8</span>) hc = (hc &lt;&lt; <span class="hljs-number">1</span>);<br>             fputc(hc,obj); <br>        &#125;<br>     &#125;<span class="hljs-keyword">while</span>(c); <span class="hljs-comment">//c=0时文件结束</span><br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
 </ol>
-<h2 id="多叉树及其应用">12 *多叉树及其应用</h2>
-<h3 id="多叉树的基本概念">12.1 多叉树的基本概念</h3>
-<p>​ 每个树节点可以有两个以上的子节点，称为m阶多叉树，或称为m叉树。</p>
-<h3 id="多叉树的主要应用">12.2 多叉树的主要应用</h3>
+<h2 id="12-多叉树及其应用">12 *多叉树及其应用</h2>
+<h3 id="12-1-多叉树的基本概念">12.1 多叉树的基本概念</h3>
+<p>​    每个树节点可以有两个以上的子节点，称为m阶多叉树，或称为m叉树。</p>
+<h3 id="12-2-多叉树的主要应用">12.2 多叉树的主要应用</h3>
 <p>多叉树通常用于大数据的<strong>快速检索</strong>和<strong>信息更新</strong>。本课程将在查找(searching)一讲中介绍下面多叉树的应用：</p>
 <ul>
 <li>B树</li>
 <li>Trie树</li>
 </ul>
-<h3 id="多叉树的遍历算法">12.3 多叉树的遍历算法</h3>
-<ol type="1">
-<li><p>类型定义</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> MAXD 3   <span class="hljs-comment">//树的度</span></span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span>&#123;</span><br>    Datatype data;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> *<span class="hljs-title">next</span>[<span class="hljs-title">MAXD</span>];</span><br> &#125;;<br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> <span class="hljs-title">TNode</span>;</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> *<span class="hljs-title">TNodeptr</span>;</span><br></code></pre></td></tr></table></figure></li>
-<li><p>深度优先遍历算法</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">DFStree</span><span class="hljs-params">(TNodeptr t)</span>&#123;<br>    <span class="hljs-type">int</span> i;<br>    <span class="hljs-keyword">if</span>(t != <span class="hljs-literal">NULL</span>)&#123;<br>        VISIT(t);       <span class="hljs-comment">// 访问t指向结点</span><br>        <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt;MAXD; i++)<br>        	<span class="hljs-keyword">if</span>(t-&gt;next[i] != <span class="hljs-literal">NULL</span>)<br>        		DFStree(t-&gt;next[i]);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
-<li><p>广度优先遍历算法</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">BFStree</span><span class="hljs-params">(TNodeptr t)</span>&#123;<br>    TNodeptr p;<br>    <span class="hljs-type">int</span> i;<br>    <span class="hljs-keyword">if</span>(t!=<span class="hljs-literal">NULL</span>)&#123;<br>        enQueue(t);<br>        <span class="hljs-keyword">while</span>(!isEmpty())&#123;			<span class="hljs-comment">// 若队列不空</span><br>            p= deQueue(); <br>            VISIT(p);    <br>            <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt;MAXD; i++)		<span class="hljs-comment">// 依次访问p指向的子结点</span><br>            	<span class="hljs-keyword">if</span>( p-&gt;next[i] != <span class="hljs-literal">NULL</span>)   <br>            	enQueue(p);<br>        &#125;<br>    &#125;    <br>&#125;<br></code></pre></td></tr></table></figure></li>
+<h3 id="12-3-多叉树的遍历算法">12.3 多叉树的遍历算法</h3>
+<ol>
+<li>
+<p>类型定义</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> MAXD 3   <span class="hljs-comment">//树的度</span></span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span>&#123;</span><br>    Datatype data;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> *<span class="hljs-title">next</span>[<span class="hljs-title">MAXD</span>];</span><br> &#125;;<br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> <span class="hljs-title">TNode</span>;</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> *<span class="hljs-title">TNodeptr</span>;</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>深度优先遍历算法</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">DFStree</span><span class="hljs-params">(TNodeptr t)</span>&#123;<br>    <span class="hljs-type">int</span> i;<br>    <span class="hljs-keyword">if</span>(t != <span class="hljs-literal">NULL</span>)&#123;<br>        VISIT(t);       <span class="hljs-comment">// 访问t指向结点</span><br>        <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt;MAXD; i++)<br>        	<span class="hljs-keyword">if</span>(t-&gt;next[i] != <span class="hljs-literal">NULL</span>)<br>        		DFStree(t-&gt;next[i]);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>广度优先遍历算法</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">BFStree</span><span class="hljs-params">(TNodeptr t)</span>&#123;<br>    TNodeptr p;<br>    <span class="hljs-type">int</span> i;<br>    <span class="hljs-keyword">if</span>(t!=<span class="hljs-literal">NULL</span>)&#123;<br>        enQueue(t);<br>        <span class="hljs-keyword">while</span>(!isEmpty())&#123;			<span class="hljs-comment">// 若队列不空</span><br>            p= deQueue(); <br>            VISIT(p);    <br>            <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt;MAXD; i++)		<span class="hljs-comment">// 依次访问p指向的子结点</span><br>            	<span class="hljs-keyword">if</span>( p-&gt;next[i] != <span class="hljs-literal">NULL</span>)   <br>            	enQueue(p);<br>        &#125;<br>    &#125;    <br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
 </ol>
-<h2 id="总结">13 总结</h2>
-<h3 id="树的构造方法总结">13.1 树的构造方法总结</h3>
-<ol type="1">
-<li><p>自顶向下构造法</p>
-<ol type="1">
-<li><p>结点插入法（常用）：按照树结点组成规则，找到插入位置，依次插入结点。如：BST树构造、堆构造。</p>
-<p>基本原理：查找（插入位置）-&gt; 插入</p></li>
-<li><p>按层构造法：通常利用一个<strong>队</strong>来依次按层构造树（参考BFS算法）。如输入数据按层组织。</p></li>
-</ol></li>
-<li><p>自底向上构造法</p>
-<ol type="1">
+<h2 id="13-总结">13 总结</h2>
+<h3 id="13-1-树的构造方法总结">13.1 树的构造方法总结</h3>
+<ol>
+<li>
+<p>自顶向下构造法</p>
+<ol>
+<li>
+<p>结点插入法（常用）：按照树结点组成规则，找到插入位置，依次插入结点。如：BST树构造、堆构造。</p>
+<p>基本原理：查找（插入位置）-&gt; 插入</p>
+</li>
+<li>
+<p>按层构造法：通常利用一个<strong>队</strong>来依次按层构造树（参考BFS算法）。如输入数据按层组织。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>自底向上构造法</p>
+<ol>
 <li>按照树结点的组成规则依次自底向上构造，这类方法通常要用到<strong>栈</strong>或<strong>队</strong>等数据结构，如：表达式树构造（用到栈）、Huffman树构造（用到有序表或优先队列）</li>
-</ol></li>
 </ol>
-<h3 id="递归问题的非递归算法的设计">13.2 递归问题的非递归算法的设计</h3>
-<ol type="1">
-<li>递归算法的优点
-<ol type="1">
+</li>
+</ol>
+<h3 id="13-2-递归问题的非递归算法的设计">13.2 递归问题的非递归算法的设计</h3>
+<ol>
+<li>
+<p>递归算法的优点</p>
+<ol>
 <li>问题的数学模型或算法设计方法本身就是递归的，采用递归算法来描述它们非常自然；</li>
 <li>算法的描述直观，结构清晰、简洁；算法的正确性证明比非递归算法容易。</li>
-</ol></li>
-<li>递归算法的不足
-<ol type="1">
+</ol>
+</li>
+<li>
+<p>递归算法的不足</p>
+<ol>
 <li>算法的<strong>执行时间与空间开销</strong>往往比非递归算法要大，当问题规模较大时尤为明显；</li>
 <li>对算法进行优化比较困难；</li>
 <li>分析和跟踪算法的执行过程比较麻烦；</li>
 <li>描述算法的语言不具有递归功能时，算法无法描述。</li>
-</ol></li>
 </ol>
-<h4 id="例中序遍历的非递归算法">13.2.1 例：中序遍历的非递归算法</h4>
-<ol type="1">
-<li><p>用自然语言表达的算法</p>
-<ol type="1">
+</li>
+</ol>
+<h4 id="13-2-1-例：中序遍历的非递归算法">13.2.1 例：中序遍历的非递归算法</h4>
+<ol>
+<li>
+<p>用自然语言表达的算法</p>
+<ol>
 <li>若p指向的结点非空，则将p指的结点的地址进栈，然后，将p指向左子树的根；</li>
 <li>若p指向的结点为空，则从堆栈中退出栈顶元素p，访问该结点，然后,将p指向右子树的根；</li>
 <li>重复上述过程，直到p为空，并且堆栈也为空。</li>
-</ol></li>
-<li><p>代码实现</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// STACK[0..M-1] -- 保存遍历过程中结点的地址；</span><br><span class="hljs-comment">// top -- 栈顶指针,初始为-1；</span><br><span class="hljs-comment">// p -- 为遍历过程中使用的指针变量，初始时指向根结点。</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">inorder</span><span class="hljs-params">(BTNodeptr t)</span>&#123;<br>    BTNodeptr <span class="hljs-built_in">stack</span>[M], p=t;<br>    <span class="hljs-type">int</span> top=<span class="hljs-number">-1</span>;<br>    <span class="hljs-keyword">if</span>(t!=<span class="hljs-literal">NULL</span>)  <br>        <span class="hljs-keyword">do</span> &#123;<br>            <span class="hljs-keyword">for</span>(; p!=<span class="hljs-literal">NULL</span>; p=p-&gt;left)<br>            	<span class="hljs-built_in">stack</span>[++top]=p;       <br>            p=<span class="hljs-built_in">stack</span>[top– –];<br>            VISIT(p);<br>            p=p-&gt;right;<br>        &#125;<span class="hljs-keyword">while</span>(!(p==<span class="hljs-literal">NULL</span> &amp;&amp; top==<span class="hljs-number">-1</span>));<br>&#125;<br></code></pre></td></tr></table></figure></li>
 </ol>
-<h4
-id="例已知具有n个结点的完全二叉树采用顺序存储结构结点的数据信息依次存放于一维数组bt0..n-1中写出中序遍历二叉树的非递归算法">13.2.2
-例：已知具有n个结点的完全二叉树采用顺序存储结构,结点的数据信息依次存放于一维数组BT[0..n-1]中，写出中序遍历二叉树的非递归算法。</h4>
-<ol type="1">
-<li><p>用自然语言表达的算法：</p>
-<ol type="1">
-<li>若i指向的结点非空，则将i进栈，然后，将i指向左子树的根(i =
-2*i+1)；</li>
-<li>若i指向的结点为空，则从堆栈中退出栈顶元素i，访问该结点，然后将i指向右子树的根(i
-= 2*i+1)；</li>
+</li>
+<li>
+<p>代码实现</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// STACK[0..M-1] -- 保存遍历过程中结点的地址；</span><br><span class="hljs-comment">// top -- 栈顶指针,初始为-1；</span><br><span class="hljs-comment">// p -- 为遍历过程中使用的指针变量，初始时指向根结点。</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">inorder</span><span class="hljs-params">(BTNodeptr t)</span>&#123;<br>    BTNodeptr <span class="hljs-built_in">stack</span>[M], p=t;<br>    <span class="hljs-type">int</span> top=<span class="hljs-number">-1</span>;<br>    <span class="hljs-keyword">if</span>(t!=<span class="hljs-literal">NULL</span>)  <br>        <span class="hljs-keyword">do</span> &#123;<br>            <span class="hljs-keyword">for</span>(; p!=<span class="hljs-literal">NULL</span>; p=p-&gt;left)<br>            	<span class="hljs-built_in">stack</span>[++top]=p;       <br>            p=<span class="hljs-built_in">stack</span>[top– –];<br>            VISIT(p);<br>            p=p-&gt;right;<br>        &#125;<span class="hljs-keyword">while</span>(!(p==<span class="hljs-literal">NULL</span> &amp;&amp; top==<span class="hljs-number">-1</span>));<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="13-2-2-例：已知具有n个结点的完全二叉树采用顺序存储结构-结点的数据信息依次存放于一维数组BT-0…n-1-中，写出中序遍历二叉树的非递归算法。">13.2.2 例：已知具有n个结点的完全二叉树采用顺序存储结构,结点的数据信息依次存放于一维数组BT[0…n-1]中，写出中序遍历二叉树的非递归算法。</h4>
+<ol>
+<li>
+<p>用自然语言表达的算法：</p>
+<ol>
+<li>若i指向的结点非空，则将i进栈，然后，将i指向左子树的根(i = 2*i+1)；</li>
+<li>若i指向的结点为空，则从堆栈中退出栈顶元素i，访问该结点，然后将i指向右子树的根(i = 2*i+1)；</li>
 <li>重复上述过程，直到i指向的结点不存在，并且栈空。</li>
-</ol></li>
-<li><p>代码实现</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> MaxSize  100</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">inorder</span><span class="hljs-params">(Datatype bt[],<span class="hljs-type">int</span> n)</span>&#123;<br>    <span class="hljs-type">int</span> <span class="hljs-built_in">stack</span>[MaxSize],i,top=<span class="hljs-number">-1</span>;<br>    i=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">if</span>(n&gt;=<span class="hljs-number">0</span>)&#123;<br>        <span class="hljs-keyword">do</span>&#123;<br>            <span class="hljs-keyword">while</span>(i&lt;n)&#123;<br>                <span class="hljs-built_in">stack</span>[++top]=i;      <span class="hljs-comment">// bt[i]的位置i进栈</span><br>                i=i*<span class="hljs-number">2</span>+<span class="hljs-number">1</span>;             <span class="hljs-comment">// 找到i的左孩子的位置</span><br>            &#125;<br>            i=STACK[top--];              <span class="hljs-comment">// 退栈</span><br>            VISIT(bt[i]);              <span class="hljs-comment">// 访问结点bt[i]</span><br>            i=i*<span class="hljs-number">2</span>+<span class="hljs-number">2</span>;                   <span class="hljs-comment">// 找到i的右孩子的位置</span><br>        &#125;<span class="hljs-keyword">while</span>(!(i&gt;n<span class="hljs-number">-1</span> &amp;&amp; top==<span class="hljs-number">-1</span>));<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
 </ol>
-<h4
-id="例若某完全二叉树采用顺序存储结构结点存放的次序为abcdefghij请给出该二叉树的后序序列">13.2.3
-例：若某完全二叉树采用顺序存储结构，结点存放的次序为A,B,C,D,E,F,G,H,I,J，请给出该二叉树的后序序列。</h4>
-<p><img src="/img/LE-ds5/38.png" srcset="/img/loading.gif" lazyload /></p>
+</li>
+<li>
+<p>代码实现</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> MaxSize  100</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">inorder</span><span class="hljs-params">(Datatype bt[],<span class="hljs-type">int</span> n)</span>&#123;<br>    <span class="hljs-type">int</span> <span class="hljs-built_in">stack</span>[MaxSize],i,top=<span class="hljs-number">-1</span>;<br>    i=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">if</span>(n&gt;=<span class="hljs-number">0</span>)&#123;<br>        <span class="hljs-keyword">do</span>&#123;<br>            <span class="hljs-keyword">while</span>(i&lt;n)&#123;<br>                <span class="hljs-built_in">stack</span>[++top]=i;      <span class="hljs-comment">// bt[i]的位置i进栈</span><br>                i=i*<span class="hljs-number">2</span>+<span class="hljs-number">1</span>;             <span class="hljs-comment">// 找到i的左孩子的位置</span><br>            &#125;<br>            i=STACK[top--];              <span class="hljs-comment">// 退栈</span><br>            VISIT(bt[i]);              <span class="hljs-comment">// 访问结点bt[i]</span><br>            i=i*<span class="hljs-number">2</span>+<span class="hljs-number">2</span>;                   <span class="hljs-comment">// 找到i的右孩子的位置</span><br>        &#125;<span class="hljs-keyword">while</span>(!(i&gt;n<span class="hljs-number">-1</span> &amp;&amp; top==<span class="hljs-number">-1</span>));<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="13-2-3-例：若某完全二叉树采用顺序存储结构，结点存放的次序为A-B-C-D-E-F-G-H-I-J，请给出该二叉树的后序序列。">13.2.3 例：若某完全二叉树采用顺序存储结构，结点存放的次序为A,B,C,D,E,F,G,H,I,J，请给出该二叉树的后序序列。</h4>
+<p><img src="/img/LE-ds5/38.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>答案：HIDJEBFGCA</p>
 
                 
