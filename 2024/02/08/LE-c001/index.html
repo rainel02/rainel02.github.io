@@ -307,12 +307,10 @@
               <div class="markdown-body">
                 
                 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span>      </span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>    <span class="hljs-type">int</span> a = <span class="hljs-number">0</span>, b, sum = <span class="hljs-number">100</span>;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;a, &amp;b);<br>    sum = a + b;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d + %d = %d\n&quot;</span>, a, b, sum);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>（惊）我们发生了一个野生的代码！虽然乱七八糟的英文字母什么的完全看不懂，但是姑且CV下来跑一跑吧！什么？你说你还想知道这个代码为什么会有这样的输出？既然你诚心诚意的发问了，那我就大发慈悲地告诉你吧......呜，好吧，本人学艺不精，暂且还无能力做出一个完整的博客帮助入门c语言，因此————<strong>正经的解释请去参考浙大翁恺的视频，本文只有本人关于c语言的任性比喻，可以用于辅助理解随便看看</strong></p>
+<p>（惊）我们发生了一个野生的代码！虽然乱七八糟的英文字母什么的完全看不懂，但是姑且CV下来跑一跑吧！什么？你说你还想知道这个代码为什么会有这样的输出？既然你诚心诚意的发问了，那我就大发慈悲地告诉你吧…呜，好吧，本人学艺不精，暂且还无能力做出一个完整的博客帮助入门c语言，因此————<strong>正经的解释请去参考浙大翁恺的视频，本文只有本人关于c语言的任性比喻，可以用于辅助理解随便看看</strong></p>
 <h2 id="标准库">标准库</h2>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br></code></pre></td></tr></table></figure>
-<p>写下来这一行之后，你就成功地站在了巨人的肩膀之上！可以利用前人的成果十分方便地进行输入、输出、平方、开根号、转换大小写等等了！除了stdio.h外，还有math.h,
-string.h, ctype.h,
-stdlib.h等标准库，这些标准库会在之后的学习中接触到，如果你想了解更多，请参考：zh.cppreferenc.com</p>
+<p>写下来这一行之后，你就成功地站在了巨人的肩膀之上！可以利用前人的成果十分方便地进行输入、输出、平方、开根号、转换大小写等等了！除了stdio.h外，还有math.h, string.h, ctype.h, stdlib.h等标准库，这些标准库会在之后的学习中接触到，如果你想了解更多，请参考：<a target="_blank" rel="noopener" href="http://zh.cppreferenc.com">zh.cppreferenc.com</a></p>
 <h2 id="主函数">主函数</h2>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;  <br>&#125;<br></code></pre></td></tr></table></figure>
 <p>编程相当于创造一个又一个函数，对输入的数据进行处理，并进行输出。主函数就是所有函数的老大，是整个程序的入口和出口，相当于游乐园的大门。以后你可能还会写很多其他函数，他们相当于各个区域的小门。而每个函数大括号中的内容就相当于这个区域的游乐设施们。输入的数据（充满活力的游客）会按照规划的游玩顺序（程序）走完全程，最终被输出（玩了一天累死累活的游客）。</p>
@@ -327,11 +325,9 @@ stdlib.h等标准库，这些标准库会在之后的学习中接触到，如果
 <p>当当，你获得了你想要的输出！！！</p>
 <h3 id="函数返回值">函数返回值</h3>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br></code></pre></td></tr></table></figure>
-<p>虽然不知道为什么要返回0不过貌似让他return别的也没关系但是以防万一你还是写return
-0吧。总之写了这个return 0;是绝对不会出错的。</p>
+<p>虽然不知道为什么要返回0不过貌似让他return别的也没关系但是以防万一你还是写return 0吧。总之写了这个return 0;是绝对不会出错的。</p>
 <h3 id="注释">注释</h3>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">/*</span><br><span class="hljs-comment">我用来注释多行语句</span><br><span class="hljs-comment">被注释的内容不会运行，可以用来解释代码</span><br><span class="hljs-comment">*/</span><br><span class="hljs-comment">//我用来注释单行语句</span><br></code></pre></td></tr></table></figure>
-
                 
               </div>
             
